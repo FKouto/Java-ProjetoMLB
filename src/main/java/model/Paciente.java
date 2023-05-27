@@ -1,4 +1,4 @@
-package collectPersonalData;
+package model;
 
 public class Paciente extends Pessoa{
     private int cpf;

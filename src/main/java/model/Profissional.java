@@ -1,4 +1,4 @@
-package collectPersonalData;
+package model;
 
 public class Profissional extends Pessoa{
     private int numConselho;
