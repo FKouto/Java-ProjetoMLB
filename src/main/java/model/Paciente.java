@@ -1,6 +1,7 @@
 package model;
 
-public class Paciente extends Pessoa{
+public class Paciente extends Pessoa {
+
     private int cpf;
     private int phone;
     private int age;
@@ -16,6 +17,7 @@ public class Paciente extends Pessoa{
         this.profession = profession;
         this.cause = cause;
     }
+
     /*Getters & Setters*/
     public int getCpf() {
         return cpf;
@@ -57,5 +59,5 @@ public class Paciente extends Pessoa{
         this.cause = cause;
     }
     /*Methods*/
-    
+
 }

@@ -1,6 +1,6 @@
 package view;
 
-import javax.swing.ImageIcon;
+import javax.swing.*;
 
 public class ViewLogin extends javax.swing.JFrame {
 
@@ -10,14 +10,18 @@ public class ViewLogin extends javax.swing.JFrame {
     public ViewLogin() {
         initComponents();
         /*Icon Janela*/
+        // Define o ícone da janela como a imagem localizada em "/images/icon.png".
         setIconImage(new ImageIcon(getClass().getResource("/images/icon.png")).getImage());
         /*Background*/
+        // Define a imagem de fundo SVG
         sVGImage1.setSvgImage("images/LoginLogoBackground.svg", 618, 640);
+        // Define a imagem de fundo SVG
         sVGImage2.setSvgImage("images/LoginBoxBackground.svg", 382, 640);
-        /*Permitindo a visibillidade da PlaceHolder nas Labels para quando clicar alterar para o texto digitado*/
+        /*Permitindo a visibilidade da PlaceHolder nas Labels para quando clicar alterar para o texto digitado*/
+        // Define o componente txtEmail como focável para permitir a edição do campo de texto.
         txtEmail.setFocusable(true);
+        // Define a posição da janela como centralizada em relação à tela.
         this.setLocationRelativeTo(null);
-        
     }
 
     /**
@@ -80,7 +84,6 @@ public class ViewLogin extends javax.swing.JFrame {
         jPanel1.add(txtEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 272, 230, 30));
 
         jPasswordField1.setBackground(new java.awt.Color(247, 247, 247));
-        jPasswordField1.setText("jPasswordField1");
         jPasswordField1.setBorder(null);
         jPasswordField1.setPreferredSize(new java.awt.Dimension(76, 22));
         jPanel1.add(jPasswordField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 325, 230, 30));
@@ -136,23 +139,29 @@ public class ViewLogin extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
     /*Click Botão Registrar-se*/
     private void lblRegistreMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblRegistreMouseClicked
+        // Cria uma instância da classe ViewSelectTypeCadastro
         ViewSelectTypeCadastro openSelectType = new ViewSelectTypeCadastro();
+        // Torna a janela atual invisível
         this.setVisible(false);
+        // Torna a janela openSelectType visível
         openSelectType.setVisible(true);
     }//GEN-LAST:event_lblRegistreMouseClicked
-    /*FocusGained*/
+    /*FocusGained, Quando o componente é selecionado esse método é acionado.*/
     private void txtEmailFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtEmailFocusGained
+        // Verifica se o texto atual do campo de texto (txtEmail) é igual a "Digite seu e-mail".
         if (txtEmail.getText().equals("Digite seu e-mail")) {
             txtEmail.setText("");
         }
     }//GEN-LAST:event_txtEmailFocusGained
-     /*FocusLost*/
+    /*FocusLost, Quando o componente perde o foco (deixa de ser selecionado).*/
     private void txtEmailFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtEmailFocusLost
+        // Verifica se o texto atual do campo de texto (txtEmail) está vazio.
         if (txtEmail.getText().equals("")) {
             txtEmail.setText("Digite seu e-mail");
+            // Se estiver vazio, o texto é definido como "Digite seu e-mail".
         }
     }//GEN-LAST:event_txtEmailFocusLost
- 
+
     /**
      * @param args the command line arguments
      */

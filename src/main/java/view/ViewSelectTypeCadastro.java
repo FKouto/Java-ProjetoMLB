@@ -9,11 +9,13 @@ public class ViewSelectTypeCadastro extends javax.swing.JFrame {
      */
     public ViewSelectTypeCadastro() {
         initComponents();
-        /*Icon Janela*/
+        // Define o ícone da janela
         setIconImage(new ImageIcon(getClass().getResource("/images/icon.png")).getImage());
-        /*Background*/
+        // Define o fundo da janela usando uma imagem SVG
         sVGImage1.setSvgImage("images/LoginLogoBackground.svg", 618, 640);
+        // Define uma imagem SVG para o componente sVGImage2
         sVGImage2.setSvgImage("images/returnIcon.svg", 24, 15);
+        // Define a localização da janela como centralizada na tela
         this.setLocationRelativeTo(null);
     }
 
@@ -149,26 +151,38 @@ public class ViewSelectTypeCadastro extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
     /*Click Voltar a tela de Login*/
     private void sVGImage2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_sVGImage2MouseClicked
+        // Cria uma instância da classe ViewLogin
         ViewLogin returnViewLogin = new ViewLogin();
+        // Torna a janela atual invisível
         this.setVisible(false);
+        // Torna a janela returnViewLogin visível
         returnViewLogin.setVisible(true);
     }//GEN-LAST:event_sVGImage2MouseClicked
     /*Click (Sou Paciente)*/
     private void btnSouPacienteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSouPacienteMouseClicked
+        // Cria uma instância da classe ViewSelectedPaciente
         ViewSelectedPaciente openSelectedPaciente = new ViewSelectedPaciente();
+        // Torna a janela atual invisível
         this.setVisible(false);
+        // Torna a janela openSelectedPaciente visível
         openSelectedPaciente.setVisible(true);
     }//GEN-LAST:event_btnSouPacienteMouseClicked
     /*Click (Sou Psicólogo)*/
     private void btnSouPsicologoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSouPsicologoMouseClicked
+        // Cria uma instância da classe ViewSelectedProfissional
         ViewSelectedProfissional openSelectedProfissional = new ViewSelectedProfissional();
+        // Torna a janela atual invisível
         this.setVisible(false);
+        // Torna a janela openSelectedProfissional visível
         openSelectedProfissional.setVisible(true);
     }//GEN-LAST:event_btnSouPsicologoMouseClicked
     /*Click (Sou Psiquiatra)*/
     private void btnSouPsiquiatraMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSouPsiquiatraMouseClicked
+        // Cria uma instância da classe ViewSelectedProfissional
         ViewSelectedProfissional openSelectedProfissional = new ViewSelectedProfissional();
+        // Torna a janela atual invisível
         this.setVisible(false);
+        // Torna a janela openSelectedProfissional visível
         openSelectedProfissional.setVisible(true);
     }//GEN-LAST:event_btnSouPsiquiatraMouseClicked
 

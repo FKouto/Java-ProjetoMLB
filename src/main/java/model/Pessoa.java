@@ -1,7 +1,8 @@
 package model;
 
 public abstract class Pessoa {
-private String name;
+
+    private String name;
     private String email;
     private String address;
 

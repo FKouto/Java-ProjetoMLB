@@ -1,7 +1,7 @@
 package view;
 
 import javax.swing.ImageIcon;
-import javax.swing.Timer;
+//import javax.swing.Timer;
 
 /**
  *
@@ -18,9 +18,12 @@ public class OpeningTransition extends javax.swing.JFrame {
         setIconImage(new ImageIcon(getClass().getResource("/images/icon.png")).getImage());
         /*Background*/
         sVGImage1.setSvgImage("images/Logo.svg", 711, 474);
-        new Timer(5_000, (e) -> { this.setVisible(false); this.dispose(); }).start();
-        ViewLogin openViewLogin = new ViewLogin();
-        new Timer(5_100, (e) -> {openViewLogin.setVisible(true);this.dispose();}).start();
+        /*Tempo de exibição*/
+        //new Timer(5_000, (e) -> { this.setVisible(false); this.dispose(); }).start();
+        /*Transição para tela de login*/
+        //ViewLogin openViewLogin = new ViewLogin();
+        //new Timer(5_100, (e) -> {openViewLogin.setVisible(true);this.dispose();}).start();
+        /*Posição na tela*/
         this.setLocationRelativeTo(null);
     }
 

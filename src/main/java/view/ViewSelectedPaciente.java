@@ -1,10 +1,6 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package view;
 
-import javax.swing.ImageIcon;
+import javax.swing.*;
 
 /**
  *
@@ -17,20 +13,22 @@ public class ViewSelectedPaciente extends javax.swing.JFrame {
      */
     public ViewSelectedPaciente() {
         initComponents();
-        /*Icon Janela*/
+        // Define o ícone da janela
         setIconImage(new ImageIcon(getClass().getResource("/images/icon.png")).getImage());
-        /*Background*/
+        // Define o fundo da janela usando uma imagem SVG
         sVGImage1.setSvgImage("images/BackgroundCadastroPaciente.svg", 1000, 640);
+        // Define uma imagem SVG para o componente sVGImage2
         sVGImage2.setSvgImage("images/returnIcon.svg", 24, 15);
-        /*Permitindo a visibillidade da PlaceHolder nas Labels*/
+        // Habilita a exibição do PlaceHolder nas Labels
         txtNomePaciente.setFocusable(true);
-        txtEmailPaciente.setFocusable(true);
-        txtEnderecoPaciente.setFocusable(true);
+        txtEmail.setFocusable(true);
+        txtEndereco.setFocusable(true);
         txtIdade.setFocusable(true);
         txtCelular.setFocusable(true);
         txtCpf.setFocusable(true);
         txtProfissao.setFocusable(true);
         txtCausa.setFocusable(true);
+        // Define a localização da janela como centralizada na tela
         this.setLocationRelativeTo(null);
     }
 
@@ -45,14 +43,14 @@ public class ViewSelectedPaciente extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         txtNomePaciente = new javax.swing.JTextField();
-        txtEmailPaciente = new javax.swing.JTextField();
-        txtEnderecoPaciente = new javax.swing.JTextField();
+        txtEmail = new javax.swing.JTextField();
+        txtEndereco = new javax.swing.JTextField();
         txtIdade = new javax.swing.JTextField();
         txtCelular = new javax.swing.JTextField();
         txtCpf = new javax.swing.JTextField();
         txtProfissao = new javax.swing.JTextField();
         txtCausa = new javax.swing.JTextField();
-        jPasswordField1 = new javax.swing.JPasswordField();
+        senhaPasswordField = new javax.swing.JPasswordField();
         btnCriarConta = new javax.swing.JButton();
         sVGImage2 = new view.SVGImage();
         sVGImage1 = new view.SVGImage();
@@ -81,33 +79,33 @@ public class ViewSelectedPaciente extends javax.swing.JFrame {
         });
         jPanel1.add(txtNomePaciente, new org.netbeans.lib.awtextra.AbsoluteConstraints(385, 103, 230, 30));
 
-        txtEmailPaciente.setBackground(new java.awt.Color(247, 247, 247));
-        txtEmailPaciente.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
-        txtEmailPaciente.setText("E-mail");
-        txtEmailPaciente.setBorder(null);
-        txtEmailPaciente.addFocusListener(new java.awt.event.FocusAdapter() {
+        txtEmail.setBackground(new java.awt.Color(247, 247, 247));
+        txtEmail.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        txtEmail.setText("E-mail");
+        txtEmail.setBorder(null);
+        txtEmail.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
-                txtEmailPacienteFocusGained(evt);
+                txtEmailFocusGained(evt);
             }
             public void focusLost(java.awt.event.FocusEvent evt) {
-                txtEmailPacienteFocusLost(evt);
+                txtEmailFocusLost(evt);
             }
         });
-        jPanel1.add(txtEmailPaciente, new org.netbeans.lib.awtextra.AbsoluteConstraints(385, 148, 230, 30));
+        jPanel1.add(txtEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(385, 148, 230, 30));
 
-        txtEnderecoPaciente.setBackground(new java.awt.Color(247, 247, 247));
-        txtEnderecoPaciente.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
-        txtEnderecoPaciente.setText("Endereço");
-        txtEnderecoPaciente.setBorder(null);
-        txtEnderecoPaciente.addFocusListener(new java.awt.event.FocusAdapter() {
+        txtEndereco.setBackground(new java.awt.Color(247, 247, 247));
+        txtEndereco.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        txtEndereco.setText("Endereço");
+        txtEndereco.setBorder(null);
+        txtEndereco.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
-                txtEnderecoPacienteFocusGained(evt);
+                txtEnderecoFocusGained(evt);
             }
             public void focusLost(java.awt.event.FocusEvent evt) {
-                txtEnderecoPacienteFocusLost(evt);
+                txtEnderecoFocusLost(evt);
             }
         });
-        jPanel1.add(txtEnderecoPaciente, new org.netbeans.lib.awtextra.AbsoluteConstraints(385, 193, 230, 30));
+        jPanel1.add(txtEndereco, new org.netbeans.lib.awtextra.AbsoluteConstraints(385, 193, 230, 30));
 
         txtIdade.setBackground(new java.awt.Color(247, 247, 247));
         txtIdade.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
@@ -180,10 +178,10 @@ public class ViewSelectedPaciente extends javax.swing.JFrame {
         });
         jPanel1.add(txtCausa, new org.netbeans.lib.awtextra.AbsoluteConstraints(385, 418, 230, 30));
 
-        jPasswordField1.setBackground(new java.awt.Color(247, 247, 247));
-        jPasswordField1.setText("jPasswordField1");
-        jPasswordField1.setBorder(null);
-        jPanel1.add(jPasswordField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(385, 463, 230, 30));
+        senhaPasswordField.setBackground(new java.awt.Color(247, 247, 247));
+        senhaPasswordField.setText("jPasswordField1");
+        senhaPasswordField.setBorder(null);
+        jPanel1.add(senhaPasswordField, new org.netbeans.lib.awtextra.AbsoluteConstraints(385, 463, 230, 30));
 
         btnCriarConta.setBackground(new java.awt.Color(41, 151, 255));
         btnCriarConta.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
@@ -214,72 +212,80 @@ public class ViewSelectedPaciente extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-    /*FocusGained*/
+    /*FocusGained, Quando o componente é selecionado esse método é acionado.*/
     private void txtNomePacienteFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtNomePacienteFocusGained
+        // Verifica se o texto atual do campo de texto (txtEmail) é igual a "Nome".
         if (txtNomePaciente.getText().equals("Nome")) {
             txtNomePaciente.setText("");
         }
     }//GEN-LAST:event_txtNomePacienteFocusGained
 
-    private void txtEmailPacienteFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtEmailPacienteFocusGained
-        if (txtEmailPaciente.getText().equals("E-mail")) {
-            txtEmailPaciente.setText("");
+    private void txtEmailFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtEmailFocusGained
+        // Verifica se o texto atual do campo de texto (txtEmail) é igual a "E-mail".
+        if (txtEmail.getText().equals("E-mail")) {
+            txtEmail.setText("");
         }
-    }//GEN-LAST:event_txtEmailPacienteFocusGained
+    }//GEN-LAST:event_txtEmailFocusGained
 
-    private void txtEnderecoPacienteFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtEnderecoPacienteFocusGained
-        if (txtEnderecoPaciente.getText().equals("Endereço")) {
-            txtEnderecoPaciente.setText("");
+    private void txtEnderecoFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtEnderecoFocusGained
+        // Verifica se o texto atual do campo de texto (txtEmail) é igual a "Endereço".
+        if (txtEndereco.getText().equals("Endereço")) {
+            txtEndereco.setText("");
         }
-    }//GEN-LAST:event_txtEnderecoPacienteFocusGained
+    }//GEN-LAST:event_txtEnderecoFocusGained
 
     private void txtIdadeFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtIdadeFocusGained
+        // Verifica se o texto atual do campo de texto (txtEmail) é igual a "Idade".
         if (txtIdade.getText().equals("Idade")) {
             txtIdade.setText("");
         }
     }//GEN-LAST:event_txtIdadeFocusGained
 
     private void txtCelularFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtCelularFocusGained
+        // Verifica se o texto atual do campo de texto (txtEmail) é igual a "Celular".
         if (txtCelular.getText().equals("Celular")) {
             txtCelular.setText("");
         }
     }//GEN-LAST:event_txtCelularFocusGained
 
     private void txtCpfFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtCpfFocusGained
+        // Verifica se o texto atual do campo de texto (txtEmail) é igual a "CPF".
         if (txtCpf.getText().equals("CPF")) {
             txtCpf.setText("");
         }
     }//GEN-LAST:event_txtCpfFocusGained
 
     private void txtProfissaoFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtProfissaoFocusGained
+        // Verifica se o texto atual do campo de texto (txtEmail) é igual a "Profissão".
         if (txtProfissao.getText().equals("Profissão")) {
             txtProfissao.setText("");
         }
     }//GEN-LAST:event_txtProfissaoFocusGained
 
     private void txtCausaFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtCausaFocusGained
+        // Verifica se o texto atual do campo de texto (txtEmail) é igual a "Causa".
         if (txtCausa.getText().equals("Causa")) {
             txtCausa.setText("");
         }
     }//GEN-LAST:event_txtCausaFocusGained
-    /*FocusLost*/
+    /*FocusLost, Quando o componente perde o foco (deixa de ser selecionado).*/
     private void txtNomePacienteFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtNomePacienteFocusLost
         if (txtNomePaciente.getText().equals("")) {
             txtNomePaciente.setText("Nome");
         }
     }//GEN-LAST:event_txtNomePacienteFocusLost
 
-    private void txtEmailPacienteFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtEmailPacienteFocusLost
-        if (txtEmailPaciente.getText().equals("")) {
-            txtEmailPaciente.setText("E-mail");
+    private void txtEmailFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtEmailFocusLost
+        if (txtEmail.getText().equals("")) {
+            txtEmail.setText("E-mail");
         }
-    }//GEN-LAST:event_txtEmailPacienteFocusLost
+    }//GEN-LAST:event_txtEmailFocusLost
 
-    private void txtEnderecoPacienteFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtEnderecoPacienteFocusLost
-        if (txtEnderecoPaciente.getText().equals("")) {
-            txtEnderecoPaciente.setText("Endereço");
+    private void txtEnderecoFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtEnderecoFocusLost
+        if (txtEndereco.getText().equals("")) {
+            txtEndereco.setText("Endereço");
         }
-    }//GEN-LAST:event_txtEnderecoPacienteFocusLost
+    }//GEN-LAST:event_txtEnderecoFocusLost
 
     private void txtIdadeFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtIdadeFocusLost
         if (txtIdade.getText().equals("")) {
@@ -312,8 +318,11 @@ public class ViewSelectedPaciente extends javax.swing.JFrame {
     }//GEN-LAST:event_txtCausaFocusLost
     /*Click Voltar para tela selecionar tipo de Cadastro*/
     private void sVGImage2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_sVGImage2MouseClicked
+        // Cria uma instância da classe ViewSelectTypeCadastro
         ViewSelectTypeCadastro returnTypeCadastro = new ViewSelectTypeCadastro();
+        // Torna a janela atual invisível
         this.setVisible(false);
+        // Torna a janela returnTypeCadastro visível
         returnTypeCadastro.setVisible(true);
     }//GEN-LAST:event_sVGImage2MouseClicked
 
@@ -356,14 +365,14 @@ public class ViewSelectedPaciente extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCriarConta;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPasswordField jPasswordField1;
     private view.SVGImage sVGImage1;
     private view.SVGImage sVGImage2;
+    private javax.swing.JPasswordField senhaPasswordField;
     private javax.swing.JTextField txtCausa;
     private javax.swing.JTextField txtCelular;
     private javax.swing.JTextField txtCpf;
-    private javax.swing.JTextField txtEmailPaciente;
-    private javax.swing.JTextField txtEnderecoPaciente;
+    private javax.swing.JTextField txtEmail;
+    private javax.swing.JTextField txtEndereco;
     private javax.swing.JTextField txtIdade;
     private javax.swing.JTextField txtNomePaciente;
     private javax.swing.JTextField txtProfissao;
