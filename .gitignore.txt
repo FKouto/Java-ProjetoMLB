@@ -1,2 +1,2 @@
-.pmlb
-.database
+database
+pmlb
