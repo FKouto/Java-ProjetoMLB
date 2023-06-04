@@ -36,7 +36,7 @@ public class ViewLogin extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
         txtEmail = new javax.swing.JTextField();
-        jPasswordField1 = new javax.swing.JPasswordField();
+        senhaPasswordField = new javax.swing.JPasswordField();
         btnEntrar = new javax.swing.JButton();
         lblRegistre = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -83,10 +83,10 @@ public class ViewLogin extends javax.swing.JFrame {
         });
         jPanel1.add(txtEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 272, 230, 30));
 
-        jPasswordField1.setBackground(new java.awt.Color(247, 247, 247));
-        jPasswordField1.setBorder(null);
-        jPasswordField1.setPreferredSize(new java.awt.Dimension(76, 22));
-        jPanel1.add(jPasswordField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 325, 230, 30));
+        senhaPasswordField.setBackground(new java.awt.Color(247, 247, 247));
+        senhaPasswordField.setBorder(null);
+        senhaPasswordField.setPreferredSize(new java.awt.Dimension(76, 22));
+        jPanel1.add(senhaPasswordField, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 325, 230, 30));
 
         btnEntrar.setBackground(new java.awt.Color(227, 1, 64));
         btnEntrar.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
@@ -95,6 +95,11 @@ public class ViewLogin extends javax.swing.JFrame {
         btnEntrar.setBorder(null);
         btnEntrar.setBorderPainted(false);
         btnEntrar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnEntrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEntrarActionPerformed(evt);
+            }
+        });
         jPanel1.add(btnEntrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(102, 367, 245, 38));
 
         lblRegistre.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -162,6 +167,21 @@ public class ViewLogin extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_txtEmailFocusLost
 
+    private void btnEntrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEntrarActionPerformed
+        //Aula dia 13 - Apostila 13_apostila... Pag 3
+        //Identificando Login  e Senha do digitada
+        String email = txtEmail.getText();
+        String senha = new String(senhaPasswordField.getPassword());
+        
+        //Verificação
+        if(email.equals("admin")&&senha.equals("admin")){
+            JOptionPane.showMessageDialog(null, "Funcionando!");
+        }
+        else{
+            JOptionPane.showMessageDialog(null, "Usuário Inválido");
+        }
+    }//GEN-LAST:event_btnEntrarActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -203,10 +223,10 @@ public class ViewLogin extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JPasswordField jPasswordField1;
     private javax.swing.JLabel lblRegistre;
     private view.SVGImage sVGImage1;
     private view.SVGImage sVGImage2;
+    private javax.swing.JPasswordField senhaPasswordField;
     private javax.swing.JTextField txtEmail;
     // End of variables declaration//GEN-END:variables
 
