@@ -9,13 +9,17 @@ public class Paciente extends Pessoa {
     private String cause;
 
     /*Criando método construtor*/
-    public Paciente(String name, String email, String address, int cpf, int phone, int age, String profession, String cause) {
-        super(name, email, address);
+    public Paciente(String name, String email, String address, String password, int cpf, int phone, int age, String profession, String cause) {
+        super(name, email, address, password);
         this.cpf = cpf;
         this.phone = phone;
         this.age = age;
         this.profession = profession;
         this.cause = cause;
+    }
+    //Construtor usado para fazer login
+    public Paciente(String email, String password){
+        super(email, password);
     }
 
     /*Getters & Setters*/
