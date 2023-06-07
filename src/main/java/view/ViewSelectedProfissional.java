@@ -11,7 +11,7 @@ public class ViewSelectedProfissional extends javax.swing.JFrame {
         // Define o fundo da janela usando uma imagem SVG
         sVGImage1.setSvgImage("images/BackgroundCadastroProfissional.svg", 1000, 640);
         // Define uma imagem SVG para o componente sVGImage2
-        sVGImage2.setSvgImage("images/returnIcon.svg", 24, 15);
+        sVGImage2.setSvgImage("images/returnIcon.svg", 44, 35);
         // Habilita a exibição do PlaceHolder nas Labels
         txtNome.setFocusable(true);
         txtEmail.setFocusable(true);
@@ -161,7 +161,7 @@ public class ViewSelectedProfissional extends javax.swing.JFrame {
                 sVGImage2MouseClicked(evt);
             }
         });
-        jPanel1.add(sVGImage2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 40, 24, 15));
+        jPanel1.add(sVGImage2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 40, 44, 35));
         jPanel1.add(sVGImage1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1000, 640));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());

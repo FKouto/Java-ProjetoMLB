@@ -14,7 +14,7 @@ public class ViewSelectTypeCadastro extends javax.swing.JFrame {
         // Define o fundo da janela usando uma imagem SVG
         sVGImage1.setSvgImage("images/LoginLogoBackground.svg", 618, 640);
         // Define uma imagem SVG para o componente sVGImage2
-        sVGImage2.setSvgImage("images/returnIcon.svg", 24, 15);
+        sVGImage2.setSvgImage("images/returnIcon.svg", 44, 35);
         // Define a localização da janela como centralizada na tela
         this.setLocationRelativeTo(null);
     }
@@ -106,7 +106,7 @@ public class ViewSelectTypeCadastro extends javax.swing.JFrame {
                 sVGImage2MouseClicked(evt);
             }
         });
-        jPanel1.add(sVGImage2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 40, 24, 15));
+        jPanel1.add(sVGImage2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 40, 44, 35));
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
 
