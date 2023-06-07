@@ -1,22 +1,22 @@
 package view;
-
-import javax.swing.ImageIcon;
+import javax.swing.*;
+import view.SelectedCadastroPaciente.InsertPersonalDataPaciente;
+import view.SelectedCadastroProfissional.InsertPersonalDataProfissional;
 
 public class ViewSelectTypeCadastro extends javax.swing.JFrame {
 
     /**
-     * Creates new form ViewSelectTypeCadastro
+     * Creates new form SelectType
      */
     public ViewSelectTypeCadastro() {
         initComponents();
-        // Define o ícone da janela
+        /*Icon Janela*/
+        // Define o ícone da janela como a imagem localizada em "/images/icon.png".
         setIconImage(new ImageIcon(getClass().getResource("/images/icon.png")).getImage());
-        // Define o fundo da janela usando uma imagem SVG
-        sVGImage1.setSvgImage("images/LoginLogoBackground.svg", 618, 640);
-        // Define uma imagem SVG para o componente sVGImage2
-        sVGImage2.setSvgImage("images/returnIcon.svg", 44, 35);
-        // Define a localização da janela como centralizada na tela
+        // Define a posição da janela como centralizada em relação à tela.
         this.setLocationRelativeTo(null);
+        // Define a imagem de fundo SVG
+        BackgroundRight.setSvgImage("images/BackgroundRight.svg", 618, 640);
     }
 
     /**
@@ -28,138 +28,78 @@ public class ViewSelectTypeCadastro extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel3 = new javax.swing.JPanel();
-        jPanel1 = new javax.swing.JPanel();
-        btnSouProfissional = new javax.swing.JButton();
+        SelectTypeCadastroFrame = new javax.swing.JPanel();
         btnSouPaciente = new javax.swing.JButton();
-        jLabel2 = new javax.swing.JLabel();
-        sVGImage2 = new view.SVGImage();
-        jPanel2 = new javax.swing.JPanel();
-        sVGImage1 = new view.SVGImage();
+        btnSouProfissional = new javax.swing.JButton();
+        BackgroundRight = new images.SVGImage();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Tipo de Cadastro");
-        setLocation(new java.awt.Point(250, 50));
         setMaximumSize(new java.awt.Dimension(1000, 640));
-        setMinimumSize(new java.awt.Dimension(1000, 640));
         setResizable(false);
 
-        jPanel3.setBackground(new java.awt.Color(255, 255, 255));
+        SelectTypeCadastroFrame.setBackground(new java.awt.Color(255, 255, 255));
+        SelectTypeCadastroFrame.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        btnSouProfissional.setBackground(new java.awt.Color(41, 151, 255));
-        btnSouProfissional.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
-        btnSouProfissional.setForeground(new java.awt.Color(255, 255, 255));
-        btnSouProfissional.setText("Sou Profissional");
-        btnSouProfissional.setBorder(null);
-        btnSouProfissional.setBorderPainted(false);
-        btnSouProfissional.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btnSouProfissional.setPreferredSize(new java.awt.Dimension(207, 35));
-        btnSouProfissional.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnSouProfissionalMouseClicked(evt);
-            }
-        });
-        jPanel1.add(btnSouProfissional, new org.netbeans.lib.awtextra.AbsoluteConstraints(138, 330, -1, -1));
-
-        btnSouPaciente.setBackground(new java.awt.Color(41, 151, 255));
+        btnSouPaciente.setBackground(new java.awt.Color(227, 1, 64));
         btnSouPaciente.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
         btnSouPaciente.setForeground(new java.awt.Color(255, 255, 255));
-        btnSouPaciente.setText("Sou Paciente");
-        btnSouPaciente.setBorder(null);
-        btnSouPaciente.setBorderPainted(false);
-        btnSouPaciente.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btnSouPaciente.setPreferredSize(new java.awt.Dimension(207, 35));
-        btnSouPaciente.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnSouPacienteMouseClicked(evt);
+        btnSouPaciente.setText("Paciente");
+        btnSouPaciente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSouPacienteActionPerformed(evt);
             }
         });
-        jPanel1.add(btnSouPaciente, new org.netbeans.lib.awtextra.AbsoluteConstraints(138, 288, -1, -1));
+        SelectTypeCadastroFrame.add(btnSouPaciente, new org.netbeans.lib.awtextra.AbsoluteConstraints(108, 308, 210, 35));
 
-        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 32)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(29, 29, 29));
-        jLabel2.setText("O que você é?");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(135, 225, -1, -1));
-
-        sVGImage2.setText("sVGImage2");
-        sVGImage2.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                sVGImage2MouseClicked(evt);
+        btnSouProfissional.setBackground(new java.awt.Color(227, 1, 64));
+        btnSouProfissional.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        btnSouProfissional.setForeground(new java.awt.Color(255, 255, 255));
+        btnSouProfissional.setText("Profissional");
+        btnSouProfissional.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSouProfissionalActionPerformed(evt);
             }
         });
-        jPanel1.add(sVGImage2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 40, 44, 35));
+        SelectTypeCadastroFrame.add(btnSouProfissional, new org.netbeans.lib.awtextra.AbsoluteConstraints(108, 353, 210, 35));
+        SelectTypeCadastroFrame.add(BackgroundRight, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 0, 618, 640));
 
-        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
-
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(sVGImage1, javax.swing.GroupLayout.DEFAULT_SIZE, 612, Short.MAX_VALUE)
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(sVGImage1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
-
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 382, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 640, Short.MAX_VALUE)
-            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 32)); // NOI18N
+        jLabel1.setText("O que você é?");
+        SelectTypeCadastroFrame.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 250, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(SelectTypeCadastroFrame, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(SelectTypeCadastroFrame, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-    /*Click Voltar a tela de Login*/
-    private void sVGImage2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_sVGImage2MouseClicked
-        // Cria uma instância da classe ViewLogin
-        ViewLogin returnViewLogin = new ViewLogin();
-        // Torna a janela atual invisível
-        this.setVisible(false);
-        // Torna a janela returnViewLogin visível
-        returnViewLogin.setVisible(true);
-    }//GEN-LAST:event_sVGImage2MouseClicked
-    /*Click (Sou Paciente)*/
-    private void btnSouPacienteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSouPacienteMouseClicked
+
+    private void btnSouPacienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSouPacienteActionPerformed
         // Cria uma instância da classe ViewSelectedPaciente
-        ViewSelectedPaciente openSelectedPaciente = new ViewSelectedPaciente();
+        InsertPersonalDataPaciente openSelectedPaciente = new InsertPersonalDataPaciente();
         // Torna a janela atual invisível
         this.setVisible(false);
         // Torna a janela openSelectedPaciente visível
         openSelectedPaciente.setVisible(true);
-    }//GEN-LAST:event_btnSouPacienteMouseClicked
-    /*Click (Sou Psicólogo)*/
-    private void btnSouProfissionalMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSouProfissionalMouseClicked
+    }//GEN-LAST:event_btnSouPacienteActionPerformed
+
+    private void btnSouProfissionalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSouProfissionalActionPerformed
         // Cria uma instância da classe ViewSelectedProfissional
-        ViewSelectedProfissional openSelectedProfissional = new ViewSelectedProfissional();
+        InsertPersonalDataProfissional openSelectedProfissional = new InsertPersonalDataProfissional();
         // Torna a janela atual invisível
         this.setVisible(false);
         // Torna a janela openSelectedProfissional visível
         openSelectedProfissional.setVisible(true);
-    }//GEN-LAST:event_btnSouProfissionalMouseClicked
+    }//GEN-LAST:event_btnSouProfissionalActionPerformed
 
     /**
      * @param args the command line arguments
@@ -187,6 +127,9 @@ public class ViewSelectTypeCadastro extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(ViewSelectTypeCadastro.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -197,13 +140,10 @@ public class ViewSelectTypeCadastro extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private images.SVGImage BackgroundRight;
+    private javax.swing.JPanel SelectTypeCadastroFrame;
     private javax.swing.JButton btnSouPaciente;
     private javax.swing.JButton btnSouProfissional;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
-    private view.SVGImage sVGImage1;
-    private view.SVGImage sVGImage2;
+    private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
 }

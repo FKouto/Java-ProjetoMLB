@@ -16,9 +16,9 @@ public class ViewLogin extends javax.swing.JFrame {
         setIconImage(new ImageIcon(getClass().getResource("/images/icon.png")).getImage());
         /*Background*/
         // Define a imagem de fundo SVG
-        sVGImage1.setSvgImage("images/LoginLogoBackground.svg", 618, 640);
+        BackgroundRight.setSvgImage("images/BackgroundRight.svg", 618, 640);
         // Define a imagem de fundo SVG
-        sVGImage2.setSvgImage("images/LoginBoxBackground.svg", 382, 640);
+        BackgroundLeft.setSvgImage("images/BackgroundLeft.svg", 382, 640);
         /*Permitindo a visibilidade da PlaceHolder nas Labels para quando clicar alterar para o texto digitado*/
         // Define o componente txtEmail como focável para permitir a edição do campo de texto.
         txtEmail.setFocusable(true);
@@ -41,8 +41,8 @@ public class ViewLogin extends javax.swing.JFrame {
         senhaPasswordField = new javax.swing.JPasswordField();
         btnEntrar = new javax.swing.JButton();
         lblRegistre = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
+        BackgroundLeft = new images.SVGImage();
+        BackgroundRight = new images.SVGImage();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Login");
@@ -81,12 +81,13 @@ public class ViewLogin extends javax.swing.JFrame {
                 txtEmailFocusLost(evt);
             }
         });
-        jPanel1.add(txtEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 272, 230, 30));
+        jPanel1.add(txtEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(95, 273, 230, 30));
 
         senhaPasswordField.setBackground(new java.awt.Color(247, 247, 247));
+        senhaPasswordField.setText("senha");
         senhaPasswordField.setBorder(null);
         senhaPasswordField.setPreferredSize(new java.awt.Dimension(76, 22));
-        jPanel1.add(senhaPasswordField, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 325, 230, 30));
+        jPanel1.add(senhaPasswordField, new org.netbeans.lib.awtextra.AbsoluteConstraints(95, 328, 230, 30));
 
         btnEntrar.setBackground(new java.awt.Color(227, 1, 64));
         btnEntrar.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
@@ -100,7 +101,7 @@ public class ViewLogin extends javax.swing.JFrame {
                 btnEntrarActionPerformed(evt);
             }
         });
-        jPanel1.add(btnEntrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(102, 367, 245, 38));
+        jPanel1.add(btnEntrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(89, 372, 245, 38));
 
         lblRegistre.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         lblRegistre.setForeground(new java.awt.Color(41, 151, 255));
@@ -111,17 +112,13 @@ public class ViewLogin extends javax.swing.JFrame {
                 lblRegistreMouseClicked(evt);
             }
         });
-        jPanel1.add(lblRegistre, new org.netbeans.lib.awtextra.AbsoluteConstraints(256, 419, -1, -1));
+        jPanel1.add(lblRegistre, new org.netbeans.lib.awtextra.AbsoluteConstraints(243, 423, -1, -1));
 
-        jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 32)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(29, 29, 29));
-        jLabel3.setText("Faça seu login");
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(116, 180, -1, -1));
+        BackgroundLeft.setText("sVGImage1");
+        jPanel1.add(BackgroundLeft, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 382, 640));
 
-        jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 32)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(29, 29, 29));
-        jLabel4.setText("na plataforma");
-        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(117, 211, -1, -1));
+        BackgroundRight.setText("sVGImage1");
+        jPanel1.add(BackgroundRight, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 0, 618, 640));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -224,9 +221,9 @@ public class ViewLogin extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private images.SVGImage BackgroundLeft;
+    private images.SVGImage BackgroundRight;
     private javax.swing.JButton btnEntrar;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JLabel lblRegistre;

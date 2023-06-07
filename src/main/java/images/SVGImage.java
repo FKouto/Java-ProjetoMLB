@@ -1,4 +1,4 @@
-package view;
+package images;
 
 import com.formdev.flatlaf.extras.FlatSVGIcon;
 import javax.swing.JLabel;
