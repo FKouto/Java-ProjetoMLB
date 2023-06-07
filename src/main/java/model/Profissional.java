@@ -7,8 +7,8 @@ public class Profissional extends Pessoa {
     private String queryType;
 
     /*Criando método construtor*/
-    public Profissional(String name, String email, String address, String password, int numConselho, String qualification, String queryType) {
-        super(name, email, address, password);
+    public Profissional(int id, String name, String email, String address, String password, int numConselho, String qualification, String queryType) {
+        super(id, name, email, address, password);
         this.numConselho = numConselho;
         this.qualification = qualification;
         this.queryType = queryType;

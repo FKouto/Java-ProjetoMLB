@@ -1,14 +1,15 @@
 package model;
 
 public abstract class Pessoa {
-
+    private int id;
     private String name;
     private String email;
     private String address;
     private String password;
 
     /*Criando o método construtor Pessoa, para Paciente, Psicólogo e Psiquiatra herdarem*/
-    public Pessoa(String name, String email, String address, String password) {
+    public Pessoa(int id, String name, String email, String address, String password) {
+        this.id = id;
         this.name = name;
         this.email = email;
         this.address = address;
@@ -52,5 +53,12 @@ public abstract class Pessoa {
     public void setPassword(String password) {
         this.password = password;
     }
-    
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 }

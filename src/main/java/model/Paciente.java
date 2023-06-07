@@ -6,8 +6,8 @@ public class Paciente extends Pessoa {
     private int phone;
 
     /*Criando método construtor*/
-    public Paciente(String name, String email, String address, String password, int cpf, int phone, int age, String profession, String cause) {
-        super(name, email, address, password);
+    public Paciente(int id, String name, String email, String address, int phone, int cpf, String password) {
+        super(id, name, email, address, password);
         this.cpf = cpf;
         this.phone = phone;
     }

@@ -7,6 +7,7 @@ view\ViewSelectedProfissional$5.class
 view\ViewLogin$3.class
 view\ViewSelectedProfissional.class
 view\ViewSelectTypeCadastro$4.class
+view\ViewSelectedPaciente$8.class
 model\Profissional.class
 model\Pessoa.class
 view\ViewSelectedProfissional$1.class
@@ -24,7 +25,6 @@ view\OpeningTransition$1.class
 view\ViewLogin.class
 view\ViewSelectTypeCadastro$3.class
 view\ViewSelectedPaciente$7.class
-view\ViewSelectTypeCadastro$5.class
 view\ViewSelectTypeCadastro.class
 model\Paciente.class
 view\ViewSelectedPaciente.class

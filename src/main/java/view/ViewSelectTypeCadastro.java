@@ -30,8 +30,7 @@ public class ViewSelectTypeCadastro extends javax.swing.JFrame {
 
         jPanel3 = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
-        btnSouPsiquiatra = new javax.swing.JButton();
-        btnSouPsicologo = new javax.swing.JButton();
+        btnSouProfissional = new javax.swing.JButton();
         btnSouPaciente = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         sVGImage2 = new view.SVGImage();
@@ -50,35 +49,20 @@ public class ViewSelectTypeCadastro extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        btnSouPsiquiatra.setBackground(new java.awt.Color(41, 151, 255));
-        btnSouPsiquiatra.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
-        btnSouPsiquiatra.setForeground(new java.awt.Color(255, 255, 255));
-        btnSouPsiquiatra.setText("Sou Psiquiatra");
-        btnSouPsiquiatra.setBorder(null);
-        btnSouPsiquiatra.setBorderPainted(false);
-        btnSouPsiquiatra.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btnSouPsiquiatra.setPreferredSize(new java.awt.Dimension(207, 35));
-        btnSouPsiquiatra.addMouseListener(new java.awt.event.MouseAdapter() {
+        btnSouProfissional.setBackground(new java.awt.Color(41, 151, 255));
+        btnSouProfissional.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        btnSouProfissional.setForeground(new java.awt.Color(255, 255, 255));
+        btnSouProfissional.setText("Sou Profissional");
+        btnSouProfissional.setBorder(null);
+        btnSouProfissional.setBorderPainted(false);
+        btnSouProfissional.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnSouProfissional.setPreferredSize(new java.awt.Dimension(207, 35));
+        btnSouProfissional.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnSouPsiquiatraMouseClicked(evt);
+                btnSouProfissionalMouseClicked(evt);
             }
         });
-        jPanel1.add(btnSouPsiquiatra, new org.netbeans.lib.awtextra.AbsoluteConstraints(138, 374, -1, -1));
-
-        btnSouPsicologo.setBackground(new java.awt.Color(41, 151, 255));
-        btnSouPsicologo.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
-        btnSouPsicologo.setForeground(new java.awt.Color(255, 255, 255));
-        btnSouPsicologo.setText("Sou Psicólogo");
-        btnSouPsicologo.setBorder(null);
-        btnSouPsicologo.setBorderPainted(false);
-        btnSouPsicologo.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btnSouPsicologo.setPreferredSize(new java.awt.Dimension(207, 35));
-        btnSouPsicologo.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnSouPsicologoMouseClicked(evt);
-            }
-        });
-        jPanel1.add(btnSouPsicologo, new org.netbeans.lib.awtextra.AbsoluteConstraints(138, 330, -1, -1));
+        jPanel1.add(btnSouProfissional, new org.netbeans.lib.awtextra.AbsoluteConstraints(138, 330, -1, -1));
 
         btnSouPaciente.setBackground(new java.awt.Color(41, 151, 255));
         btnSouPaciente.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
@@ -168,23 +152,14 @@ public class ViewSelectTypeCadastro extends javax.swing.JFrame {
         openSelectedPaciente.setVisible(true);
     }//GEN-LAST:event_btnSouPacienteMouseClicked
     /*Click (Sou Psicólogo)*/
-    private void btnSouPsicologoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSouPsicologoMouseClicked
+    private void btnSouProfissionalMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSouProfissionalMouseClicked
         // Cria uma instância da classe ViewSelectedProfissional
         ViewSelectedProfissional openSelectedProfissional = new ViewSelectedProfissional();
         // Torna a janela atual invisível
         this.setVisible(false);
         // Torna a janela openSelectedProfissional visível
         openSelectedProfissional.setVisible(true);
-    }//GEN-LAST:event_btnSouPsicologoMouseClicked
-    /*Click (Sou Psiquiatra)*/
-    private void btnSouPsiquiatraMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSouPsiquiatraMouseClicked
-        // Cria uma instância da classe ViewSelectedProfissional
-        ViewSelectedProfissional openSelectedProfissional = new ViewSelectedProfissional();
-        // Torna a janela atual invisível
-        this.setVisible(false);
-        // Torna a janela openSelectedProfissional visível
-        openSelectedProfissional.setVisible(true);
-    }//GEN-LAST:event_btnSouPsiquiatraMouseClicked
+    }//GEN-LAST:event_btnSouProfissionalMouseClicked
 
     /**
      * @param args the command line arguments
@@ -223,8 +198,7 @@ public class ViewSelectTypeCadastro extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnSouPaciente;
-    private javax.swing.JButton btnSouPsicologo;
-    private javax.swing.JButton btnSouPsiquiatra;
+    private javax.swing.JButton btnSouProfissional;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
