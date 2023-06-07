@@ -13,6 +13,8 @@ public class InsertAddressProfissional extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
         // Define a imagem de fundo SVG
         Background.setSvgImage("images/InsertAddressBackground.svg", 1000, 640);
+        // Imagem botão de retorno
+        btnReturn.setSvgImage("images/returnIcon.svg", 44, 35);
     }
 
     /**
@@ -25,6 +27,7 @@ public class InsertAddressProfissional extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
+        btnReturn = new images.SVGImage();
         txtRua = new javax.swing.JTextField();
         txtNumeroCs = new javax.swing.JTextField();
         txtBairro = new javax.swing.JTextField();
@@ -41,6 +44,13 @@ public class InsertAddressProfissional extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        btnReturn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnReturnMouseClicked(evt);
+            }
+        });
+        jPanel1.add(btnReturn, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 30, 44, 35));
 
         txtRua.setBackground(new java.awt.Color(247, 247, 247));
         txtRua.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
@@ -101,6 +111,12 @@ public class InsertAddressProfissional extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnReturnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnReturnMouseClicked
+        InsertPersonalDataProfissional returnToPersonalData = new InsertPersonalDataProfissional();
+        returnToPersonalData.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_btnReturnMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -154,6 +170,7 @@ public class InsertAddressProfissional extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private images.SVGImage Background;
     private javax.swing.JButton btnProximaTela;
+    private images.SVGImage btnReturn;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JTextField txtBairro;
     private javax.swing.JTextField txtCep;

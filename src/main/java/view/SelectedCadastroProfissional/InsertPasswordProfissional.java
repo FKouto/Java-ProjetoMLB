@@ -13,6 +13,8 @@ public class InsertPasswordProfissional extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
         // Define a imagem de fundo SVG
         Background.setSvgImage("images/InsertPasswordBackground.svg", 1000, 640);
+        // Imagem botão de retorno
+        btnReturn.setSvgImage("images/returnIcon.svg", 44, 35);
     }
 
     /**
@@ -25,6 +27,7 @@ public class InsertPasswordProfissional extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
+        btnReturn = new images.SVGImage();
         senhaPasswordField1 = new javax.swing.JPasswordField();
         senhaPasswordField2 = new javax.swing.JPasswordField();
         btnCriarConta = new javax.swing.JButton();
@@ -37,6 +40,13 @@ public class InsertPasswordProfissional extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        btnReturn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnReturnMouseClicked(evt);
+            }
+        });
+        jPanel1.add(btnReturn, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 30, 44, 35));
 
         senhaPasswordField1.setBackground(new java.awt.Color(247, 247, 247));
         senhaPasswordField1.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
@@ -72,6 +82,12 @@ public class InsertPasswordProfissional extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+    /*Ação do botão voltar*/
+    private void btnReturnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnReturnMouseClicked
+        InsertAddressProfissional returnToAddress = new InsertAddressProfissional();
+        returnToAddress.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_btnReturnMouseClicked
 
     /**
      * @param args the command line arguments
@@ -118,6 +134,7 @@ public class InsertPasswordProfissional extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private images.SVGImage Background;
     private javax.swing.JButton btnCriarConta;
+    private images.SVGImage btnReturn;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPasswordField senhaPasswordField1;
     private javax.swing.JPasswordField senhaPasswordField2;

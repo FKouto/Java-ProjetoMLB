@@ -17,6 +17,8 @@ public class ViewSelectTypeCadastro extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
         // Define a imagem de fundo SVG
         BackgroundRight.setSvgImage("images/BackgroundRight.svg", 618, 640);
+        // Imagem botão de retorno
+        btnReturn.setSvgImage("images/returnIcon.svg", 44, 35);
     }
 
     /**
@@ -33,6 +35,7 @@ public class ViewSelectTypeCadastro extends javax.swing.JFrame {
         btnSouProfissional = new javax.swing.JButton();
         BackgroundRight = new images.SVGImage();
         jLabel1 = new javax.swing.JLabel();
+        btnReturn = new images.SVGImage();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Tipo de Cadastro");
@@ -69,6 +72,13 @@ public class ViewSelectTypeCadastro extends javax.swing.JFrame {
         jLabel1.setText("O que você é?");
         SelectTypeCadastroFrame.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 250, -1, -1));
 
+        btnReturn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnReturnMouseClicked(evt);
+            }
+        });
+        SelectTypeCadastroFrame.add(btnReturn, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 30, 44, 35));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -100,6 +110,12 @@ public class ViewSelectTypeCadastro extends javax.swing.JFrame {
         // Torna a janela openSelectedProfissional visível
         openSelectedProfissional.setVisible(true);
     }//GEN-LAST:event_btnSouProfissionalActionPerformed
+    /*Ação do botão voltar*/
+    private void btnReturnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnReturnMouseClicked
+        ViewLogin returnToLogin = new ViewLogin();
+        returnToLogin.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_btnReturnMouseClicked
 
     /**
      * @param args the command line arguments
@@ -142,6 +158,7 @@ public class ViewSelectTypeCadastro extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private images.SVGImage BackgroundRight;
     private javax.swing.JPanel SelectTypeCadastroFrame;
+    private images.SVGImage btnReturn;
     private javax.swing.JButton btnSouPaciente;
     private javax.swing.JButton btnSouProfissional;
     private javax.swing.JLabel jLabel1;
