@@ -3,15 +3,15 @@ package model;
 public class Profissional extends Pessoa {
 
     private int numConselho;
-    private String qualification;
-    private String queryType;
+    private String profissionalização;
+    private String tipoConsulta;
 
     /*Criando método construtor*/
-    public Profissional(int id, String name, String email, String address, String password, int numConselho, String qualification, String queryType) {
-        super(id, name, email, address, password);
+    public Profissional(int numConselho, String especializacao, String tipoConsulta, int idPessoa, String nome, String email, int idTelefone, int telefone, int idEndereco, String rua, String bairro, String cidade, String estado, int cep, String senha) {
+        super(idPessoa, nome, email, idTelefone, telefone, idEndereco, rua, bairro, cidade, estado, cep, senha);
         this.numConselho = numConselho;
-        this.qualification = qualification;
-        this.queryType = queryType;
+        this.profissionalização = especializacao;
+        this.tipoConsulta = tipoConsulta;
     }
 
     /*Getters & Setters*/
@@ -23,19 +23,20 @@ public class Profissional extends Pessoa {
         this.numConselho = numConselho;
     }
 
-    public String getQualification() {
-        return qualification;
+    public String getProfissionalização() {
+        return profissionalização;
     }
 
-    public void setQualification(String qualification) {
-        this.qualification = qualification;
+    public void setProfissionalização(String profissionalização) {
+        this.profissionalização = profissionalização;
     }
 
-    public String getQueryType() {
-        return queryType;
+    public String getTipoConsulta() {
+        return tipoConsulta;
     }
 
-    public void setQueryType(String queryType) {
-        this.queryType = queryType;
+    public void setTipoConsulta(String tipoConsulta) {
+        this.tipoConsulta = tipoConsulta;
     }
+    
 }

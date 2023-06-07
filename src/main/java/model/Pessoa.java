@@ -1,33 +1,35 @@
 package model;
 
-public abstract class Pessoa {
-    private int id;
-    private String name;
+public abstract class Pessoa extends PessoaTelefone{
+    private int idPessoa;
+    private String nome;
     private String email;
-    private String address;
-    private String password;
+    private String senha;
 
-    /*Criando o método construtor Pessoa, para Paciente, Psicólogo e Psiquiatra herdarem*/
-    public Pessoa(int id, String name, String email, String address, String password) {
-        this.id = id;
-        this.name = name;
+    /*Criando o método construtor Pessoa, para Paciente, Psicólogo e Psiquiatra herdarem*/    
+    public Pessoa(int idPessoa, String nome, String email, int idTelefone, int telefone, int idEndereco, String rua, String bairro, String cidade, String estado, int cep, String senha) {
+        super(idTelefone, telefone, idEndereco, rua, bairro, cidade, estado, cep);
+        this.idPessoa = idPessoa;
+        this.nome = nome;
         this.email = email;
-        this.address = address;
-        this.password = password;
-    }
-    //Metódo construtor usado em ViewLogin para verificar email e senha no banco de dados
-    public Pessoa(String email, String password) {
-        this.email = email;
-        this.password = password;
+        this.senha = senha;
     }
 
-    /*Getters & Setters*/
-    public String getName() {
-        return name;
+    //Getters & Setters
+    public int getIdPessoa() {
+        return idPessoa;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setIdPessoa(int idPessoa) {
+        this.idPessoa = idPessoa;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
     }
 
     public String getEmail() {
@@ -38,27 +40,12 @@ public abstract class Pessoa {
         this.email = email;
     }
 
-    public String getAddress() {
-        return address;
+    public String getSenha() {
+        return senha;
     }
 
-    public void setAddress(String address) {
-        this.address = address;
+    public void setSenha(String senha) {
+        this.senha = senha;
     }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
+    
 }

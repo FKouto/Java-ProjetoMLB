@@ -161,10 +161,10 @@ public class ViewLogin extends javax.swing.JFrame {
     private void btnEntrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEntrarActionPerformed
         //Aula dia 13 - Apostila 13_apostila... Pag3
         //Identificando Login  e Senha do digitada
-        String email = txtEmail.getText();
+        //String email = txtEmail.getText();
         //Obtem a senha como char[] e converte em String
-        String senha = new String(senhaPasswordField.getPassword());
-
+        //String senha = new String(senhaPasswordField.getPassword());
+        /*
         try {
             // Criando uma instância da classe Paciente com o email e senha
             Paciente paciente = new Paciente(email,senha);
@@ -183,6 +183,7 @@ public class ViewLogin extends javax.swing.JFrame {
             // Exibe uma mensagem de erro genérica caso ocorra uma exceção
             JOptionPane.showMessageDialog(null, "Problemas técnicos. Tente novamente mais tarde.");
         }
+        */
     }//GEN-LAST:event_btnEntrarActionPerformed
 
     /**
