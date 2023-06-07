@@ -43,8 +43,6 @@ public class ViewLogin extends javax.swing.JFrame {
         lblRegistre = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        sVGImage2 = new view.SVGImage();
-        sVGImage1 = new view.SVGImage();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Login");
@@ -124,12 +122,6 @@ public class ViewLogin extends javax.swing.JFrame {
         jLabel4.setForeground(new java.awt.Color(29, 29, 29));
         jLabel4.setText("na plataforma");
         jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(117, 211, -1, -1));
-
-        sVGImage2.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jPanel1.add(sVGImage2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 382, 640));
-
-        sVGImage1.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jPanel1.add(sVGImage1, new org.netbeans.lib.awtextra.AbsoluteConstraints(388, 0, 618, 640));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -238,8 +230,6 @@ public class ViewLogin extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JLabel lblRegistre;
-    private view.SVGImage sVGImage1;
-    private view.SVGImage sVGImage2;
     private javax.swing.JPasswordField senhaPasswordField;
     private javax.swing.JTextField txtEmail;
     // End of variables declaration//GEN-END:variables
