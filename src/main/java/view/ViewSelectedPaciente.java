@@ -23,11 +23,8 @@ public class ViewSelectedPaciente extends javax.swing.JFrame {
         txtNomePaciente.setFocusable(true);
         txtEmail.setFocusable(true);
         txtEndereco.setFocusable(true);
-        txtIdade.setFocusable(true);
         txtCelular.setFocusable(true);
         txtCpf.setFocusable(true);
-        txtProfissao.setFocusable(true);
-        txtCausa.setFocusable(true);
         // Define a localização da janela como centralizada na tela
         this.setLocationRelativeTo(null);
     }
@@ -45,11 +42,8 @@ public class ViewSelectedPaciente extends javax.swing.JFrame {
         txtNomePaciente = new javax.swing.JTextField();
         txtEmail = new javax.swing.JTextField();
         txtEndereco = new javax.swing.JTextField();
-        txtIdade = new javax.swing.JTextField();
         txtCelular = new javax.swing.JTextField();
         txtCpf = new javax.swing.JTextField();
-        txtProfissao = new javax.swing.JTextField();
-        txtCausa = new javax.swing.JTextField();
         senhaPasswordField = new javax.swing.JPasswordField();
         btnCriarConta = new javax.swing.JButton();
         sVGImage2 = new view.SVGImage();
@@ -77,7 +71,7 @@ public class ViewSelectedPaciente extends javax.swing.JFrame {
                 txtNomePacienteFocusLost(evt);
             }
         });
-        jPanel1.add(txtNomePaciente, new org.netbeans.lib.awtextra.AbsoluteConstraints(385, 103, 230, 30));
+        jPanel1.add(txtNomePaciente, new org.netbeans.lib.awtextra.AbsoluteConstraints(385, 172, 230, 30));
 
         txtEmail.setBackground(new java.awt.Color(247, 247, 247));
         txtEmail.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
@@ -91,7 +85,7 @@ public class ViewSelectedPaciente extends javax.swing.JFrame {
                 txtEmailFocusLost(evt);
             }
         });
-        jPanel1.add(txtEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(385, 148, 230, 30));
+        jPanel1.add(txtEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(385, 216, 230, 30));
 
         txtEndereco.setBackground(new java.awt.Color(247, 247, 247));
         txtEndereco.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
@@ -105,21 +99,7 @@ public class ViewSelectedPaciente extends javax.swing.JFrame {
                 txtEnderecoFocusLost(evt);
             }
         });
-        jPanel1.add(txtEndereco, new org.netbeans.lib.awtextra.AbsoluteConstraints(385, 193, 230, 30));
-
-        txtIdade.setBackground(new java.awt.Color(247, 247, 247));
-        txtIdade.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
-        txtIdade.setText("Idade");
-        txtIdade.setBorder(null);
-        txtIdade.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                txtIdadeFocusGained(evt);
-            }
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                txtIdadeFocusLost(evt);
-            }
-        });
-        jPanel1.add(txtIdade, new org.netbeans.lib.awtextra.AbsoluteConstraints(385, 238, 230, 30));
+        jPanel1.add(txtEndereco, new org.netbeans.lib.awtextra.AbsoluteConstraints(385, 263, 230, 30));
 
         txtCelular.setBackground(new java.awt.Color(247, 247, 247));
         txtCelular.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
@@ -133,7 +113,7 @@ public class ViewSelectedPaciente extends javax.swing.JFrame {
                 txtCelularFocusLost(evt);
             }
         });
-        jPanel1.add(txtCelular, new org.netbeans.lib.awtextra.AbsoluteConstraints(385, 283, 230, 30));
+        jPanel1.add(txtCelular, new org.netbeans.lib.awtextra.AbsoluteConstraints(385, 307, 230, 30));
 
         txtCpf.setBackground(new java.awt.Color(247, 247, 247));
         txtCpf.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
@@ -147,48 +127,19 @@ public class ViewSelectedPaciente extends javax.swing.JFrame {
                 txtCpfFocusLost(evt);
             }
         });
-        jPanel1.add(txtCpf, new org.netbeans.lib.awtextra.AbsoluteConstraints(385, 328, 230, 30));
-
-        txtProfissao.setBackground(new java.awt.Color(247, 247, 247));
-        txtProfissao.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
-        txtProfissao.setText("Profissão");
-        txtProfissao.setToolTipText("");
-        txtProfissao.setBorder(null);
-        txtProfissao.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                txtProfissaoFocusGained(evt);
-            }
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                txtProfissaoFocusLost(evt);
-            }
-        });
-        jPanel1.add(txtProfissao, new org.netbeans.lib.awtextra.AbsoluteConstraints(385, 373, 230, 30));
-
-        txtCausa.setBackground(new java.awt.Color(247, 247, 247));
-        txtCausa.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
-        txtCausa.setText("Causa");
-        txtCausa.setBorder(null);
-        txtCausa.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                txtCausaFocusGained(evt);
-            }
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                txtCausaFocusLost(evt);
-            }
-        });
-        jPanel1.add(txtCausa, new org.netbeans.lib.awtextra.AbsoluteConstraints(385, 418, 230, 30));
+        jPanel1.add(txtCpf, new org.netbeans.lib.awtextra.AbsoluteConstraints(385, 351, 230, 30));
 
         senhaPasswordField.setBackground(new java.awt.Color(247, 247, 247));
         senhaPasswordField.setText("jPasswordField1");
         senhaPasswordField.setBorder(null);
-        jPanel1.add(senhaPasswordField, new org.netbeans.lib.awtextra.AbsoluteConstraints(385, 463, 230, 30));
+        jPanel1.add(senhaPasswordField, new org.netbeans.lib.awtextra.AbsoluteConstraints(385, 397, 230, 30));
 
-        btnCriarConta.setBackground(new java.awt.Color(41, 151, 255));
         btnCriarConta.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
         btnCriarConta.setForeground(new java.awt.Color(255, 255, 255));
         btnCriarConta.setText("CRIAR CONTA");
         btnCriarConta.setBorder(null);
-        jPanel1.add(btnCriarConta, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 505, 242, 35));
+        btnCriarConta.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jPanel1.add(btnCriarConta, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 438, 242, 35));
 
         sVGImage2.setText("sVGImage2");
         sVGImage2.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -234,13 +185,6 @@ public class ViewSelectedPaciente extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_txtEnderecoFocusGained
 
-    private void txtIdadeFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtIdadeFocusGained
-        // Verifica se o texto atual do campo de texto (txtEmail) é igual a "Idade".
-        if (txtIdade.getText().equals("Idade")) {
-            txtIdade.setText("");
-        }
-    }//GEN-LAST:event_txtIdadeFocusGained
-
     private void txtCelularFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtCelularFocusGained
         // Verifica se o texto atual do campo de texto (txtEmail) é igual a "Celular".
         if (txtCelular.getText().equals("Celular")) {
@@ -254,20 +198,6 @@ public class ViewSelectedPaciente extends javax.swing.JFrame {
             txtCpf.setText("");
         }
     }//GEN-LAST:event_txtCpfFocusGained
-
-    private void txtProfissaoFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtProfissaoFocusGained
-        // Verifica se o texto atual do campo de texto (txtEmail) é igual a "Profissão".
-        if (txtProfissao.getText().equals("Profissão")) {
-            txtProfissao.setText("");
-        }
-    }//GEN-LAST:event_txtProfissaoFocusGained
-
-    private void txtCausaFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtCausaFocusGained
-        // Verifica se o texto atual do campo de texto (txtEmail) é igual a "Causa".
-        if (txtCausa.getText().equals("Causa")) {
-            txtCausa.setText("");
-        }
-    }//GEN-LAST:event_txtCausaFocusGained
     /*FocusLost, Quando o componente perde o foco (deixa de ser selecionado).*/
     private void txtNomePacienteFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtNomePacienteFocusLost
         if (txtNomePaciente.getText().equals("")) {
@@ -287,12 +217,6 @@ public class ViewSelectedPaciente extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_txtEnderecoFocusLost
 
-    private void txtIdadeFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtIdadeFocusLost
-        if (txtIdade.getText().equals("")) {
-            txtIdade.setText("Idade");
-        }
-    }//GEN-LAST:event_txtIdadeFocusLost
-
     private void txtCelularFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtCelularFocusLost
         if (txtCelular.getText().equals("")) {
             txtCelular.setText("Celular");
@@ -304,18 +228,6 @@ public class ViewSelectedPaciente extends javax.swing.JFrame {
             txtCpf.setText("CPF");
         }
     }//GEN-LAST:event_txtCpfFocusLost
-
-    private void txtProfissaoFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtProfissaoFocusLost
-        if (txtProfissao.getText().equals("")) {
-            txtProfissao.setText("Profissão");
-        }
-    }//GEN-LAST:event_txtProfissaoFocusLost
-
-    private void txtCausaFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtCausaFocusLost
-        if (txtCausa.getText().equals("")) {
-            txtCausa.setText("Causa");
-        }
-    }//GEN-LAST:event_txtCausaFocusLost
     /*Click Voltar para tela selecionar tipo de Cadastro*/
     private void sVGImage2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_sVGImage2MouseClicked
         // Cria uma instância da classe ViewSelectTypeCadastro
@@ -368,13 +280,10 @@ public class ViewSelectedPaciente extends javax.swing.JFrame {
     private view.SVGImage sVGImage1;
     private view.SVGImage sVGImage2;
     private javax.swing.JPasswordField senhaPasswordField;
-    private javax.swing.JTextField txtCausa;
     private javax.swing.JTextField txtCelular;
     private javax.swing.JTextField txtCpf;
     private javax.swing.JTextField txtEmail;
     private javax.swing.JTextField txtEndereco;
-    private javax.swing.JTextField txtIdade;
     private javax.swing.JTextField txtNomePaciente;
-    private javax.swing.JTextField txtProfissao;
     // End of variables declaration//GEN-END:variables
 }

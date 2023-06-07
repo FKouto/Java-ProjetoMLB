@@ -179,14 +179,19 @@ public class ViewLogin extends javax.swing.JFrame {
         try {
             // Criando uma instância da classe Paciente com o email e senha
             Paciente paciente = new Paciente(email,senha);
+            // Criando uma instância do PacienteDao para acessar métodos relacionados a pacientes
             PacienteDao pacientedao = new PacienteDao();
             if (pacientedao.existe(paciente)) {
+                // Verifica se o paciente existe no banco de dados
                 String nomePaciente = pacientedao.obterNomePaciente(email);
-                JOptionPane.showMessageDialog(null, "Bem-Vindo "+nomePaciente+" !");
+                // Exibe uma mensagem de boas-vindas com o nome do paciente
+                JOptionPane.showMessageDialog(null, "Bem-Vindo "+nomePaciente+"!");
             } else {
+                // Exibe uma mensagem de erro para um usuário inválido
                 JOptionPane.showMessageDialog(null, "Usuário Inválido. Tente novamente.");
             }
         } catch (Exception e) {
+            // Exibe uma mensagem de erro genérica caso ocorra uma exceção
             JOptionPane.showMessageDialog(null, "Problemas técnicos. Tente novamente mais tarde.");
         }
     }//GEN-LAST:event_btnEntrarActionPerformed
