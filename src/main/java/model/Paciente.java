@@ -17,7 +17,7 @@ public class Paciente extends Pessoa {
         this.profession = profession;
         this.cause = cause;
     }
-    //Construtor usado para fazer login
+    //Metódo construtor usado em ViewLogin para verificar email e senha no banco de dados
     public Paciente(String email, String password){
         super(email, password);
     }

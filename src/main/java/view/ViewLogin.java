@@ -181,7 +181,8 @@ public class ViewLogin extends javax.swing.JFrame {
             Paciente paciente = new Paciente(email,senha);
             PacienteDao pacientedao = new PacienteDao();
             if (pacientedao.existe(paciente)) {
-                JOptionPane.showMessageDialog(null, "Bem-Vindo Paciente");
+                String nomePaciente = pacientedao.obterNomePaciente(email);
+                JOptionPane.showMessageDialog(null, "Bem-Vindo "+nomePaciente+" !");
             } else {
                 JOptionPane.showMessageDialog(null, "Usuário Inválido. Tente novamente.");
             }

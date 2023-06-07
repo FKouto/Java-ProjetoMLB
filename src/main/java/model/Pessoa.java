@@ -14,6 +14,7 @@ public abstract class Pessoa {
         this.address = address;
         this.password = password;
     }
+    //Metódo construtor usado em ViewLogin para verificar email e senha no banco de dados
     public Pessoa(String email, String password) {
         this.email = email;
         this.password = password;
