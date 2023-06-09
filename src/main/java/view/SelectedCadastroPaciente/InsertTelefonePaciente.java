@@ -1,10 +1,13 @@
 package view.SelectedCadastroPaciente;
 
 import javax.swing.*;
+import model.bean.Telefone;
+import model.dao.TelefoneDAO;
+import view.ViewSelectTypeCadastro;
 
-public class InsertPasswordPaciente extends javax.swing.JFrame {
+public class InsertTelefonePaciente extends javax.swing.JFrame {
 
-    public InsertPasswordPaciente() {
+    public InsertTelefonePaciente() {
         initComponents();
         /*Icon Janela*/
         // Define o ícone da janela como a imagem localizada em "/images/icon.png".
@@ -28,8 +31,8 @@ public class InsertPasswordPaciente extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         btnReturn = new images.SVGImage();
-        senhaPasswordField1 = new javax.swing.JPasswordField();
-        senhaPasswordField2 = new javax.swing.JPasswordField();
+        txtCelular = new javax.swing.JTextField();
+        txtCelular1 = new javax.swing.JTextField();
         btnCriarConta = new javax.swing.JButton();
         Background = new images.SVGImage();
 
@@ -48,22 +51,27 @@ public class InsertPasswordPaciente extends javax.swing.JFrame {
         });
         jPanel1.add(btnReturn, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 30, 44, 35));
 
-        senhaPasswordField1.setBackground(new java.awt.Color(247, 247, 247));
-        senhaPasswordField1.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
-        senhaPasswordField1.setText("Senha");
-        senhaPasswordField1.setBorder(null);
-        jPanel1.add(senhaPasswordField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(385, 261, 230, 30));
+        txtCelular.setBackground(new java.awt.Color(247, 247, 247));
+        txtCelular.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        txtCelular.setText("Celular");
+        txtCelular.setBorder(null);
+        jPanel1.add(txtCelular, new org.netbeans.lib.awtextra.AbsoluteConstraints(385, 261, 230, 30));
 
-        senhaPasswordField2.setBackground(new java.awt.Color(247, 247, 247));
-        senhaPasswordField2.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
-        senhaPasswordField2.setText("Senha");
-        senhaPasswordField2.setBorder(null);
-        jPanel1.add(senhaPasswordField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(385, 306, 230, 30));
+        txtCelular1.setBackground(new java.awt.Color(247, 247, 247));
+        txtCelular1.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        txtCelular1.setText("Celular");
+        txtCelular1.setBorder(null);
+        jPanel1.add(txtCelular1, new org.netbeans.lib.awtextra.AbsoluteConstraints(385, 306, 230, 30));
 
         btnCriarConta.setBackground(new java.awt.Color(227, 1, 64));
         btnCriarConta.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
         btnCriarConta.setForeground(new java.awt.Color(255, 255, 255));
-        btnCriarConta.setText("Criar Conta");
+        btnCriarConta.setText("Próximo");
+        btnCriarConta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCriarContaActionPerformed(evt);
+            }
+        });
         jPanel1.add(btnCriarConta, new org.netbeans.lib.awtextra.AbsoluteConstraints(377, 345, 245, 38));
 
         Background.setText("sVGImage1");
@@ -84,10 +92,33 @@ public class InsertPasswordPaciente extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
     /*Ação do botão voltar*/
     private void btnReturnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnReturnMouseClicked
-        InsertAddressPaciente returnToAddress = new InsertAddressPaciente();
-        returnToAddress.setVisible(true);
+        ViewSelectTypeCadastro returnToTypeCadastro = new ViewSelectTypeCadastro();
+        returnToTypeCadastro.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_btnReturnMouseClicked
+
+    private void btnCriarContaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCriarContaActionPerformed
+        int celular = Integer.parseInt(txtCelular.getText());
+        int celular1 = Integer.parseInt(txtCelular1.getText());
+        try {
+            if (celular1 == celular) {
+                Telefone telefone = new Telefone(celular,0) {
+                };
+                TelefoneDAO telefonedao = new TelefoneDAO();
+                telefonedao.createTelefone(telefone);
+                System.out.println("Telefone cadastrado. Aguardando outros dados.");
+            }
+            else{
+                JOptionPane.showMessageDialog(null, "Números não coincidem. Tente novamente.");
+            }
+            InsertAddressPaciente clickNextPage = new InsertAddressPaciente();
+            clickNextPage.setVisible(true);
+            this.dispose();
+
+        } catch (Exception e) {
+            System.out.println("Não foi possivel inserir" + e.getMessage());
+        }
+    }//GEN-LAST:event_btnCriarContaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -106,14 +137,18 @@ public class InsertPasswordPaciente extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(InsertPasswordPaciente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(InsertTelefonePaciente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(InsertPasswordPaciente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(InsertTelefonePaciente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(InsertPasswordPaciente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(InsertTelefonePaciente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(InsertPasswordPaciente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(InsertTelefonePaciente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
@@ -122,7 +157,7 @@ public class InsertPasswordPaciente extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new InsertPasswordPaciente().setVisible(true);
+                new InsertTelefonePaciente().setVisible(true);
             }
         });
     }
@@ -132,7 +167,7 @@ public class InsertPasswordPaciente extends javax.swing.JFrame {
     private javax.swing.JButton btnCriarConta;
     private images.SVGImage btnReturn;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPasswordField senhaPasswordField1;
-    private javax.swing.JPasswordField senhaPasswordField2;
+    private javax.swing.JTextField txtCelular;
+    private javax.swing.JTextField txtCelular1;
     // End of variables declaration//GEN-END:variables
 }

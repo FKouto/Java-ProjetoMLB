@@ -34,10 +34,8 @@
 <circle cx="82.7418" cy="390.443" r="7" transform="rotate(-34.7594 82.7418 390.443)" fill="#9C9B9B"/>
 <circle cx="82.7418" cy="269.443" r="7" transform="rotate(-34.7594 82.7418 269.443)" fill="#9C9B9B"/>
 <rect x="363" y="175.5" width="274" height="290" rx="12" fill="white"/>
-<rect x="380" y="192.5" width="141" height="33" rx="7" fill="#F7F7F7"/>
-<rect x="380" y="192.5" width="141" height="33" rx="7" stroke="#E6E6E6" stroke-width="2"/>
-<rect x="533" y="192.5" width="86" height="33" rx="7" fill="#F7F7F7"/>
-<rect x="533" y="192.5" width="86" height="33" rx="7" stroke="#E6E6E6" stroke-width="2"/>
+<rect x="380" y="192.5" width="239" height="33" rx="7" fill="#F7F7F7"/>
+<rect x="380" y="192.5" width="239" height="33" rx="7" stroke="#E6E6E6" stroke-width="2"/>
 <rect x="380" y="237.5" width="240" height="33" rx="7" fill="#F7F7F7"/>
 <rect x="380" y="237.5" width="240" height="33" rx="7" stroke="#E6E6E6" stroke-width="2"/>
 <rect x="380" y="282.5" width="240" height="33" rx="7" fill="#F7F7F7"/>

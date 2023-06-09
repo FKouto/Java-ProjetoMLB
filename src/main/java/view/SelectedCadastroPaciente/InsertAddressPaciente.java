@@ -1,6 +1,8 @@
 package view.SelectedCadastroPaciente;
 
+import model.dao.EnderecoDAO;
 import javax.swing.*;
+import model.bean.Endereco;
 
 public class InsertAddressPaciente extends javax.swing.JFrame {
 
@@ -29,7 +31,6 @@ public class InsertAddressPaciente extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         btnReturn = new images.SVGImage();
         txtRua = new javax.swing.JTextField();
-        txtNumeroCs = new javax.swing.JTextField();
         txtBairro = new javax.swing.JTextField();
         txtCidade = new javax.swing.JTextField();
         txtEstado = new javax.swing.JTextField();
@@ -56,13 +57,7 @@ public class InsertAddressPaciente extends javax.swing.JFrame {
         txtRua.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         txtRua.setText("Rua");
         txtRua.setBorder(null);
-        jPanel1.add(txtRua, new org.netbeans.lib.awtextra.AbsoluteConstraints(385, 195, 130, 30));
-
-        txtNumeroCs.setBackground(new java.awt.Color(247, 247, 247));
-        txtNumeroCs.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
-        txtNumeroCs.setText("N°");
-        txtNumeroCs.setBorder(null);
-        jPanel1.add(txtNumeroCs, new org.netbeans.lib.awtextra.AbsoluteConstraints(535, 195, 80, 30));
+        jPanel1.add(txtRua, new org.netbeans.lib.awtextra.AbsoluteConstraints(385, 195, 230, 30));
 
         txtBairro.setBackground(new java.awt.Color(247, 247, 247));
         txtBairro.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
@@ -92,6 +87,11 @@ public class InsertAddressPaciente extends javax.swing.JFrame {
         btnProximaTela.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
         btnProximaTela.setForeground(new java.awt.Color(255, 255, 255));
         btnProximaTela.setText("Próximo");
+        btnProximaTela.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnProximaTelaActionPerformed(evt);
+            }
+        });
         jPanel1.add(btnProximaTela, new org.netbeans.lib.awtextra.AbsoluteConstraints(377, 413, 245, 38));
 
         Background.setText("sVGImage1");
@@ -112,10 +112,32 @@ public class InsertAddressPaciente extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
     /*Ação do botão voltar*/
     private void btnReturnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnReturnMouseClicked
-        InsertPersonalDataPaciente returnToPersonalData = new InsertPersonalDataPaciente();
-        returnToPersonalData.setVisible(true);
+        InsertAddressPaciente returnToAddress = new InsertAddressPaciente();
+        returnToAddress.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_btnReturnMouseClicked
+
+    private void btnProximaTelaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProximaTelaActionPerformed
+        //Aula dia 13 - Apostila 13_apostila... Pag3
+        //Identificando Dados Inseridos
+        String rua = txtRua.getText();
+        String bairro = txtBairro.getText();
+        String cidade = txtCidade.getText();
+        String estado = txtEstado.getText();
+        int cep = Integer.parseInt(txtCep.getText());
+        try {
+            Endereco endereco = new Endereco(0,rua, bairro, cidade, estado, cep);
+            EnderecoDAO enderecodao = new EnderecoDAO();
+            enderecodao.createEndereco(endereco);
+            System.out.println("Dados Salvos com sucesso");
+        } catch (Exception e) {
+            System.out.println("Não foi possivel inserir");
+        }
+
+        InsertPersonalDataPaciente clickNextPage = new InsertPersonalDataPaciente();
+        clickNextPage.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_btnProximaTelaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -168,7 +190,6 @@ public class InsertAddressPaciente extends javax.swing.JFrame {
     private javax.swing.JTextField txtCep;
     private javax.swing.JTextField txtCidade;
     private javax.swing.JTextField txtEstado;
-    private javax.swing.JTextField txtNumeroCs;
     private javax.swing.JTextField txtRua;
     // End of variables declaration//GEN-END:variables
 }

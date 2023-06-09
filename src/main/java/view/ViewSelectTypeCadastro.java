@@ -1,6 +1,7 @@
 package view;
+
 import javax.swing.*;
-import view.SelectedCadastroPaciente.InsertPersonalDataPaciente;
+import view.SelectedCadastroPaciente.InsertTelefonePaciente;
 import view.SelectedCadastroProfissional.InsertPersonalDataProfissional;
 
 public class ViewSelectTypeCadastro extends javax.swing.JFrame {
@@ -95,7 +96,7 @@ public class ViewSelectTypeCadastro extends javax.swing.JFrame {
 
     private void btnSouPacienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSouPacienteActionPerformed
         // Cria uma instância da classe ViewSelectedPaciente
-        InsertPersonalDataPaciente openSelectedPaciente = new InsertPersonalDataPaciente();
+        InsertTelefonePaciente openSelectedPaciente = new InsertTelefonePaciente();
         // Torna a janela atual invisível
         this.setVisible(false);
         // Torna a janela openSelectedPaciente visível

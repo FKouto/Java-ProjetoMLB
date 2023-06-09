@@ -1,7 +1,8 @@
 package view.SelectedCadastroPaciente;
 
+import model.dao.PacienteDAO;
 import javax.swing.*;
-import view.ViewSelectTypeCadastro;
+import model.bean.Paciente;
 
 public class InsertPersonalDataPaciente extends javax.swing.JFrame {
 
@@ -31,8 +32,9 @@ public class InsertPersonalDataPaciente extends javax.swing.JFrame {
         btnReturn = new images.SVGImage();
         txtNome = new javax.swing.JTextField();
         txtEmail = new javax.swing.JTextField();
-        txtCelular = new javax.swing.JTextField();
         txtCpf = new javax.swing.JTextField();
+        senhaPasswordField1 = new javax.swing.JPasswordField();
+        senhaPasswordField2 = new javax.swing.JPasswordField();
         btnProximaTela = new javax.swing.JButton();
         Background = new images.SVGImage();
 
@@ -56,31 +58,42 @@ public class InsertPersonalDataPaciente extends javax.swing.JFrame {
         txtNome.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         txtNome.setText("Nome");
         txtNome.setBorder(null);
-        jPanel1.add(txtNome, new org.netbeans.lib.awtextra.AbsoluteConstraints(385, 216, 230, 30));
+        jPanel1.add(txtNome, new org.netbeans.lib.awtextra.AbsoluteConstraints(385, 195, 230, 30));
 
         txtEmail.setBackground(new java.awt.Color(247, 247, 247));
         txtEmail.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         txtEmail.setText("E-mail");
         txtEmail.setBorder(null);
-        jPanel1.add(txtEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(385, 261, 230, 30));
-
-        txtCelular.setBackground(new java.awt.Color(247, 247, 247));
-        txtCelular.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
-        txtCelular.setText("Celular");
-        txtCelular.setBorder(null);
-        jPanel1.add(txtCelular, new org.netbeans.lib.awtextra.AbsoluteConstraints(385, 306, 230, 30));
+        jPanel1.add(txtEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(385, 240, 230, 30));
 
         txtCpf.setBackground(new java.awt.Color(247, 247, 247));
         txtCpf.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         txtCpf.setText("CPF");
         txtCpf.setBorder(null);
-        jPanel1.add(txtCpf, new org.netbeans.lib.awtextra.AbsoluteConstraints(385, 351, 230, 30));
+        jPanel1.add(txtCpf, new org.netbeans.lib.awtextra.AbsoluteConstraints(385, 285, 230, 30));
+
+        senhaPasswordField1.setBackground(new java.awt.Color(247, 247, 247));
+        senhaPasswordField1.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        senhaPasswordField1.setText("Senha");
+        senhaPasswordField1.setBorder(null);
+        jPanel1.add(senhaPasswordField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(385, 330, 230, 30));
+
+        senhaPasswordField2.setBackground(new java.awt.Color(247, 247, 247));
+        senhaPasswordField2.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        senhaPasswordField2.setText("Senha");
+        senhaPasswordField2.setBorder(null);
+        jPanel1.add(senhaPasswordField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(385, 375, 230, 30));
 
         btnProximaTela.setBackground(new java.awt.Color(227, 1, 64));
         btnProximaTela.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
         btnProximaTela.setForeground(new java.awt.Color(255, 255, 255));
         btnProximaTela.setText("Próximo");
-        jPanel1.add(btnProximaTela, new org.netbeans.lib.awtextra.AbsoluteConstraints(377, 390, 245, 38));
+        btnProximaTela.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnProximaTelaActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnProximaTela, new org.netbeans.lib.awtextra.AbsoluteConstraints(377, 414, 245, 38));
         jPanel1.add(Background, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1000, 640));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -98,10 +111,34 @@ public class InsertPersonalDataPaciente extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnReturnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnReturnMouseClicked
-        ViewSelectTypeCadastro returnToTypeCadastro = new ViewSelectTypeCadastro();
-        returnToTypeCadastro.setVisible(true);
+        InsertAddressPaciente returnToAddress = new InsertAddressPaciente();
+        returnToAddress.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_btnReturnMouseClicked
+
+    private void btnProximaTelaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProximaTelaActionPerformed
+        //Aula dia 13 - Apostila 13_apostila... Pag3
+        //Identificando Dados Inseridos
+        String nome = txtNome.getText();
+        String email = txtEmail.getText();
+        int cpf = Integer.parseInt(txtCpf.getText());
+        String senha1 = new String(senhaPasswordField1.getPassword());
+        String senha2 = new String(senhaPasswordField2.getPassword());
+        try {
+            if (senha1.equals(senha2)) {
+                Paciente paciente = new Paciente(nome, cpf, email, senha1);
+                PacienteDAO pacientedao = new PacienteDAO();
+                pacientedao.createPaciente(paciente);
+                System.out.println("Paciente inserido com sucesso");
+                JOptionPane.showMessageDialog(null, "Inserido com sucesso.");
+            } else {
+                System.out.println("senhas não conferem. Tente novamente!");
+            }
+            System.out.println("Dados Salvos com sucesso");
+        } catch (Exception e) {
+            System.out.println("Não foi possivel inserir");
+        }
+    }//GEN-LAST:event_btnProximaTelaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -144,7 +181,8 @@ public class InsertPersonalDataPaciente extends javax.swing.JFrame {
     private javax.swing.JButton btnProximaTela;
     private images.SVGImage btnReturn;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JTextField txtCelular;
+    private javax.swing.JPasswordField senhaPasswordField1;
+    private javax.swing.JPasswordField senhaPasswordField2;
     private javax.swing.JTextField txtCpf;
     private javax.swing.JTextField txtEmail;
     private javax.swing.JTextField txtNome;

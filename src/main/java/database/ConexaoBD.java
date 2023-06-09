@@ -5,7 +5,7 @@ import java.sql.*;
 public class ConexaoBD {
     private static String host = "localhost";
     private static String porta = "3306";
-    private static String db = "db_mente_livre_brasil";
+    private static String db = "db_mlb";
     private static String usuario = "root";
     private static String senha = "root";
 

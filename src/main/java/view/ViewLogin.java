@@ -1,8 +1,8 @@
 package view;
 
-import dao.PacienteDao;
+import model.dao.PacienteDAO;
 import javax.swing.*;
-import model.Paciente;
+import model.bean.Paciente;
 
 public class ViewLogin extends javax.swing.JFrame {
 
@@ -84,7 +84,6 @@ public class ViewLogin extends javax.swing.JFrame {
         jPanel1.add(txtEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(95, 273, 230, 30));
 
         senhaPasswordField.setBackground(new java.awt.Color(247, 247, 247));
-        senhaPasswordField.setText("senha");
         senhaPasswordField.setBorder(null);
         senhaPasswordField.setPreferredSize(new java.awt.Dimension(76, 22));
         jPanel1.add(senhaPasswordField, new org.netbeans.lib.awtextra.AbsoluteConstraints(95, 328, 230, 30));
@@ -160,21 +159,21 @@ public class ViewLogin extends javax.swing.JFrame {
 
     private void btnEntrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEntrarActionPerformed
         //Aula dia 13 - Apostila 13_apostila... Pag3
-        //Identificando Login  e Senha do digitada
-        //String email = txtEmail.getText();
-        //Obtem a senha como char[] e converte em String
-        //String senha = new String(senhaPasswordField.getPassword());
+        //Identificando Login  e Senha
         /*
+        String email = txtEmail.getText();
+        //Obtem a senha como char[] e converte em String
+        String senha = new String(senhaPasswordField.getPassword());
         try {
             // Criando uma instância da classe Paciente com o email e senha
             Paciente paciente = new Paciente(email,senha);
-            // Criando uma instância do PacienteDao para acessar métodos relacionados a pacientes
-            PacienteDao pacientedao = new PacienteDao();
+            // Criando uma instância do PacienteDAO para acessar métodos relacionados a pacientes
+            PacienteDAO pacientedao = new PacienteDAO();
             if (pacientedao.existe(paciente)) {
                 // Verifica se o paciente existe no banco de dados
                 String nomePaciente = pacientedao.obterNomePaciente(email);
                 // Exibe uma mensagem de boas-vindas com o nome do paciente
-                JOptionPane.showMessageDialog(null, "Bem-Vindo "+nomePaciente+"!");
+                JOptionPane.showMessageDialog(null, "Bem-Vindo(a), " + nomePaciente + "!");
             } else {
                 // Exibe uma mensagem de erro para um usuário inválido
                 JOptionPane.showMessageDialog(null, "Usuário Inválido. Tente novamente.");
@@ -182,8 +181,7 @@ public class ViewLogin extends javax.swing.JFrame {
         } catch (Exception e) {
             // Exibe uma mensagem de erro genérica caso ocorra uma exceção
             JOptionPane.showMessageDialog(null, "Problemas técnicos. Tente novamente mais tarde.");
-        }
-        */
+        }*/
     }//GEN-LAST:event_btnEntrarActionPerformed
 
     /**

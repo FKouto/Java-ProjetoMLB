@@ -1,23 +1,29 @@
-package model;
+package model.bean;
 
-public abstract class PessoaEndereco {
+public class Endereco {
+
     private int idEndereco;
     private String rua;
     private String bairro;
     private String cidade;
     private String estado;
     private int cep;
-    
-    /*Método Construtor*/
-    public PessoaEndereco(int idEndereco, String rua, String bairro, String cidade, String estado, int cep){
+
+    //Construtor
+    public Endereco() {
+    }
+
+    public Endereco(int idEndereco, String rua, String bairro, String cidade, String estado, int cep) {
         this.idEndereco = idEndereco;
         this.rua = rua;
         this.bairro = bairro;
         this.cidade = cidade;
         this.estado = estado;
         this.cep = cep;
+
     }
     //Getters & Setters
+
     public int getIdEndereco() {
         return idEndereco;
     }
@@ -65,5 +71,5 @@ public abstract class PessoaEndereco {
     public void setCep(int cep) {
         this.cep = cep;
     }
-    
+
 }

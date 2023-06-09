@@ -1,16 +1,23 @@
-package model;
+package model.bean;
 
-public abstract class Pessoa extends PessoaTelefone{
+public abstract class Pessoa {
+
     private int idPessoa;
     private String nome;
     private String email;
     private String senha;
 
-    /*Criando o método construtor Pessoa, para Paciente, Psicólogo e Psiquiatra herdarem*/    
-    public Pessoa(int idPessoa, String nome, String email, int idTelefone, int telefone, int idEndereco, String rua, String bairro, String cidade, String estado, int cep, String senha) {
-        super(idTelefone, telefone, idEndereco, rua, bairro, cidade, estado, cep);
-        this.idPessoa = idPessoa;
+    //Construtor
+    public Pessoa() {
+    }
+
+    public Pessoa(String nome, String email, String senha) {
         this.nome = nome;
+        this.email = email;
+        this.senha = senha;
+    }
+
+    public Pessoa(String email, String senha) {
         this.email = email;
         this.senha = senha;
     }
@@ -47,5 +54,5 @@ public abstract class Pessoa extends PessoaTelefone{
     public void setSenha(String senha) {
         this.senha = senha;
     }
-    
+
 }

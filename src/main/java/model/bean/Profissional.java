@@ -1,17 +1,24 @@
-package model;
+package model.bean;
 
 public class Profissional extends Pessoa {
 
     private int numConselho;
     private String profissionalização;
     private String tipoConsulta;
+    private Endereco endereco;
+    private Telefone telefone;
 
-    /*Criando método construtor*/
-    public Profissional(int numConselho, String especializacao, String tipoConsulta, int idPessoa, String nome, String email, int idTelefone, int telefone, int idEndereco, String rua, String bairro, String cidade, String estado, int cep, String senha) {
-        super(idPessoa, nome, email, idTelefone, telefone, idEndereco, rua, bairro, cidade, estado, cep, senha);
+    //Construtor
+    public Profissional() {
+    }
+
+    public Profissional(int numConselho, String profissionalização, String tipoConsulta, String nome, String email, String senha, Endereco endereco, Telefone telefone) {
+        super(nome, email, senha);
         this.numConselho = numConselho;
-        this.profissionalização = especializacao;
+        this.profissionalização = profissionalização;
         this.tipoConsulta = tipoConsulta;
+        this.endereco = endereco;
+        this.telefone = telefone;
     }
 
     /*Getters & Setters*/
@@ -38,5 +45,5 @@ public class Profissional extends Pessoa {
     public void setTipoConsulta(String tipoConsulta) {
         this.tipoConsulta = tipoConsulta;
     }
-    
+
 }
