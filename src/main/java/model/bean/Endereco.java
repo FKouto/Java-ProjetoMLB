@@ -2,7 +2,7 @@ package model.bean;
 
 public class Endereco {
 
-    private int idEndereco;
+    private int codEndereco;
     private String rua;
     private String bairro;
     private String cidade;
@@ -13,23 +13,22 @@ public class Endereco {
     public Endereco() {
     }
 
-    public Endereco(int idEndereco, String rua, String bairro, String cidade, String estado, int cep) {
-        this.idEndereco = idEndereco;
+    public Endereco(int codEndereco, String rua, String bairro, String cidade, String estado, int cep) {
+        this.codEndereco = codEndereco;
         this.rua = rua;
         this.bairro = bairro;
         this.cidade = cidade;
         this.estado = estado;
         this.cep = cep;
-
     }
     //Getters & Setters
 
-    public int getIdEndereco() {
-        return idEndereco;
+    public int getCodEndereco() {
+        return codEndereco;
     }
 
-    public void setIdEndereco(int idEndereco) {
-        this.idEndereco = idEndereco;
+    public void setCodEndereco(int codEndereco) {
+        this.codEndereco = codEndereco;
     }
 
     public String getRua() {

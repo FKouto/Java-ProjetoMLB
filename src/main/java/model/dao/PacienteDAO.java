@@ -36,19 +36,30 @@ public class PacienteDAO {
         }
         return nomePaciente;
     }
+
     //CRUD
-    public String createPaciente(Paciente paciente) throws Exception {
-        String sql = "INSERT INTO paciente(nome, cpf, email, senha, cod_tel, cod_endereco) VALUES (?,?,?,?,?,?)";
-        try (Connection conn = ConexaoBD.obtemConexao(); PreparedStatement ps = conn.prepareStatement(sql)) {
-            ps.setString(1, paciente.getNome());
-            ps.setInt(2, paciente.getCpf());
-            ps.setString(3, paciente.getEmail());
-            ps.setString(4, paciente.getSenha());
-            ps.setInt(5, paciente.getIdTelefone());
-            ps.setInt(6, paciente.getIdEndereco());
-            ps.executeUpdate();
+    public String createPaciente(Paciente paciente) throws SQLException {
+        Connection conn = null;
+        PreparedStatement create = null;
+
+        try {
+            //Obtem conexão com o banco de dados
+            conn = ConexaoBD.obtemConexao();
+            //Preparando o SQL para o inserir Paciente
+            String sql = "INSERT INTO paciente (nome, cpf, email, senha, cod_tel, cod_endereco) VALUES (?,?,?,?,?,?)";
+            create = conn.prepareStatement(sql);
+            //Parametros de valor para create
+            create.setString(1, paciente.getNome());
+            create.setInt(2, paciente.getCpf());
+            create.setString(3, paciente.getEmail());
+            create.setString(4, paciente.getSenha());
+            create.setInt(5, paciente.getTelefone().getCodTel());
+            create.setInt(6, paciente.getEndereco().getCodEndereco());
+            //Executa a inserção
+            create.executeUpdate();
+            System.out.println("Paciente inserido com sucesso!");
         } catch (SQLException e) {
-            System.out.println("Erro."+e.getMessage());
+            System.out.println("Erro ao inserir paciente: " + e.getMessage());
         }
         return null;
     }

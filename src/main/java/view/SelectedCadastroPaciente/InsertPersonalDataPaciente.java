@@ -132,11 +132,11 @@ public class InsertPersonalDataPaciente extends javax.swing.JFrame {
                 System.out.println("Paciente inserido com sucesso");
                 JOptionPane.showMessageDialog(null, "Inserido com sucesso.");
             } else {
-                System.out.println("senhas não conferem. Tente novamente!");
+                JOptionPane.showMessageDialog(null,"Suas senhas estão diferentes. Tente novamente.");
             }
             System.out.println("Dados Salvos com sucesso");
         } catch (Exception e) {
-            System.out.println("Não foi possivel inserir");
+            System.out.println("Não foi possivel inserir"+e.getMessage());
         }
     }//GEN-LAST:event_btnProximaTelaActionPerformed
 

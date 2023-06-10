@@ -5,20 +5,20 @@ public class Profissional extends Pessoa {
     private int numConselho;
     private String profissionalização;
     private String tipoConsulta;
-    private Endereco endereco;
     private Telefone telefone;
+    private Endereco endereco;
 
     //Construtor
     public Profissional() {
     }
 
-    public Profissional(int numConselho, String profissionalização, String tipoConsulta, String nome, String email, String senha, Endereco endereco, Telefone telefone) {
+    public Profissional(int numConselho, String profissionalização, String tipoConsulta, Telefone telefone, Endereco endereco, String nome, String email, String senha) {
         super(nome, email, senha);
         this.numConselho = numConselho;
         this.profissionalização = profissionalização;
         this.tipoConsulta = tipoConsulta;
-        this.endereco = endereco;
         this.telefone = telefone;
+        this.endereco = endereco;
     }
 
     /*Getters & Setters*/
@@ -44,6 +44,22 @@ public class Profissional extends Pessoa {
 
     public void setTipoConsulta(String tipoConsulta) {
         this.tipoConsulta = tipoConsulta;
+    }
+
+    public Telefone getTelefone() {
+        return telefone;
+    }
+
+    public void setTelefone(Telefone telefone) {
+        this.telefone = telefone;
+    }
+
+    public Endereco getEndereco() {
+        return endereco;
+    }
+
+    public void setEndereco(Endereco endereco) {
+        this.endereco = endereco;
     }
 
 }
