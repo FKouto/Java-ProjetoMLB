@@ -38,12 +38,14 @@ public class PacienteDAO {
     }
     //CRUD
     public String createPaciente(Paciente paciente) throws Exception {
-        String sql = "INSERT INTO paciente(nome, cpf, email, senha) VALUES (?,?,?,?)";
+        String sql = "INSERT INTO paciente(nome, cpf, email, senha, cod_tel, cod_endereco) VALUES (?,?,?,?,?,?)";
         try (Connection conn = ConexaoBD.obtemConexao(); PreparedStatement ps = conn.prepareStatement(sql)) {
             ps.setString(1, paciente.getNome());
             ps.setInt(2, paciente.getCpf());
             ps.setString(3, paciente.getEmail());
             ps.setString(4, paciente.getSenha());
+            ps.setInt(5, paciente.getIdTelefone());
+            ps.setInt(6, paciente.getIdEndereco());
             ps.executeUpdate();
         } catch (SQLException e) {
             System.out.println("Erro."+e.getMessage());

@@ -98,17 +98,16 @@ public class InsertTelefonePaciente extends javax.swing.JFrame {
     }//GEN-LAST:event_btnReturnMouseClicked
 
     private void btnCriarContaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCriarContaActionPerformed
-        int celular = Integer.parseInt(txtCelular.getText());
-        int celular1 = Integer.parseInt(txtCelular1.getText());
+        String celular = txtCelular.getText();
+        String celular1 = txtCelular1.getText();
         try {
-            if (celular1 == celular) {
-                Telefone telefone = new Telefone(celular,0) {
+            if (celular.equals(celular1)) {
+                Telefone telefone = new Telefone(0,celular) {
                 };
                 TelefoneDAO telefonedao = new TelefoneDAO();
                 telefonedao.createTelefone(telefone);
                 System.out.println("Telefone cadastrado. Aguardando outros dados.");
-            }
-            else{
+            } else {
                 JOptionPane.showMessageDialog(null, "Números não coincidem. Tente novamente.");
             }
             InsertAddressPaciente clickNextPage = new InsertAddressPaciente();

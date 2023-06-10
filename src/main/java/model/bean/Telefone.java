@@ -3,18 +3,25 @@ package model.bean;
 public abstract class Telefone {
 
     private int idTelefone;
-    private int telefone;
-    private int idPaciente;
+    private String telefone;
 
     //Construtor
     public Telefone() {
     }
 
-    public Telefone(int telefone, int idPaciente) {
+    public Telefone(int idTelefone, String telefone) {
+        this.idTelefone = idTelefone;
         this.telefone = telefone;
-        this.idPaciente = idPaciente;
     }
+
     //Getters & Setters
+    public String getTelefone() {
+        return telefone;
+    }
+
+    public void setTelefone(String telefone) {
+        this.telefone = telefone;
+    }
 
     public int getIdTelefone() {
         return idTelefone;
@@ -24,19 +31,4 @@ public abstract class Telefone {
         this.idTelefone = idTelefone;
     }
 
-    public int getTelefone() {
-        return telefone;
-    }
-
-    public void setTelefone(int telefone) {
-        this.telefone = telefone;
-    }
-
-    public int getIdPaciente() {
-        return idPaciente;
-    }
-
-    public void setIdPaciente(int idPaciente) {
-        this.idPaciente = idPaciente;
-    }
 }
