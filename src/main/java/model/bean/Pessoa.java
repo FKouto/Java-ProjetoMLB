@@ -1,7 +1,8 @@
 package model.bean;
 
 public abstract class Pessoa {
-    
+
+    private int idPessoa;
     private String nome;
     private String email;
     private String senha;
@@ -10,7 +11,8 @@ public abstract class Pessoa {
     public Pessoa() {
     }
 
-    public Pessoa(String nome, String email, String senha) {
+    public Pessoa(int idPessoa, String nome, String email, String senha) {
+        this.idPessoa = idPessoa;
         this.nome = nome;
         this.email = email;
         this.senha = senha;
@@ -46,4 +48,11 @@ public abstract class Pessoa {
         this.senha = senha;
     }
 
+    public int getIdPessoa() {
+        return idPessoa;
+    }
+
+    public void setIdPessoa(int idPessoa) {
+        this.idPessoa = idPessoa;
+    }
 }

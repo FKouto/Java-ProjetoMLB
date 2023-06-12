@@ -4,9 +4,9 @@ import model.dao.PacienteDAO;
 import javax.swing.*;
 import model.bean.Paciente;
 
-public class InsertPersonalDataPaciente extends javax.swing.JFrame {
+public class InsertDadosPaciente extends javax.swing.JFrame {
 
-    public InsertPersonalDataPaciente() {
+    public InsertDadosPaciente() {
         initComponents();
         /*Icon Janela*/
         // Define o ícone da janela como a imagem localizada em "/images/icon.png".
@@ -30,17 +30,17 @@ public class InsertPersonalDataPaciente extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         btnReturn = new images.SVGImage();
+        jLabel1 = new javax.swing.JLabel();
         txtNome = new javax.swing.JTextField();
         txtEmail = new javax.swing.JTextField();
         txtCpf = new javax.swing.JTextField();
         senhaPasswordField1 = new javax.swing.JPasswordField();
         senhaPasswordField2 = new javax.swing.JPasswordField();
-        btnProximaTela = new javax.swing.JButton();
+        btnCriarConta = new javax.swing.JButton();
         Background = new images.SVGImage();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Cadastro Paciente");
-        setMaximumSize(new java.awt.Dimension(1000, 640));
         setName("InsertPersonalDataFrame"); // NOI18N
         setResizable(false);
 
@@ -53,6 +53,10 @@ public class InsertPersonalDataPaciente extends javax.swing.JFrame {
             }
         });
         jPanel1.add(btnReturn, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 30, 44, 35));
+
+        jLabel1.setFont(new java.awt.Font("Segoe UI Semibold", 0, 12)); // NOI18N
+        jLabel1.setText("Insira suas informações pessoais");
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 159, -1, -1));
 
         txtNome.setBackground(new java.awt.Color(247, 247, 247));
         txtNome.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
@@ -84,16 +88,16 @@ public class InsertPersonalDataPaciente extends javax.swing.JFrame {
         senhaPasswordField2.setBorder(null);
         jPanel1.add(senhaPasswordField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(385, 375, 230, 30));
 
-        btnProximaTela.setBackground(new java.awt.Color(227, 1, 64));
-        btnProximaTela.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
-        btnProximaTela.setForeground(new java.awt.Color(255, 255, 255));
-        btnProximaTela.setText("Próximo");
-        btnProximaTela.addActionListener(new java.awt.event.ActionListener() {
+        btnCriarConta.setBackground(new java.awt.Color(227, 1, 64));
+        btnCriarConta.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        btnCriarConta.setForeground(new java.awt.Color(255, 255, 255));
+        btnCriarConta.setText("Próximo");
+        btnCriarConta.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnProximaTelaActionPerformed(evt);
+                btnCriarContaActionPerformed(evt);
             }
         });
-        jPanel1.add(btnProximaTela, new org.netbeans.lib.awtextra.AbsoluteConstraints(377, 414, 245, 38));
+        jPanel1.add(btnCriarConta, new org.netbeans.lib.awtextra.AbsoluteConstraints(377, 414, 245, 38));
         jPanel1.add(Background, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1000, 640));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -111,34 +115,36 @@ public class InsertPersonalDataPaciente extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnReturnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnReturnMouseClicked
-        InsertAddressPaciente returnToAddress = new InsertAddressPaciente();
+        InsertEnderecoPaciente returnToAddress = new InsertEnderecoPaciente();
         returnToAddress.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_btnReturnMouseClicked
 
-    private void btnProximaTelaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProximaTelaActionPerformed
+    private void btnCriarContaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCriarContaActionPerformed
         //Aula dia 13 - Apostila 13_apostila... Pag3
-        //Identificando Dados Inseridos
+        // Identificando Dados Inseridos
         String nome = txtNome.getText();
         String email = txtEmail.getText();
         int cpf = Integer.parseInt(txtCpf.getText());
         String senha1 = new String(senhaPasswordField1.getPassword());
         String senha2 = new String(senhaPasswordField2.getPassword());
+
         try {
             if (senha1.equals(senha2)) {
-                Paciente paciente = new Paciente(nome, cpf, email, senha1);
+                Paciente paciente = new Paciente(0,nome, cpf, email, senha1);
                 PacienteDAO pacientedao = new PacienteDAO();
                 pacientedao.createPaciente(paciente);
                 System.out.println("Paciente inserido com sucesso");
                 JOptionPane.showMessageDialog(null, "Inserido com sucesso.");
             } else {
-                JOptionPane.showMessageDialog(null,"Suas senhas estão diferentes. Tente novamente.");
+                JOptionPane.showMessageDialog(null, "Suas senhas estão diferentes. Tente novamente.");
             }
             System.out.println("Dados Salvos com sucesso");
         } catch (Exception e) {
-            System.out.println("Não foi possivel inserir"+e.getMessage());
+            System.out.println("Não foi possível inserir: " + e.getMessage());
         }
-    }//GEN-LAST:event_btnProximaTelaActionPerformed
+
+    }//GEN-LAST:event_btnCriarContaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -157,29 +163,32 @@ public class InsertPersonalDataPaciente extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(InsertPersonalDataPaciente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(InsertDadosPaciente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(InsertPersonalDataPaciente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(InsertDadosPaciente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(InsertPersonalDataPaciente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(InsertDadosPaciente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(InsertPersonalDataPaciente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(InsertDadosPaciente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new InsertPersonalDataPaciente().setVisible(true);
+                new InsertDadosPaciente().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private images.SVGImage Background;
-    private javax.swing.JButton btnProximaTela;
+    private javax.swing.JButton btnCriarConta;
     private images.SVGImage btnReturn;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPasswordField senhaPasswordField1;
     private javax.swing.JPasswordField senhaPasswordField2;

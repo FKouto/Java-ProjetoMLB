@@ -2,7 +2,7 @@ package view.SelectedCadastroPaciente;
 
 import javax.swing.*;
 import model.bean.Telefone;
-import model.dao.TelefoneDAO;
+import model.dao.PacienteDAO;
 import view.ViewSelectTypeCadastro;
 
 public class InsertTelefonePaciente extends javax.swing.JFrame {
@@ -31,9 +31,10 @@ public class InsertTelefonePaciente extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         btnReturn = new images.SVGImage();
+        jLabel1 = new javax.swing.JLabel();
         txtCelular = new javax.swing.JTextField();
         txtCelular1 = new javax.swing.JTextField();
-        btnCriarConta = new javax.swing.JButton();
+        btnInserirTelefone = new javax.swing.JButton();
         Background = new images.SVGImage();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -51,6 +52,10 @@ public class InsertTelefonePaciente extends javax.swing.JFrame {
         });
         jPanel1.add(btnReturn, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 30, 44, 35));
 
+        jLabel1.setFont(new java.awt.Font("Segoe UI Semibold", 0, 12)); // NOI18N
+        jLabel1.setText("Insira seu telefone");
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 227, -1, -1));
+
         txtCelular.setBackground(new java.awt.Color(247, 247, 247));
         txtCelular.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         txtCelular.setText("Celular");
@@ -63,16 +68,16 @@ public class InsertTelefonePaciente extends javax.swing.JFrame {
         txtCelular1.setBorder(null);
         jPanel1.add(txtCelular1, new org.netbeans.lib.awtextra.AbsoluteConstraints(385, 306, 230, 30));
 
-        btnCriarConta.setBackground(new java.awt.Color(227, 1, 64));
-        btnCriarConta.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
-        btnCriarConta.setForeground(new java.awt.Color(255, 255, 255));
-        btnCriarConta.setText("Próximo");
-        btnCriarConta.addActionListener(new java.awt.event.ActionListener() {
+        btnInserirTelefone.setBackground(new java.awt.Color(227, 1, 64));
+        btnInserirTelefone.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        btnInserirTelefone.setForeground(new java.awt.Color(255, 255, 255));
+        btnInserirTelefone.setText("Próximo");
+        btnInserirTelefone.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCriarContaActionPerformed(evt);
+                btnInserirTelefoneActionPerformed(evt);
             }
         });
-        jPanel1.add(btnCriarConta, new org.netbeans.lib.awtextra.AbsoluteConstraints(377, 345, 245, 38));
+        jPanel1.add(btnInserirTelefone, new org.netbeans.lib.awtextra.AbsoluteConstraints(377, 345, 245, 38));
 
         Background.setText("sVGImage1");
         jPanel1.add(Background, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1000, 640));
@@ -97,27 +102,26 @@ public class InsertTelefonePaciente extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_btnReturnMouseClicked
 
-    private void btnCriarContaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCriarContaActionPerformed
+    private void btnInserirTelefoneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInserirTelefoneActionPerformed
         String celular = txtCelular.getText();
         String celular1 = txtCelular1.getText();
         try {
             if (celular.equals(celular1)) {
-                Telefone telefone = new Telefone(0,celular) {
-                };
-                TelefoneDAO telefonedao = new TelefoneDAO();
-                telefonedao.createTelefone(telefone);
+                Telefone telefone = new Telefone(0, celular);
+                PacienteDAO pacientedao = new PacienteDAO();
+                pacientedao.createTelefone(telefone);
                 System.out.println("Telefone cadastrado. Aguardando outros dados.");
             } else {
                 JOptionPane.showMessageDialog(null, "Números não coincidem. Tente novamente.");
             }
-            InsertAddressPaciente clickNextPage = new InsertAddressPaciente();
+            InsertEnderecoPaciente clickNextPage = new InsertEnderecoPaciente();
             clickNextPage.setVisible(true);
             this.dispose();
 
         } catch (Exception e) {
             System.out.println("Não foi possivel inserir" + e.getMessage());
         }
-    }//GEN-LAST:event_btnCriarContaActionPerformed
+    }//GEN-LAST:event_btnInserirTelefoneActionPerformed
 
     /**
      * @param args the command line arguments
@@ -163,8 +167,9 @@ public class InsertTelefonePaciente extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private images.SVGImage Background;
-    private javax.swing.JButton btnCriarConta;
+    private javax.swing.JButton btnInserirTelefone;
     private images.SVGImage btnReturn;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JTextField txtCelular;
     private javax.swing.JTextField txtCelular1;

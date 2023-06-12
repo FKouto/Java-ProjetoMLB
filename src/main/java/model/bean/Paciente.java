@@ -7,21 +7,21 @@ public class Paciente extends Pessoa {
     private Endereco endereco;
 
     //Construtor
-    public Paciente() {
-    }
+    
+    /*DAO*/
 
-    public Paciente(int cpf, Telefone telefone, Endereco endereco, String nome, String email, String senha) {
-        super(nome, email, senha);
+    public Paciente(int cpf, Telefone telefone, Endereco endereco, int idPessoa, String nome, String email, String senha) {
+        super(idPessoa, nome, email, senha);
         this.cpf = cpf;
         this.telefone = telefone;
         this.endereco = endereco;
     }
-
-    /*DAO*/
-    public Paciente(String nome, int cpf, String email, String senha) {
-        super(nome, email, senha);
+    
+    public Paciente(int idPessoa, String nome, int cpf, String email, String senha) {
+        super(idPessoa, nome, email, senha);
         this.cpf = cpf;
     }
+    
 
     //Getters & Setters
     public int getCpf() {
@@ -32,20 +32,20 @@ public class Paciente extends Pessoa {
         this.cpf = cpf;
     }
 
-    public Telefone getTelefone() {
-        return telefone;
-    }
-
     public void setTelefone(Telefone telefone) {
         this.telefone = telefone;
     }
 
-    public Endereco getEndereco() {
-        return endereco;
-    }
-
     public void setEndereco(Endereco endereco) {
         this.endereco = endereco;
+    }
+
+    public Telefone getTelefone() {
+        return telefone;
+    }
+
+    public Endereco getEndereco() {
+        return endereco;
     }
 
 }

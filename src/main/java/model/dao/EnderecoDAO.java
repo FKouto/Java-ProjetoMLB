@@ -6,7 +6,7 @@ import model.bean.Endereco;
 
 public class EnderecoDAO {
 
-    public String createEndereco(Endereco endereco) throws SQLException {
+    public void createEndereco(Endereco endereco) throws SQLException {
         Connection conn = null;
         PreparedStatement create = null;
 
@@ -15,7 +15,7 @@ public class EnderecoDAO {
             conn = ConexaoBD.obtemConexao();
             //Preparando o SQL para o inserir Paciente
             String sql = "INSERT INTO endereco_paciente (rua, bairro, cidade, estado, cep) VALUES (?,?,?,?,?)";
-            create = conn.prepareStatement(sql);
+            create = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
             create.setString(1, endereco.getRua());
             create.setString(2, endereco.getBairro());
             create.setString(3, endereco.getCidade());
@@ -23,10 +23,21 @@ public class EnderecoDAO {
             create.setInt(5, endereco.getCep());
             //Executa a inserção
             create.executeUpdate();
+            // Obtém a chave gerada
+            ResultSet generatedKeys = create.getGeneratedKeys();
+            generatedKeys.next();
+            int idEndereco = generatedKeys.getInt(1);
+            endereco.setCodEndereco(idEndereco);
             System.out.println("Endereço inserido com sucesso!");
         } catch (SQLException e) {
             System.out.println("Erro ao inserir paciente: " + e.getMessage());
+        } finally {
+            if (create != null) {
+                create.close();
+            }
+            if (conn != null) {
+                conn.close();
+            }
         }
-        return null;
     }
 }

@@ -12,8 +12,8 @@ public class Profissional extends Pessoa {
     public Profissional() {
     }
 
-    public Profissional(int numConselho, String profissionalização, String tipoConsulta, Telefone telefone, Endereco endereco, String nome, String email, String senha) {
-        super(nome, email, senha);
+    public Profissional(int numConselho, String profissionalização, String tipoConsulta, Telefone telefone, Endereco endereco, int idPessoa, String nome, String email, String senha) {
+        super(idPessoa, nome, email, senha);
         this.numConselho = numConselho;
         this.profissionalização = profissionalização;
         this.tipoConsulta = tipoConsulta;

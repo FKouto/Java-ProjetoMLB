@@ -1,12 +1,12 @@
 package view.SelectedCadastroPaciente;
 
-import model.dao.EnderecoDAO;
 import javax.swing.*;
 import model.bean.Endereco;
+import model.dao.PacienteDAO;
 
-public class InsertAddressPaciente extends javax.swing.JFrame {
+public class InsertEnderecoPaciente extends javax.swing.JFrame {
 
-    public InsertAddressPaciente() {
+    public InsertEnderecoPaciente() {
         initComponents();
         /*Icon Janela*/
         // Define o ícone da janela como a imagem localizada em "/images/icon.png".
@@ -30,12 +30,13 @@ public class InsertAddressPaciente extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         btnReturn = new images.SVGImage();
+        jLabel1 = new javax.swing.JLabel();
         txtRua = new javax.swing.JTextField();
         txtBairro = new javax.swing.JTextField();
         txtCidade = new javax.swing.JTextField();
         txtEstado = new javax.swing.JTextField();
         txtCep = new javax.swing.JTextField();
-        btnProximaTela = new javax.swing.JButton();
+        btnInserirEndereco = new javax.swing.JButton();
         Background = new images.SVGImage();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -52,6 +53,10 @@ public class InsertAddressPaciente extends javax.swing.JFrame {
             }
         });
         jPanel1.add(btnReturn, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 30, 44, 35));
+
+        jLabel1.setFont(new java.awt.Font("Segoe UI Semibold", 0, 12)); // NOI18N
+        jLabel1.setText("Insira seu endereço");
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 160, -1, -1));
 
         txtRua.setBackground(new java.awt.Color(247, 247, 247));
         txtRua.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
@@ -83,16 +88,16 @@ public class InsertAddressPaciente extends javax.swing.JFrame {
         txtCep.setBorder(null);
         jPanel1.add(txtCep, new org.netbeans.lib.awtextra.AbsoluteConstraints(385, 375, 230, 30));
 
-        btnProximaTela.setBackground(new java.awt.Color(227, 1, 64));
-        btnProximaTela.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
-        btnProximaTela.setForeground(new java.awt.Color(255, 255, 255));
-        btnProximaTela.setText("Próximo");
-        btnProximaTela.addActionListener(new java.awt.event.ActionListener() {
+        btnInserirEndereco.setBackground(new java.awt.Color(227, 1, 64));
+        btnInserirEndereco.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        btnInserirEndereco.setForeground(new java.awt.Color(255, 255, 255));
+        btnInserirEndereco.setText("Próximo");
+        btnInserirEndereco.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnProximaTelaActionPerformed(evt);
+                btnInserirEnderecoActionPerformed(evt);
             }
         });
-        jPanel1.add(btnProximaTela, new org.netbeans.lib.awtextra.AbsoluteConstraints(377, 413, 245, 38));
+        jPanel1.add(btnInserirEndereco, new org.netbeans.lib.awtextra.AbsoluteConstraints(377, 413, 245, 38));
 
         Background.setText("sVGImage1");
         jPanel1.add(Background, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1000, 640));
@@ -112,12 +117,12 @@ public class InsertAddressPaciente extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
     /*Ação do botão voltar*/
     private void btnReturnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnReturnMouseClicked
-        InsertAddressPaciente returnToAddress = new InsertAddressPaciente();
-        returnToAddress.setVisible(true);
+        InsertTelefonePaciente returnToTelefone = new InsertTelefonePaciente();
+        returnToTelefone.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_btnReturnMouseClicked
 
-    private void btnProximaTelaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProximaTelaActionPerformed
+    private void btnInserirEnderecoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInserirEnderecoActionPerformed
         //Aula dia 13 - Apostila 13_apostila... Pag3
         //Identificando Dados Inseridos
         String rua = txtRua.getText();
@@ -127,17 +132,16 @@ public class InsertAddressPaciente extends javax.swing.JFrame {
         int cep = Integer.parseInt(txtCep.getText());
         try {
             Endereco endereco = new Endereco(0,rua, bairro, cidade, estado, cep);
-            EnderecoDAO enderecodao = new EnderecoDAO();
-            enderecodao.createEndereco(endereco);
-            System.out.println("Dados Salvos com sucesso");
+            PacienteDAO pacientedao = new PacienteDAO();
+            pacientedao.createEndereco(endereco);
+            InsertDadosPaciente clickNextPage = new InsertDadosPaciente();
+            clickNextPage.setVisible(true);
+            this.dispose();
+            System.out.println("Enderço Salvos com sucesso.");
         } catch (Exception e) {
             System.out.println("Não foi possivel inserir");
         }
-
-        InsertPersonalDataPaciente clickNextPage = new InsertPersonalDataPaciente();
-        clickNextPage.setVisible(true);
-        this.dispose();
-    }//GEN-LAST:event_btnProximaTelaActionPerformed
+    }//GEN-LAST:event_btnInserirEnderecoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -156,14 +160,22 @@ public class InsertAddressPaciente extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(InsertAddressPaciente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(InsertEnderecoPaciente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(InsertAddressPaciente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(InsertEnderecoPaciente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(InsertAddressPaciente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(InsertEnderecoPaciente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(InsertAddressPaciente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(InsertEnderecoPaciente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
@@ -176,15 +188,16 @@ public class InsertAddressPaciente extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new InsertAddressPaciente().setVisible(true);
+                new InsertEnderecoPaciente().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private images.SVGImage Background;
-    private javax.swing.JButton btnProximaTela;
+    private javax.swing.JButton btnInserirEndereco;
     private images.SVGImage btnReturn;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JTextField txtBairro;
     private javax.swing.JTextField txtCep;

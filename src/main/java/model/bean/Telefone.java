@@ -1,6 +1,6 @@
 package model.bean;
 
-public abstract class Telefone {
+public class Telefone {
 
     private int codTel;
     private String numero;
@@ -8,7 +8,7 @@ public abstract class Telefone {
     //Construtor
     public Telefone() {
     }
-
+    
     public Telefone(int codTel, String numero) {
         this.codTel = codTel;
         this.numero = numero;
