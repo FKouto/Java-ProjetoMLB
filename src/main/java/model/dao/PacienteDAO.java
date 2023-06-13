@@ -106,23 +106,49 @@ public class PacienteDAO {
         try {
             // Obter conexão com o banco de dados
             conn = ConexaoBD.obtemConexao();
+
             // Preparando o SQL para inserir o Paciente
             String sql = "INSERT INTO paciente (nome, cpf, email, senha, cod_tel, cod_endereco) VALUES (?,?,?,?,?,?)";
-            create = conn.prepareStatement(sql);
+            String idTel = "SELECT cod_tel FROM telefone_paciente ORDER BY cod_tel DESC LIMIT 1";
+            String idEnd = "SELECT cod_endereco FROM endereco_paciente ORDER BY cod_endereco DESC LIMIT 1";
+
+            // Criação do PreparedStatement com retorno das chaves geradas
+            create = conn.prepareStatement(sql, PreparedStatement.RETURN_GENERATED_KEYS);
+
+            // Obter o ID do telefone mais recente
+            int codTel = -1; // valor padrão caso a consulta não retorne nenhum resultado
+            Statement stmtTel = conn.createStatement();
+            ResultSet rsTel = stmtTel.executeQuery(idTel);
+            if (rsTel.next()) {
+                codTel = rsTel.getInt("cod_tel");
+            }
+
+            // Obter o ID do endereço mais recente
+            int codEndereco = -1; // valor padrão caso a consulta não retorne nenhum resultado
+            Statement stmtEnd = conn.createStatement();
+            ResultSet rsEnd = stmtEnd.executeQuery(idEnd);
+            if (rsEnd.next()) {
+                codEndereco = rsEnd.getInt("cod_endereco");
+            }
+
             // Parametros de valor para create
             create.setString(1, paciente.getNome());
             create.setInt(2, paciente.getCpf());
             create.setString(3, paciente.getEmail());
             create.setString(4, paciente.getSenha());
-            create.setInt(5, paciente.getTelefone().getCodTel());
-            create.setInt(6, paciente.getEndereco().getCodEndereco());
+            create.setInt(5, codTel);
+            create.setInt(6, codEndereco);
+
             // Executa a inserção
             create.executeUpdate();
+
             // Obtém a chave gerada
             ResultSet generatedKeys = create.getGeneratedKeys();
-            generatedKeys.next();
-            int idPessoa = generatedKeys.getInt(1);
-            paciente.setIdPessoa(idPessoa);
+            if (generatedKeys.next()) {
+                int idPessoa = generatedKeys.getInt(1);
+                paciente.setIdPessoa(idPessoa);
+            }
+
             System.out.println("Paciente inserido com sucesso!");
         } catch (SQLException e) {
             System.out.println("Erro ao inserir paciente: " + e.getMessage());
@@ -136,4 +162,5 @@ public class PacienteDAO {
             }
         }
     }
+
 }

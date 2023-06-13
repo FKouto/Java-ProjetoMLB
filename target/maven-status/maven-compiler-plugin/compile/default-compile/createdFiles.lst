@@ -2,12 +2,15 @@ model\dao\TelefoneDAO.class
 model\bean\Telefone.class
 view\SelectedCadastroPaciente\InsertDadosPaciente$3.class
 view\ViewLogin$3.class
+view\SelectedCadastroPaciente\InsertDadosPaciente$7.class
 database\ConexaoBD.class
+view\SelectedCadastroPaciente\InsertDadosPaciente$6.class
 view\SelectedCadastroPaciente\InsertTelefonePaciente$1.class
 view\SelectedCadastroProfissional\InsertPasswordProfissional$1.class
 model\bean\Endereco.class
 model\dao\PacienteDAO.class
 view\SelectedCadastroPaciente\InsertDadosPaciente.class
+view\SelectedCadastroPaciente\InsertDadosPaciente$4.class
 model\bean\Profissional.class
 view\SelectedCadastroProfissional\InsertAddressProfissional.class
 view\ViewSelectTypeCadastro$3.class
@@ -39,4 +42,5 @@ view\SelectedCadastroPaciente\InsertDadosPaciente$2.class
 view\SelectedCadastroPaciente\InsertTelefonePaciente.class
 view\SelectedCadastroPaciente\InsertEnderecoPaciente$1.class
 view\SelectedCadastroProfissional\InsertAddressProfissional$1.class
+view\SelectedCadastroPaciente\InsertDadosPaciente$5.class
 view\ViewSelectTypeCadastro$2.class
