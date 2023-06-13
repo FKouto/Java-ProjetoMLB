@@ -2,19 +2,19 @@ package model.bean;
 
 public class Telefone {
 
-    private int codTel;
-    private String numero;
+    private int codTel; // Código do telefone
+    private String numero; // Número de telefone
 
-    //Construtor
+    // CONSTRUTOR
     public Telefone() {
     }
-    
+
     public Telefone(int codTel, String numero) {
         this.codTel = codTel;
         this.numero = numero;
     }
 
-    //Getters & Setters
+    // Getters & Setters
     public int getCodTel() {
         return codTel;
     }

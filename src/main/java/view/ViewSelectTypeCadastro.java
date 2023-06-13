@@ -2,7 +2,7 @@ package view;
 
 import javax.swing.*;
 import view.SelectedCadastroPaciente.InsertTelefonePaciente;
-import view.SelectedCadastroProfissional.InsertPersonalDataProfissional;
+import view.SelectedCadastroPsicologo.InsertTelefonePsicologo;
 
 public class ViewSelectTypeCadastro extends javax.swing.JFrame {
 
@@ -32,8 +32,9 @@ public class ViewSelectTypeCadastro extends javax.swing.JFrame {
     private void initComponents() {
 
         SelectTypeCadastroFrame = new javax.swing.JPanel();
-        btnSouPaciente = new javax.swing.JButton();
-        btnSouProfissional = new javax.swing.JButton();
+        btnPaciente = new javax.swing.JButton();
+        btnPsicologo = new javax.swing.JButton();
+        btnPsiquiatra = new javax.swing.JButton();
         BackgroundRight = new images.SVGImage();
         jLabel1 = new javax.swing.JLabel();
         btnReturn = new images.SVGImage();
@@ -46,27 +47,38 @@ public class ViewSelectTypeCadastro extends javax.swing.JFrame {
         SelectTypeCadastroFrame.setBackground(new java.awt.Color(255, 255, 255));
         SelectTypeCadastroFrame.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        btnSouPaciente.setBackground(new java.awt.Color(227, 1, 64));
-        btnSouPaciente.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
-        btnSouPaciente.setForeground(new java.awt.Color(255, 255, 255));
-        btnSouPaciente.setText("Paciente");
-        btnSouPaciente.addActionListener(new java.awt.event.ActionListener() {
+        btnPaciente.setBackground(new java.awt.Color(227, 1, 64));
+        btnPaciente.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        btnPaciente.setForeground(new java.awt.Color(255, 255, 255));
+        btnPaciente.setText("Paciente");
+        btnPaciente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSouPacienteActionPerformed(evt);
+                btnPacienteActionPerformed(evt);
             }
         });
-        SelectTypeCadastroFrame.add(btnSouPaciente, new org.netbeans.lib.awtextra.AbsoluteConstraints(108, 308, 210, 35));
+        SelectTypeCadastroFrame.add(btnPaciente, new org.netbeans.lib.awtextra.AbsoluteConstraints(108, 308, 210, 35));
 
-        btnSouProfissional.setBackground(new java.awt.Color(227, 1, 64));
-        btnSouProfissional.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
-        btnSouProfissional.setForeground(new java.awt.Color(255, 255, 255));
-        btnSouProfissional.setText("Profissional");
-        btnSouProfissional.addActionListener(new java.awt.event.ActionListener() {
+        btnPsicologo.setBackground(new java.awt.Color(227, 1, 64));
+        btnPsicologo.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        btnPsicologo.setForeground(new java.awt.Color(255, 255, 255));
+        btnPsicologo.setText("Psiquiatra");
+        btnPsicologo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSouProfissionalActionPerformed(evt);
+                btnPsicologoActionPerformed(evt);
             }
         });
-        SelectTypeCadastroFrame.add(btnSouProfissional, new org.netbeans.lib.awtextra.AbsoluteConstraints(108, 353, 210, 35));
+        SelectTypeCadastroFrame.add(btnPsicologo, new org.netbeans.lib.awtextra.AbsoluteConstraints(108, 398, 210, 35));
+
+        btnPsiquiatra.setBackground(new java.awt.Color(227, 1, 64));
+        btnPsiquiatra.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        btnPsiquiatra.setForeground(new java.awt.Color(255, 255, 255));
+        btnPsiquiatra.setText("Psicólogo");
+        btnPsiquiatra.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPsiquiatraActionPerformed(evt);
+            }
+        });
+        SelectTypeCadastroFrame.add(btnPsiquiatra, new org.netbeans.lib.awtextra.AbsoluteConstraints(108, 353, 210, 35));
         SelectTypeCadastroFrame.add(BackgroundRight, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 0, 618, 640));
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 32)); // NOI18N
@@ -94,29 +106,33 @@ public class ViewSelectTypeCadastro extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnSouPacienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSouPacienteActionPerformed
+    private void btnPacienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPacienteActionPerformed
         // Cria uma instância da classe ViewSelectedPaciente
         InsertTelefonePaciente openSelectedPaciente = new InsertTelefonePaciente();
         // Torna a janela atual invisível
         this.setVisible(false);
         // Torna a janela openSelectedPaciente visível
         openSelectedPaciente.setVisible(true);
-    }//GEN-LAST:event_btnSouPacienteActionPerformed
+    }//GEN-LAST:event_btnPacienteActionPerformed
 
-    private void btnSouProfissionalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSouProfissionalActionPerformed
+    private void btnPsicologoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPsicologoActionPerformed
         // Cria uma instância da classe ViewSelectedProfissional
-        InsertPersonalDataProfissional openSelectedProfissional = new InsertPersonalDataProfissional();
+        InsertTelefonePsicologo openSelectedPsicologo = new InsertTelefonePsicologo();
         // Torna a janela atual invisível
         this.setVisible(false);
         // Torna a janela openSelectedProfissional visível
-        openSelectedProfissional.setVisible(true);
-    }//GEN-LAST:event_btnSouProfissionalActionPerformed
+        openSelectedPsicologo.setVisible(true);
+    }//GEN-LAST:event_btnPsicologoActionPerformed
     /*Ação do botão voltar*/
     private void btnReturnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnReturnMouseClicked
         ViewLogin returnToLogin = new ViewLogin();
         returnToLogin.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_btnReturnMouseClicked
+
+    private void btnPsiquiatraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPsiquiatraActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnPsiquiatraActionPerformed
 
     /**
      * @param args the command line arguments
@@ -159,9 +175,10 @@ public class ViewSelectTypeCadastro extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private images.SVGImage BackgroundRight;
     private javax.swing.JPanel SelectTypeCadastroFrame;
+    private javax.swing.JButton btnPaciente;
+    private javax.swing.JButton btnPsicologo;
+    private javax.swing.JButton btnPsiquiatra;
     private images.SVGImage btnReturn;
-    private javax.swing.JButton btnSouPaciente;
-    private javax.swing.JButton btnSouProfissional;
     private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
 }

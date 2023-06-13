@@ -2,17 +2,17 @@ package model.bean;
 
 public class Endereco {
 
-    private int codEndereco;
-    private String rua;
-    private String bairro;
-    private String cidade;
-    private String estado;
-    private int cep;
+    private int codEndereco; // Código do endereço
+    private String rua; // Nome da rua
+    private String bairro; // Nome do bairro
+    private String cidade; // Nome da cidade
+    private String estado; // Nome do estado
+    private int cep; // CEP do endereço
 
-    //Construtor
+    // CONSTRUTOR
     public Endereco() {
     }
-
+    
     public Endereco(int codEndereco, String rua, String bairro, String cidade, String estado, int cep) {
         this.codEndereco = codEndereco;
         this.rua = rua;
@@ -21,8 +21,8 @@ public class Endereco {
         this.estado = estado;
         this.cep = cep;
     }
-    //Getters & Setters
 
+    // Getters & Setters
     public int getCodEndereco() {
         return codEndereco;
     }
@@ -70,5 +70,4 @@ public class Endereco {
     public void setCep(int cep) {
         this.cep = cep;
     }
-
 }

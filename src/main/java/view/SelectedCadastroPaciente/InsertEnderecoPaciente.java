@@ -14,9 +14,15 @@ public class InsertEnderecoPaciente extends javax.swing.JFrame {
         // Define a posição da janela como centralizada em relação à tela.
         this.setLocationRelativeTo(null);
         // Define a imagem de fundo SVG
-        Background.setSvgImage("images/InsertAddressBackground.svg", 1000, 640);
+        Background.setSvgImage("images/InsertAddressPacienteBackground.svg", 1000, 640);
         // Imagem botão de retorno
         btnReturn.setSvgImage("images/returnIcon.svg", 44, 35);
+        //FocusGained Placeholder
+        txtRua.setFocusable(true);
+        txtBairro.setFocusable(true);
+        txtCidade.setFocusable(true);
+        txtEstado.setFocusable(true);
+        txtCep.setFocusable(true);
     }
 
     /**
@@ -30,7 +36,6 @@ public class InsertEnderecoPaciente extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         btnReturn = new images.SVGImage();
-        jLabel1 = new javax.swing.JLabel();
         txtRua = new javax.swing.JTextField();
         txtBairro = new javax.swing.JTextField();
         txtCidade = new javax.swing.JTextField();
@@ -54,38 +59,74 @@ public class InsertEnderecoPaciente extends javax.swing.JFrame {
         });
         jPanel1.add(btnReturn, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 30, 44, 35));
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI Semibold", 0, 12)); // NOI18N
-        jLabel1.setText("Insira seu endereço");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 160, -1, -1));
-
         txtRua.setBackground(new java.awt.Color(247, 247, 247));
         txtRua.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         txtRua.setText("Rua");
         txtRua.setBorder(null);
+        txtRua.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txtRuaFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtRuaFocusLost(evt);
+            }
+        });
         jPanel1.add(txtRua, new org.netbeans.lib.awtextra.AbsoluteConstraints(385, 195, 230, 30));
 
         txtBairro.setBackground(new java.awt.Color(247, 247, 247));
         txtBairro.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         txtBairro.setText("Bairro");
         txtBairro.setBorder(null);
+        txtBairro.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txtBairroFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtBairroFocusLost(evt);
+            }
+        });
         jPanel1.add(txtBairro, new org.netbeans.lib.awtextra.AbsoluteConstraints(385, 240, 230, 30));
 
         txtCidade.setBackground(new java.awt.Color(247, 247, 247));
         txtCidade.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         txtCidade.setText("Cidade");
         txtCidade.setBorder(null);
+        txtCidade.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txtCidadeFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtCidadeFocusLost(evt);
+            }
+        });
         jPanel1.add(txtCidade, new org.netbeans.lib.awtextra.AbsoluteConstraints(385, 285, 230, 30));
 
         txtEstado.setBackground(new java.awt.Color(247, 247, 247));
         txtEstado.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         txtEstado.setText("Estado");
         txtEstado.setBorder(null);
+        txtEstado.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txtEstadoFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtEstadoFocusLost(evt);
+            }
+        });
         jPanel1.add(txtEstado, new org.netbeans.lib.awtextra.AbsoluteConstraints(385, 330, 230, 30));
 
         txtCep.setBackground(new java.awt.Color(247, 247, 247));
         txtCep.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         txtCep.setText("CEP");
         txtCep.setBorder(null);
+        txtCep.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txtCepFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtCepFocusLost(evt);
+            }
+        });
         jPanel1.add(txtCep, new org.netbeans.lib.awtextra.AbsoluteConstraints(385, 375, 230, 30));
 
         btnInserirEndereco.setBackground(new java.awt.Color(227, 1, 64));
@@ -123,25 +164,87 @@ public class InsertEnderecoPaciente extends javax.swing.JFrame {
     }//GEN-LAST:event_btnReturnMouseClicked
 
     private void btnInserirEnderecoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInserirEnderecoActionPerformed
-        //Aula dia 13 - Apostila 13_apostila... Pag3
-        //Identificando Dados Inseridos
+        // Aula dia 13 - Apostila 13_apostila... Pag3
+        // Obtem os dados
         String rua = txtRua.getText();
         String bairro = txtBairro.getText();
         String cidade = txtCidade.getText();
         String estado = txtEstado.getText();
         int cep = Integer.parseInt(txtCep.getText());
         try {
-            Endereco endereco = new Endereco(0,rua, bairro, cidade, estado, cep);
+            // Criando um objeto Endereço com os dados inseridos
+            Endereco endereco = new Endereco(0, rua, bairro, cidade, estado, cep);
             PacienteDAO pacientedao = new PacienteDAO();
-            pacientedao.createEndereco(endereco);
+            // Inserindo o endereço no banco de dados
+            pacientedao.createEnderecoPaciente(endereco);
             InsertDadosPaciente clickNextPage = new InsertDadosPaciente();
             clickNextPage.setVisible(true);
             this.dispose();
             System.out.println("Enderço Salvos com sucesso.");
         } catch (Exception e) {
-            System.out.println("Não foi possivel inserir");
+            System.out.println("Não foi possivel inserir endereço." + e.getMessage());
         }
     }//GEN-LAST:event_btnInserirEnderecoActionPerformed
+    //FocusGained (Funciona para limpar o campo quando é selecionado)
+    private void txtRuaFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtRuaFocusGained
+        if (txtRua.getText().equals("Rua")) {
+            txtRua.setText("");
+        }
+    }//GEN-LAST:event_txtRuaFocusGained
+
+    private void txtBairroFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtBairroFocusGained
+        if (txtBairro.getText().equals("Bairro")) {
+            txtBairro.setText("");
+        }
+    }//GEN-LAST:event_txtBairroFocusGained
+
+    private void txtCidadeFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtCidadeFocusGained
+        if (txtCidade.getText().equals("Cidade")) {
+            txtCidade.setText("");
+        }
+    }//GEN-LAST:event_txtCidadeFocusGained
+
+    private void txtEstadoFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtEstadoFocusGained
+        if (txtEstado.getText().equals("Estado")) {
+            txtEstado.setText("");
+        }
+    }//GEN-LAST:event_txtEstadoFocusGained
+
+    private void txtCepFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtCepFocusGained
+        if (txtCep.getText().equals("CEP")) {
+            txtCep.setText("");
+        }
+    }//GEN-LAST:event_txtCepFocusGained
+    //FocusLost (Restaura o texto padrão se o campo não for mais selecionado e não estiver preenchido)
+    private void txtRuaFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtRuaFocusLost
+        if (txtRua.getText().equals("")) {
+            txtRua.setText("Rua");
+        }
+    }//GEN-LAST:event_txtRuaFocusLost
+
+    private void txtBairroFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtBairroFocusLost
+        if (txtBairro.getText().equals("Bairro")) {
+            txtBairro.setText("Bairro");
+        }
+    }//GEN-LAST:event_txtBairroFocusLost
+
+    private void txtCidadeFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtCidadeFocusLost
+        if (txtCidade.getText().equals("Cidade")) {
+            txtCidade.setText("Cidade");
+        }
+    }//GEN-LAST:event_txtCidadeFocusLost
+
+    private void txtEstadoFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtEstadoFocusLost
+        if (txtEstado.getText().equals("")) {
+            txtEstado.setText("Estado");
+        }
+    }//GEN-LAST:event_txtEstadoFocusLost
+
+    private void txtCepFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtCepFocusLost
+        if (txtCep.getText().equals("")) {
+            txtCep.setText("CEP");
+        }
+    }//GEN-LAST:event_txtCepFocusLost
 
     /**
      * @param args the command line arguments
@@ -197,7 +300,6 @@ public class InsertEnderecoPaciente extends javax.swing.JFrame {
     private images.SVGImage Background;
     private javax.swing.JButton btnInserirEndereco;
     private images.SVGImage btnReturn;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JTextField txtBairro;
     private javax.swing.JTextField txtCep;

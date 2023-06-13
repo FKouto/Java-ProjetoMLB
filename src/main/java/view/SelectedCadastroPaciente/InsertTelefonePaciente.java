@@ -15,9 +15,12 @@ public class InsertTelefonePaciente extends javax.swing.JFrame {
         // Define a posição da janela como centralizada em relação à tela.
         this.setLocationRelativeTo(null);
         // Define a imagem de fundo SVG
-        Background.setSvgImage("images/InsertPasswordBackground.svg", 1000, 640);
+        Background.setSvgImage("images/InsertTelefonePacienteBackgroung.svg", 1000, 640);
         // Imagem botão de retorno
         btnReturn.setSvgImage("images/returnIcon.svg", 44, 35);
+        //FocusGained Placeholder
+        txtCelular.setFocusable(true);
+        txtCelular1.setFocusable(true);
     }
 
     /**
@@ -31,7 +34,6 @@ public class InsertTelefonePaciente extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         btnReturn = new images.SVGImage();
-        jLabel1 = new javax.swing.JLabel();
         txtCelular = new javax.swing.JTextField();
         txtCelular1 = new javax.swing.JTextField();
         btnInserirTelefone = new javax.swing.JButton();
@@ -52,20 +54,32 @@ public class InsertTelefonePaciente extends javax.swing.JFrame {
         });
         jPanel1.add(btnReturn, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 30, 44, 35));
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI Semibold", 0, 12)); // NOI18N
-        jLabel1.setText("Insira seu telefone");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 227, -1, -1));
-
         txtCelular.setBackground(new java.awt.Color(247, 247, 247));
         txtCelular.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         txtCelular.setText("Celular");
         txtCelular.setBorder(null);
+        txtCelular.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txtCelularFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtCelularFocusLost(evt);
+            }
+        });
         jPanel1.add(txtCelular, new org.netbeans.lib.awtextra.AbsoluteConstraints(385, 261, 230, 30));
 
         txtCelular1.setBackground(new java.awt.Color(247, 247, 247));
         txtCelular1.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         txtCelular1.setText("Celular");
         txtCelular1.setBorder(null);
+        txtCelular1.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txtCelular1FocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtCelular1FocusLost(evt);
+            }
+        });
         jPanel1.add(txtCelular1, new org.netbeans.lib.awtextra.AbsoluteConstraints(385, 306, 230, 30));
 
         btnInserirTelefone.setBackground(new java.awt.Color(227, 1, 64));
@@ -105,23 +119,50 @@ public class InsertTelefonePaciente extends javax.swing.JFrame {
     private void btnInserirTelefoneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInserirTelefoneActionPerformed
         String celular = txtCelular.getText();
         String celular1 = txtCelular1.getText();
-        try {
-            if (celular.equals(celular1)) {
+        // Verifica se os número são iguais
+        if (celular.equals(celular1)) {
+            try {
+                // Criando um objeto Telefone com os dados inseridos
                 Telefone telefone = new Telefone(0, celular);
                 PacienteDAO pacientedao = new PacienteDAO();
-                pacientedao.createTelefone(telefone);
-                System.out.println("Telefone cadastrado. Aguardando outros dados.");
-            } else {
-                JOptionPane.showMessageDialog(null, "Números não coincidem. Tente novamente.");
-            }
-            InsertEnderecoPaciente clickNextPage = new InsertEnderecoPaciente();
-            clickNextPage.setVisible(true);
-            this.dispose();
+                // Inserindo o telefone no banco de dados
+                pacientedao.createTelefonePaciente(telefone);
+                System.out.println("Telefone inserido com sucesso.");
+                InsertEnderecoPaciente clickNextPage = new InsertEnderecoPaciente();
+                clickNextPage.setVisible(true);
+                this.dispose();
 
-        } catch (Exception e) {
-            System.out.println("Não foi possivel inserir" + e.getMessage());
+            } catch (Exception e) {
+                System.out.println("Não foi possivel inserir" + e.getMessage());
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "Números não coincidem. Tente novamente.");
         }
     }//GEN-LAST:event_btnInserirTelefoneActionPerformed
+    //FocusGained (Funciona para limpar o campo quando é selecionado)
+    private void txtCelularFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtCelularFocusGained
+        if (txtCelular.getText().equals("Celular")) {
+            txtCelular.setText("");
+        }
+    }//GEN-LAST:event_txtCelularFocusGained
+
+    private void txtCelular1FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtCelular1FocusGained
+        if (txtCelular1.getText().equals("Celular")) {
+            txtCelular1.setText("");
+        }
+    }//GEN-LAST:event_txtCelular1FocusGained
+    //FocusLost (Restaura o texto padrão se o campo não for mais selecionado e não estiver preenchido)
+    private void txtCelularFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtCelularFocusLost
+        if (txtCelular.getText().equals("")) {
+            txtCelular.setText("Celular");
+        }
+    }//GEN-LAST:event_txtCelularFocusLost
+
+    private void txtCelular1FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtCelular1FocusLost
+        if (txtCelular1.getText().equals("")) {
+            txtCelular1.setText("Celular");
+        }
+    }//GEN-LAST:event_txtCelular1FocusLost
 
     /**
      * @param args the command line arguments
@@ -169,7 +210,6 @@ public class InsertTelefonePaciente extends javax.swing.JFrame {
     private images.SVGImage Background;
     private javax.swing.JButton btnInserirTelefone;
     private images.SVGImage btnReturn;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JTextField txtCelular;
     private javax.swing.JTextField txtCelular1;
