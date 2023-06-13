@@ -17,7 +17,6 @@ public class InsertDadosPaciente extends javax.swing.JFrame {
         Background.setSvgImage("images/InsertPersonalDataBackground.svg", 1000, 640);
         // Imagem botão de retorno
         btnReturn.setSvgImage("images/returnIcon.svg", 44, 35);
-        btnCriarConta.setFocusable(true);
         txtNome.setFocusable(true);
         txtEmail.setFocusable(true);
         txtCpf.setFocusable(true);

@@ -18,6 +18,9 @@ public class InsertTelefonePaciente extends javax.swing.JFrame {
         Background.setSvgImage("images/InsertPasswordBackground.svg", 1000, 640);
         // Imagem botão de retorno
         btnReturn.setSvgImage("images/returnIcon.svg", 44, 35);
+        //FocusGained Placeholder
+        txtCelular.setFocusable(true);
+        txtCelular1.setFocusable(true);
     }
 
     /**
@@ -60,12 +63,28 @@ public class InsertTelefonePaciente extends javax.swing.JFrame {
         txtCelular.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         txtCelular.setText("Celular");
         txtCelular.setBorder(null);
+        txtCelular.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txtCelularFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtCelularFocusLost(evt);
+            }
+        });
         jPanel1.add(txtCelular, new org.netbeans.lib.awtextra.AbsoluteConstraints(385, 261, 230, 30));
 
         txtCelular1.setBackground(new java.awt.Color(247, 247, 247));
         txtCelular1.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         txtCelular1.setText("Celular");
         txtCelular1.setBorder(null);
+        txtCelular1.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txtCelular1FocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtCelular1FocusLost(evt);
+            }
+        });
         jPanel1.add(txtCelular1, new org.netbeans.lib.awtextra.AbsoluteConstraints(385, 306, 230, 30));
 
         btnInserirTelefone.setBackground(new java.awt.Color(227, 1, 64));
@@ -122,6 +141,30 @@ public class InsertTelefonePaciente extends javax.swing.JFrame {
             System.out.println("Não foi possivel inserir" + e.getMessage());
         }
     }//GEN-LAST:event_btnInserirTelefoneActionPerformed
+    //FocusGained
+    private void txtCelularFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtCelularFocusGained
+        if(txtCelular.getText().equals("Celular")){
+            txtCelular.setText("");
+        }
+    }//GEN-LAST:event_txtCelularFocusGained
+
+    private void txtCelular1FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtCelular1FocusGained
+        if(txtCelular1.getText().equals("Celular")){
+            txtCelular1.setText("");
+        }
+    }//GEN-LAST:event_txtCelular1FocusGained
+    //FocusLost
+    private void txtCelularFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtCelularFocusLost
+        if(txtCelular.getText().equals("")){
+            txtCelular.setText("Celular");
+        }
+    }//GEN-LAST:event_txtCelularFocusLost
+
+    private void txtCelular1FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtCelular1FocusLost
+        if(txtCelular1.getText().equals("")){
+            txtCelular1.setText("Celular");
+        }
+    }//GEN-LAST:event_txtCelular1FocusLost
 
     /**
      * @param args the command line arguments

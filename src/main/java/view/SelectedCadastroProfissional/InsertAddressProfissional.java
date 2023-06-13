@@ -29,7 +29,6 @@ public class InsertAddressProfissional extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         btnReturn = new images.SVGImage();
         txtRua = new javax.swing.JTextField();
-        txtNumeroCs = new javax.swing.JTextField();
         txtBairro = new javax.swing.JTextField();
         txtCidade = new javax.swing.JTextField();
         txtEstado = new javax.swing.JTextField();
@@ -56,13 +55,7 @@ public class InsertAddressProfissional extends javax.swing.JFrame {
         txtRua.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         txtRua.setText("Rua");
         txtRua.setBorder(null);
-        jPanel1.add(txtRua, new org.netbeans.lib.awtextra.AbsoluteConstraints(385, 195, 130, 30));
-
-        txtNumeroCs.setBackground(new java.awt.Color(247, 247, 247));
-        txtNumeroCs.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
-        txtNumeroCs.setText("N°");
-        txtNumeroCs.setBorder(null);
-        jPanel1.add(txtNumeroCs, new org.netbeans.lib.awtextra.AbsoluteConstraints(535, 195, 80, 30));
+        jPanel1.add(txtRua, new org.netbeans.lib.awtextra.AbsoluteConstraints(385, 195, 230, 30));
 
         txtBairro.setBackground(new java.awt.Color(247, 247, 247));
         txtBairro.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
@@ -176,7 +169,6 @@ public class InsertAddressProfissional extends javax.swing.JFrame {
     private javax.swing.JTextField txtCep;
     private javax.swing.JTextField txtCidade;
     private javax.swing.JTextField txtEstado;
-    private javax.swing.JTextField txtNumeroCs;
     private javax.swing.JTextField txtRua;
     // End of variables declaration//GEN-END:variables
 }
