@@ -37,7 +37,9 @@ public class InsertDadosPaciente extends javax.swing.JFrame {
         txtNome = new javax.swing.JTextField();
         txtEmail = new javax.swing.JTextField();
         txtCpf = new javax.swing.JTextField();
+        lblSenha = new javax.swing.JLabel();
         senhaPasswordField1 = new javax.swing.JPasswordField();
+        lblSenha1 = new javax.swing.JLabel();
         senhaPasswordField2 = new javax.swing.JPasswordField();
         btnCriarConta = new javax.swing.JButton();
         Background = new images.SVGImage();
@@ -103,6 +105,11 @@ public class InsertDadosPaciente extends javax.swing.JFrame {
         });
         jPanel1.add(txtCpf, new org.netbeans.lib.awtextra.AbsoluteConstraints(385, 285, 230, 30));
 
+        lblSenha.setFont(new java.awt.Font("Segoe UI Semibold", 0, 14)); // NOI18N
+        lblSenha.setForeground(new java.awt.Color(29, 29, 29));
+        lblSenha.setText("Senha");
+        jPanel1.add(lblSenha, new org.netbeans.lib.awtextra.AbsoluteConstraints(334, 379, -1, -1));
+
         senhaPasswordField1.setBackground(new java.awt.Color(247, 247, 247));
         senhaPasswordField1.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         senhaPasswordField1.setBorder(null);
@@ -112,6 +119,11 @@ public class InsertDadosPaciente extends javax.swing.JFrame {
             }
         });
         jPanel1.add(senhaPasswordField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(385, 330, 230, 30));
+
+        lblSenha1.setFont(new java.awt.Font("Segoe UI Semibold", 0, 14)); // NOI18N
+        lblSenha1.setForeground(new java.awt.Color(29, 29, 29));
+        lblSenha1.setText("Senha");
+        jPanel1.add(lblSenha1, new org.netbeans.lib.awtextra.AbsoluteConstraints(334, 334, -1, -1));
 
         senhaPasswordField2.setBackground(new java.awt.Color(247, 247, 247));
         senhaPasswordField2.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
@@ -151,8 +163,8 @@ public class InsertDadosPaciente extends javax.swing.JFrame {
     }//GEN-LAST:event_btnReturnMouseClicked
 
     private void btnCriarContaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCriarContaActionPerformed
-        //Aula dia 13 - Apostila 13_apostila... Pag3
-        // Identificando Dados Inseridos
+        // Aula dia 13 - Apostila 13_apostila... Pag3
+        // Obtendo os dados
         String nome = txtNome.getText();
         String email = txtEmail.getText();
         int cpf = Integer.parseInt(txtCpf.getText());
@@ -161,35 +173,37 @@ public class InsertDadosPaciente extends javax.swing.JFrame {
 
         try {
             if (senha1.equals(senha2)) {
-                Paciente paciente = new Paciente(0,nome, cpf, email, senha1);
+                // Criando um objeto Paciente com os dados inseridos
+                Paciente paciente = new Paciente(0, nome, cpf, email, senha1);
                 PacienteDAO pacientedao = new PacienteDAO();
+                // Inserindo o paciente no banco de dados
                 pacientedao.createPaciente(paciente);
                 System.out.println("Paciente inserido com sucesso");
-                JOptionPane.showMessageDialog(null, "Inserido com sucesso.");
+                JOptionPane.showMessageDialog(null, "Registro realizado com sucesso.");
             } else {
-                JOptionPane.showMessageDialog(null, "Suas senhas estão diferentes. Tente novamente.");
+                JOptionPane.showMessageDialog(null, "Suas senhas não coincidem. Tente novamente.");
             }
-            System.out.println("Dados Salvos com sucesso");
+            System.out.println("Paciente inserido com sucesso.");
         } catch (Exception e) {
-            System.out.println("Não foi possível inserir: " + e.getMessage());
+            System.out.println("Não foi possível inserir paciente " + e.getMessage());
         }
 
     }//GEN-LAST:event_btnCriarContaActionPerformed
-    //FocusGained
+    //FocusGained (Funciona para limpar o campo quando é selecionado)
     private void txtNomeFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtNomeFocusGained
-        if(txtNome.getText().equals("Digite seu nome")){
+        if (txtNome.getText().equals("Digite seu nome")) {
             txtNome.setText("");
         }
     }//GEN-LAST:event_txtNomeFocusGained
 
     private void txtEmailFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtEmailFocusGained
-        if(txtEmail.getText().equals("Digite seu e-mail")){
+        if (txtEmail.getText().equals("Digite seu e-mail")) {
             txtEmail.setText("");
         }
     }//GEN-LAST:event_txtEmailFocusGained
 
     private void txtCpfFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtCpfFocusGained
-        if(txtCpf.getText().equals("Digite seu CPF")){
+        if (txtCpf.getText().equals("Digite seu CPF")) {
             txtCpf.setText("");
         }
     }//GEN-LAST:event_txtCpfFocusGained
@@ -197,21 +211,21 @@ public class InsertDadosPaciente extends javax.swing.JFrame {
     private void senhaPasswordField1FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_senhaPasswordField1FocusGained
         // TODO add your handling code here:
     }//GEN-LAST:event_senhaPasswordField1FocusGained
-    //FocusLost
+    //FocusLost (Restaura o texto padrão se o campo não for mais selecionado e não estiver preenchido)
     private void txtNomeFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtNomeFocusLost
-        if(txtNome.getText().equals("")){
+        if (txtNome.getText().equals("")) {
             txtNome.setText("Digite seu nome");
         }
     }//GEN-LAST:event_txtNomeFocusLost
 
     private void txtEmailFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtEmailFocusLost
-        if(txtEmail.getText().equals("")){
+        if (txtEmail.getText().equals("")) {
             txtEmail.setText("Digite seu e-mail");
         }
     }//GEN-LAST:event_txtEmailFocusLost
 
     private void txtCpfFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtCpfFocusLost
-        if(txtCpf.getText().equals("")){
+        if (txtCpf.getText().equals("")) {
             txtCpf.setText("Digite seu CPF");
         }
     }//GEN-LAST:event_txtCpfFocusLost
@@ -260,6 +274,8 @@ public class InsertDadosPaciente extends javax.swing.JFrame {
     private images.SVGImage btnReturn;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JLabel lblSenha;
+    private javax.swing.JLabel lblSenha1;
     private javax.swing.JPasswordField senhaPasswordField1;
     private javax.swing.JPasswordField senhaPasswordField2;
     private javax.swing.JTextField txtCpf;

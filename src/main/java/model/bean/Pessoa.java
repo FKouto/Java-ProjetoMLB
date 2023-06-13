@@ -2,15 +2,15 @@ package model.bean;
 
 public abstract class Pessoa {
 
-    private int idPessoa;
-    private String nome;
-    private String email;
-    private String senha;
+    private int idPessoa; // ID da pessoa
+    private String nome; // Nome da pessoa
+    private String email; // Email da pessoa
+    private String senha; // Senha da pessoa
 
-    //Construtor
+    // CONSTRUTOR
     public Pessoa() {
     }
-
+    
     public Pessoa(int idPessoa, String nome, String email, String senha) {
         this.idPessoa = idPessoa;
         this.nome = nome;
@@ -18,12 +18,13 @@ public abstract class Pessoa {
         this.senha = senha;
     }
 
+    // Construtor alternativo que recebe apenas email e senha(Usado para Login
     public Pessoa(String email, String senha) {
         this.email = email;
         this.senha = senha;
     }
 
-    //Getters & Setters
+    // Getters & Setters
     public String getNome() {
         return nome;
     }

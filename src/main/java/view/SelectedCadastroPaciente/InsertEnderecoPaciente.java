@@ -169,26 +169,28 @@ public class InsertEnderecoPaciente extends javax.swing.JFrame {
     }//GEN-LAST:event_btnReturnMouseClicked
 
     private void btnInserirEnderecoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInserirEnderecoActionPerformed
-        //Aula dia 13 - Apostila 13_apostila... Pag3
-        //Identificando Dados Inseridos
+        // Aula dia 13 - Apostila 13_apostila... Pag3
+        // Obtem os dados
         String rua = txtRua.getText();
         String bairro = txtBairro.getText();
         String cidade = txtCidade.getText();
         String estado = txtEstado.getText();
         int cep = Integer.parseInt(txtCep.getText());
         try {
+            // Criando um objeto Endereço com os dados inseridos
             Endereco endereco = new Endereco(0, rua, bairro, cidade, estado, cep);
             PacienteDAO pacientedao = new PacienteDAO();
-            pacientedao.createEndereco(endereco);
+            // Inserindo o endereço no banco de dados
+            pacientedao.createEnderecoPaciente(endereco);
             InsertDadosPaciente clickNextPage = new InsertDadosPaciente();
             clickNextPage.setVisible(true);
             this.dispose();
             System.out.println("Enderço Salvos com sucesso.");
         } catch (Exception e) {
-            System.out.println("Não foi possivel inserir");
+            System.out.println("Não foi possivel inserir endereço." + e.getMessage());
         }
     }//GEN-LAST:event_btnInserirEnderecoActionPerformed
-    //Focus Gained
+    //FocusGained (Funciona para limpar o campo quando é selecionado)
     private void txtRuaFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtRuaFocusGained
         if (txtRua.getText().equals("Rua")) {
             txtRua.setText("");
@@ -218,7 +220,7 @@ public class InsertEnderecoPaciente extends javax.swing.JFrame {
             txtCep.setText("");
         }
     }//GEN-LAST:event_txtCepFocusGained
-    //FocusLost
+    //FocusLost (Restaura o texto padrão se o campo não for mais selecionado e não estiver preenchido)
     private void txtRuaFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtRuaFocusLost
         if (txtRua.getText().equals("")) {
             txtRua.setText("Rua");

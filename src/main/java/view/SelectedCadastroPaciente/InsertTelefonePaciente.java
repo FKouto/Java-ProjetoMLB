@@ -125,11 +125,14 @@ public class InsertTelefonePaciente extends javax.swing.JFrame {
         String celular = txtCelular.getText();
         String celular1 = txtCelular1.getText();
         try {
+            // Verifica se o número de celular da primera label é igual o da segunda
             if (celular.equals(celular1)) {
+                // Criando um objeto Telefone com os dados inseridos
                 Telefone telefone = new Telefone(0, celular);
                 PacienteDAO pacientedao = new PacienteDAO();
-                pacientedao.createTelefone(telefone);
-                System.out.println("Telefone cadastrado. Aguardando outros dados.");
+                // Inserindo o telefone no banco de dados
+                pacientedao.createTelefonePaciente(telefone);
+                System.out.println("Telefone inserido com sucesso.");
             } else {
                 JOptionPane.showMessageDialog(null, "Números não coincidem. Tente novamente.");
             }
@@ -141,27 +144,27 @@ public class InsertTelefonePaciente extends javax.swing.JFrame {
             System.out.println("Não foi possivel inserir" + e.getMessage());
         }
     }//GEN-LAST:event_btnInserirTelefoneActionPerformed
-    //FocusGained
+    //FocusGained (Funciona para limpar o campo quando é selecionado)
     private void txtCelularFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtCelularFocusGained
-        if(txtCelular.getText().equals("Celular")){
+        if (txtCelular.getText().equals("Celular")) {
             txtCelular.setText("");
         }
     }//GEN-LAST:event_txtCelularFocusGained
 
     private void txtCelular1FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtCelular1FocusGained
-        if(txtCelular1.getText().equals("Celular")){
+        if (txtCelular1.getText().equals("Celular")) {
             txtCelular1.setText("");
         }
     }//GEN-LAST:event_txtCelular1FocusGained
-    //FocusLost
+    //FocusLost (Restaura o texto padrão se o campo não for mais selecionado e não estiver preenchido)
     private void txtCelularFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtCelularFocusLost
-        if(txtCelular.getText().equals("")){
+        if (txtCelular.getText().equals("")) {
             txtCelular.setText("Celular");
         }
     }//GEN-LAST:event_txtCelularFocusLost
 
     private void txtCelular1FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtCelular1FocusLost
-        if(txtCelular1.getText().equals("")){
+        if (txtCelular1.getText().equals("")) {
             txtCelular1.setText("Celular");
         }
     }//GEN-LAST:event_txtCelular1FocusLost
