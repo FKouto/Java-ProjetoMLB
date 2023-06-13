@@ -7,8 +7,8 @@ import model.bean.Endereco;
 import model.bean.Telefone;
 
 public class PacienteDAO {
-    //Verifica se o usuário existe no banco de dados
 
+    // Verifica se o usuário existe no banco de dados
     public boolean existe(Paciente paciente) throws Exception {
         String sql = "SELECT * FROM paciente WHERE email = ? AND senha = ?";
         try (Connection conn = ConexaoBD.obtemConexao(); PreparedStatement ps = conn.prepareStatement(sql)) {
@@ -20,7 +20,7 @@ public class PacienteDAO {
         }
     }
 
-    //Obter nome do usuário com base no e-mail para mostrar Bem-Vindo (nome)...
+    // Obter nome do usuário com base no e-mail para mostrar Bem-Vindo (nome)...
     public String obterNomePaciente(String email) throws Exception {
         // Variável para armazenar o nome do paciente
         String nomePaciente = null;
@@ -39,7 +39,35 @@ public class PacienteDAO {
         return nomePaciente;
     }
 
-    //Create
+    //CRUD
+    //CREATE
+    //CREATE TELEFONE
+    public void createTelefone(Telefone telefone) throws SQLException {
+        Connection conn = null;
+        PreparedStatement create = null;
+
+        try {
+            //Obtem conexão com o banco de dados
+            conn = ConexaoBD.obtemConexao();
+            //Preparando o SQL para o inserir Paciente
+            String sql = "INSERT INTO telefone_paciente (celular) VALUES (?)";
+            create = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+            create.setString(1, telefone.getNumero());
+            //Executa a inserção
+            create.executeUpdate();
+            // Obtém a chave gerada
+            ResultSet generatedKeys = create.getGeneratedKeys();
+            generatedKeys.next();
+            int idTel = generatedKeys.getInt(1);
+            telefone.setCodTel(idTel);
+
+            System.out.println("Telefone inserido com sucesso!");
+        } catch (SQLException e) {
+            System.out.println("Erro ao inserir paciente: " + e.getMessage());
+        }
+    }
+
+    //CREATE ENDERECO
     public void createEndereco(Endereco endereco) throws SQLException {
         Connection conn = null;
         PreparedStatement create = null;
@@ -75,31 +103,7 @@ public class PacienteDAO {
         }
     }
 
-    public void createTelefone(Telefone telefone) throws SQLException {
-        Connection conn = null;
-        PreparedStatement create = null;
-
-        try {
-            //Obtem conexão com o banco de dados
-            conn = ConexaoBD.obtemConexao();
-            //Preparando o SQL para o inserir Paciente
-            String sql = "INSERT INTO telefone_paciente (celular) VALUES (?)";
-            create = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
-            create.setString(1, telefone.getNumero());
-            //Executa a inserção
-            create.executeUpdate();
-            // Obtém a chave gerada
-            ResultSet generatedKeys = create.getGeneratedKeys();
-            generatedKeys.next();
-            int idTel = generatedKeys.getInt(1);
-            telefone.setCodTel(idTel);
-
-            System.out.println("Telefone inserido com sucesso!");
-        } catch (SQLException e) {
-            System.out.println("Erro ao inserir paciente: " + e.getMessage());
-        }
-    }
-
+    //CREATE PACIENTE
     public void createPaciente(Paciente paciente) throws SQLException {
         Connection conn = null;
         PreparedStatement create = null;
@@ -162,5 +166,5 @@ public class PacienteDAO {
             }
         }
     }
-
+    //UPDATE
 }
