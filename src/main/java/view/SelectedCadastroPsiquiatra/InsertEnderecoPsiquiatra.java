@@ -1,12 +1,12 @@
-package view.SelectedCadastroPaciente;
+package view.SelectedCadastroPsiquiatra;
 
 import javax.swing.*;
 import model.bean.Endereco;
-import model.dao.PacienteDAO;
+import model.dao.PsiquiatraDAO;
 
-public class InsertEnderecoPaciente extends javax.swing.JFrame {
+public class InsertEnderecoPsiquiatra extends javax.swing.JFrame {
 
-    public InsertEnderecoPaciente() {
+    public InsertEnderecoPsiquiatra() {
         initComponents();
         /*Icon Janela*/
         // Define o ícone da janela como a imagem localizada em "/images/icon.png".
@@ -14,15 +14,9 @@ public class InsertEnderecoPaciente extends javax.swing.JFrame {
         // Define a posição da janela como centralizada em relação à tela.
         this.setLocationRelativeTo(null);
         // Define a imagem de fundo SVG
-        Background.setSvgImage("images/InsertAddressPacienteBackground.svg", 1000, 640);
+        Background.setSvgImage("images/InsertAddressProfissionalBackground.svg", 1000, 640);
         // Imagem botão de retorno
         btnReturn.setSvgImage("images/returnIcon.svg", 44, 35);
-        //FocusGained Placeholder
-        txtRua.setFocusable(true);
-        txtBairro.setFocusable(true);
-        txtCidade.setFocusable(true);
-        txtEstado.setFocusable(true);
-        txtCep.setFocusable(true);
     }
 
     /**
@@ -45,7 +39,7 @@ public class InsertEnderecoPaciente extends javax.swing.JFrame {
         Background = new images.SVGImage();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Endereço | Paciente");
+        setTitle("Endereço | Psiquiatra");
         setName("InsertPersonalDataFrame"); // NOI18N
         setResizable(false);
 
@@ -63,70 +57,30 @@ public class InsertEnderecoPaciente extends javax.swing.JFrame {
         txtRua.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         txtRua.setText("Rua");
         txtRua.setBorder(null);
-        txtRua.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                txtRuaFocusGained(evt);
-            }
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                txtRuaFocusLost(evt);
-            }
-        });
         jPanel1.add(txtRua, new org.netbeans.lib.awtextra.AbsoluteConstraints(385, 195, 230, 30));
 
         txtBairro.setBackground(new java.awt.Color(247, 247, 247));
         txtBairro.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         txtBairro.setText("Bairro");
         txtBairro.setBorder(null);
-        txtBairro.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                txtBairroFocusGained(evt);
-            }
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                txtBairroFocusLost(evt);
-            }
-        });
         jPanel1.add(txtBairro, new org.netbeans.lib.awtextra.AbsoluteConstraints(385, 240, 230, 30));
 
         txtCidade.setBackground(new java.awt.Color(247, 247, 247));
         txtCidade.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         txtCidade.setText("Cidade");
         txtCidade.setBorder(null);
-        txtCidade.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                txtCidadeFocusGained(evt);
-            }
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                txtCidadeFocusLost(evt);
-            }
-        });
         jPanel1.add(txtCidade, new org.netbeans.lib.awtextra.AbsoluteConstraints(385, 285, 230, 30));
 
         txtEstado.setBackground(new java.awt.Color(247, 247, 247));
         txtEstado.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         txtEstado.setText("Estado");
         txtEstado.setBorder(null);
-        txtEstado.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                txtEstadoFocusGained(evt);
-            }
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                txtEstadoFocusLost(evt);
-            }
-        });
         jPanel1.add(txtEstado, new org.netbeans.lib.awtextra.AbsoluteConstraints(385, 330, 230, 30));
 
         txtCep.setBackground(new java.awt.Color(247, 247, 247));
         txtCep.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         txtCep.setText("CEP");
         txtCep.setBorder(null);
-        txtCep.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                txtCepFocusGained(evt);
-            }
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                txtCepFocusLost(evt);
-            }
-        });
         jPanel1.add(txtCep, new org.netbeans.lib.awtextra.AbsoluteConstraints(385, 375, 230, 30));
 
         btnInserirEndereco.setBackground(new java.awt.Color(227, 1, 64));
@@ -156,15 +110,14 @@ public class InsertEnderecoPaciente extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-    /*Ação do botão voltar*/
+
     private void btnReturnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnReturnMouseClicked
-        InsertTelefonePaciente returnToTelefone = new InsertTelefonePaciente();
+        InsertTelefonePsiquiatra returnToTelefone = new InsertTelefonePsiquiatra();
         returnToTelefone.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_btnReturnMouseClicked
 
     private void btnInserirEnderecoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInserirEnderecoActionPerformed
-        // Aula dia 13 - Apostila 13_apostila... Pag3
         // Obtem os dados
         String rua = txtRua.getText();
         String bairro = txtBairro.getText();
@@ -174,10 +127,10 @@ public class InsertEnderecoPaciente extends javax.swing.JFrame {
         try {
             // Criando um objeto Endereço com os dados inseridos
             Endereco endereco = new Endereco(0, rua, bairro, cidade, estado, cep);
-            PacienteDAO pacientedao = new PacienteDAO();
+            PsiquiatraDAO psiquiatradao = new PsiquiatraDAO();
             // Inserindo o endereço no banco de dados
-            pacientedao.createEnderecoPaciente(endereco);
-            InsertDadosPaciente clickNextPage = new InsertDadosPaciente();
+            psiquiatradao.createEnderecoPsiquiatra(endereco);
+            InsertDadosPsiquiatra clickNextPage = new InsertDadosPsiquiatra();
             clickNextPage.setVisible(true);
             this.dispose();
             System.out.println("Enderço Salvos com sucesso.");
@@ -185,66 +138,6 @@ public class InsertEnderecoPaciente extends javax.swing.JFrame {
             System.out.println("Não foi possivel inserir endereço." + e.getMessage());
         }
     }//GEN-LAST:event_btnInserirEnderecoActionPerformed
-    //FocusGained (Funciona para limpar o campo quando é selecionado)
-    private void txtRuaFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtRuaFocusGained
-        if (txtRua.getText().equals("Rua")) {
-            txtRua.setText("");
-        }
-    }//GEN-LAST:event_txtRuaFocusGained
-
-    private void txtBairroFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtBairroFocusGained
-        if (txtBairro.getText().equals("Bairro")) {
-            txtBairro.setText("");
-        }
-    }//GEN-LAST:event_txtBairroFocusGained
-
-    private void txtCidadeFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtCidadeFocusGained
-        if (txtCidade.getText().equals("Cidade")) {
-            txtCidade.setText("");
-        }
-    }//GEN-LAST:event_txtCidadeFocusGained
-
-    private void txtEstadoFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtEstadoFocusGained
-        if (txtEstado.getText().equals("Estado")) {
-            txtEstado.setText("");
-        }
-    }//GEN-LAST:event_txtEstadoFocusGained
-
-    private void txtCepFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtCepFocusGained
-        if (txtCep.getText().equals("CEP")) {
-            txtCep.setText("");
-        }
-    }//GEN-LAST:event_txtCepFocusGained
-    //FocusLost (Restaura o texto padrão se o campo não for mais selecionado e não estiver preenchido)
-    private void txtRuaFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtRuaFocusLost
-        if (txtRua.getText().equals("")) {
-            txtRua.setText("Rua");
-        }
-    }//GEN-LAST:event_txtRuaFocusLost
-
-    private void txtBairroFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtBairroFocusLost
-        if (txtBairro.getText().equals("Bairro")) {
-            txtBairro.setText("Bairro");
-        }
-    }//GEN-LAST:event_txtBairroFocusLost
-
-    private void txtCidadeFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtCidadeFocusLost
-        if (txtCidade.getText().equals("Cidade")) {
-            txtCidade.setText("Cidade");
-        }
-    }//GEN-LAST:event_txtCidadeFocusLost
-
-    private void txtEstadoFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtEstadoFocusLost
-        if (txtEstado.getText().equals("")) {
-            txtEstado.setText("Estado");
-        }
-    }//GEN-LAST:event_txtEstadoFocusLost
-
-    private void txtCepFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtCepFocusLost
-        if (txtCep.getText().equals("")) {
-            txtCep.setText("CEP");
-        }
-    }//GEN-LAST:event_txtCepFocusLost
 
     /**
      * @param args the command line arguments
@@ -263,14 +156,62 @@ public class InsertEnderecoPaciente extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(InsertEnderecoPaciente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(InsertEnderecoPsiquiatra.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(InsertEnderecoPaciente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(InsertEnderecoPsiquiatra.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(InsertEnderecoPaciente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(InsertEnderecoPsiquiatra.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(InsertEnderecoPaciente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(InsertEnderecoPsiquiatra.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
@@ -291,7 +232,7 @@ public class InsertEnderecoPaciente extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new InsertEnderecoPaciente().setVisible(true);
+                new InsertEnderecoPsiquiatra().setVisible(true);
             }
         });
     }

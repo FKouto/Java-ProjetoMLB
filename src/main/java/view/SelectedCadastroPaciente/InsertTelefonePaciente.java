@@ -40,7 +40,7 @@ public class InsertTelefonePaciente extends javax.swing.JFrame {
         Background = new images.SVGImage();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Cadastro Paciente");
+        setTitle("Contato | Paciente");
         setName("InsertPersonalDataFrame"); // NOI18N
         setResizable(false);
 

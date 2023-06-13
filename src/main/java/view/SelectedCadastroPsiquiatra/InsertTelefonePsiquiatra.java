@@ -1,13 +1,13 @@
-package view.SelectedCadastroPsicologo;
+package view.SelectedCadastroPsiquiatra;
 
 import javax.swing.*;
 import model.bean.Telefone;
-import model.dao.PsicologoDAO;
+import model.dao.PsiquiatraDAO;
 import view.ViewSelectTypeCadastro;
 
-public class InsertTelefonePsicologo extends javax.swing.JFrame {
+public class InsertTelefonePsiquiatra extends javax.swing.JFrame {
 
-    public InsertTelefonePsicologo() {
+    public InsertTelefonePsiquiatra() {
         initComponents();
         /*Icon Janela*/
         // Define o ícone da janela como a imagem localizada em "/images/icon.png".
@@ -38,7 +38,7 @@ public class InsertTelefonePsicologo extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Contato | Psicologo");
+        setTitle("Contato | Psiquiatra");
         setName("InsertPersonalDataFrame"); // NOI18N
         setResizable(false);
 
@@ -110,11 +110,11 @@ public class InsertTelefonePsicologo extends javax.swing.JFrame {
             try {
                 // Criando um objeto Telefone com os dados inseridos
                 Telefone telefone = new Telefone(0, celular);
-                PsicologoDAO psicologodao = new PsicologoDAO();
+                PsiquiatraDAO psiquiatradao = new PsiquiatraDAO();
                 // Inserindo o telefone no banco de dados
-                psicologodao.createTelefonePsicologo(telefone);
+                psiquiatradao.createTelefonePsiquiatra(telefone);
                 System.out.println("Telefone inserido com sucesso.");
-                InsertEnderecoPsicologo clickNextPage = new InsertEnderecoPsicologo();
+                InsertEnderecoPsiquiatra clickNextPage = new InsertEnderecoPsiquiatra();
                 clickNextPage.setVisible(true);
                 this.dispose();
 
@@ -144,14 +144,46 @@ public class InsertTelefonePsicologo extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(InsertTelefonePsicologo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(InsertTelefonePsiquiatra.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(InsertTelefonePsicologo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(InsertTelefonePsiquiatra.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(InsertTelefonePsicologo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(InsertTelefonePsiquiatra.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(InsertTelefonePsicologo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(InsertTelefonePsiquiatra.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
@@ -188,7 +220,7 @@ public class InsertTelefonePsicologo extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new InsertTelefonePsicologo().setVisible(true);
+                new InsertTelefonePsiquiatra().setVisible(true);
             }
         });
     }

@@ -1,12 +1,12 @@
-package view.SelectedCadastroPaciente;
+package view.SelectedCadastroPsiquiatra;
 
-import model.dao.PacienteDAO;
+import model.dao.PsiquiatraDAO;
 import javax.swing.*;
-import model.bean.Paciente;
+import model.bean.Psiquiatra;
 
-public class InsertDadosPaciente extends javax.swing.JFrame {
+public class InsertDadosPsiquiatra extends javax.swing.JFrame {
 
-    public InsertDadosPaciente() {
+    public InsertDadosPsiquiatra() {
         initComponents();
         /*Icon Janela*/
         // Define o ícone da janela como a imagem localizada em "/images/icon.png".
@@ -14,12 +14,14 @@ public class InsertDadosPaciente extends javax.swing.JFrame {
         // Define a posição da janela como centralizada em relação à tela.
         this.setLocationRelativeTo(null);
         // Define a imagem de fundo SVG
-        Background.setSvgImage("images/InsertPersonalDataBackground.svg", 1000, 640);
+        Background.setSvgImage("images/InsertProfissionalDataBackground.svg", 1000, 640);
         // Imagem botão de retorno
         btnReturn.setSvgImage("images/returnIcon.svg", 44, 35);
         txtNome.setFocusable(true);
         txtEmail.setFocusable(true);
-        txtCpf.setFocusable(true);
+        txtCrm.setFocusable(true);
+        txtProfissionalizacao.setFocusable(true);
+        txtTipoAtendimento.setFocusable(true);
     }
 
     /**
@@ -35,14 +37,16 @@ public class InsertDadosPaciente extends javax.swing.JFrame {
         btnReturn = new images.SVGImage();
         txtNome = new javax.swing.JTextField();
         txtEmail = new javax.swing.JTextField();
-        txtCpf = new javax.swing.JTextField();
+        txtCrm = new javax.swing.JTextField();
+        txtProfissionalizacao = new javax.swing.JTextField();
+        txtTipoAtendimento = new javax.swing.JTextField();
         senhaPasswordField1 = new javax.swing.JPasswordField();
         senhaPasswordField2 = new javax.swing.JPasswordField();
         btnCriarConta = new javax.swing.JButton();
         Background = new images.SVGImage();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Dados Pessoais | Paciente");
+        setTitle("Dados Pessoais | Psiquiatra");
         setName("InsertPersonalDataFrame"); // NOI18N
         setResizable(false);
 
@@ -68,7 +72,7 @@ public class InsertDadosPaciente extends javax.swing.JFrame {
                 txtNomeFocusLost(evt);
             }
         });
-        jPanel1.add(txtNome, new org.netbeans.lib.awtextra.AbsoluteConstraints(385, 195, 230, 30));
+        jPanel1.add(txtNome, new org.netbeans.lib.awtextra.AbsoluteConstraints(385, 149, 230, 30));
 
         txtEmail.setBackground(new java.awt.Color(247, 247, 247));
         txtEmail.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
@@ -82,21 +86,49 @@ public class InsertDadosPaciente extends javax.swing.JFrame {
                 txtEmailFocusLost(evt);
             }
         });
-        jPanel1.add(txtEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(385, 240, 230, 30));
+        jPanel1.add(txtEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(385, 194, 230, 30));
 
-        txtCpf.setBackground(new java.awt.Color(247, 247, 247));
-        txtCpf.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
-        txtCpf.setText("Digite seu CPF");
-        txtCpf.setBorder(null);
-        txtCpf.addFocusListener(new java.awt.event.FocusAdapter() {
+        txtCrm.setBackground(new java.awt.Color(247, 247, 247));
+        txtCrm.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        txtCrm.setText("Digite seu CRM");
+        txtCrm.setBorder(null);
+        txtCrm.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
-                txtCpfFocusGained(evt);
+                txtCrmFocusGained(evt);
             }
             public void focusLost(java.awt.event.FocusEvent evt) {
-                txtCpfFocusLost(evt);
+                txtCrmFocusLost(evt);
             }
         });
-        jPanel1.add(txtCpf, new org.netbeans.lib.awtextra.AbsoluteConstraints(385, 285, 230, 30));
+        jPanel1.add(txtCrm, new org.netbeans.lib.awtextra.AbsoluteConstraints(385, 239, 230, 30));
+
+        txtProfissionalizacao.setBackground(new java.awt.Color(247, 247, 247));
+        txtProfissionalizacao.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        txtProfissionalizacao.setText("Digite sua Profissionalização");
+        txtProfissionalizacao.setBorder(null);
+        txtProfissionalizacao.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txtProfissionalizacaoFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtProfissionalizacaoFocusLost(evt);
+            }
+        });
+        jPanel1.add(txtProfissionalizacao, new org.netbeans.lib.awtextra.AbsoluteConstraints(385, 284, 230, 30));
+
+        txtTipoAtendimento.setBackground(new java.awt.Color(247, 247, 247));
+        txtTipoAtendimento.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        txtTipoAtendimento.setText("On-line ou Presencial");
+        txtTipoAtendimento.setBorder(null);
+        txtTipoAtendimento.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txtTipoAtendimentoFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtTipoAtendimentoFocusLost(evt);
+            }
+        });
+        jPanel1.add(txtTipoAtendimento, new org.netbeans.lib.awtextra.AbsoluteConstraints(385, 329, 230, 30));
 
         senhaPasswordField1.setBackground(new java.awt.Color(247, 247, 247));
         senhaPasswordField1.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
@@ -106,12 +138,12 @@ public class InsertDadosPaciente extends javax.swing.JFrame {
                 senhaPasswordField1FocusGained(evt);
             }
         });
-        jPanel1.add(senhaPasswordField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(385, 330, 230, 30));
+        jPanel1.add(senhaPasswordField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(385, 374, 230, 30));
 
         senhaPasswordField2.setBackground(new java.awt.Color(247, 247, 247));
         senhaPasswordField2.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         senhaPasswordField2.setBorder(null);
-        jPanel1.add(senhaPasswordField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(385, 375, 230, 30));
+        jPanel1.add(senhaPasswordField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(385, 419, 230, 30));
 
         btnCriarConta.setBackground(new java.awt.Color(227, 1, 64));
         btnCriarConta.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
@@ -122,7 +154,7 @@ public class InsertDadosPaciente extends javax.swing.JFrame {
                 btnCriarContaActionPerformed(evt);
             }
         });
-        jPanel1.add(btnCriarConta, new org.netbeans.lib.awtextra.AbsoluteConstraints(377, 414, 245, 38));
+        jPanel1.add(btnCriarConta, new org.netbeans.lib.awtextra.AbsoluteConstraints(377, 459, 245, 38));
         jPanel1.add(Background, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1000, 640));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -140,7 +172,7 @@ public class InsertDadosPaciente extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnReturnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnReturnMouseClicked
-        InsertEnderecoPaciente returnToAddress = new InsertEnderecoPaciente();
+        InsertEnderecoPsiquiatra returnToAddress = new InsertEnderecoPsiquiatra();
         returnToAddress.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_btnReturnMouseClicked
@@ -150,22 +182,24 @@ public class InsertDadosPaciente extends javax.swing.JFrame {
         // Obtendo os dados
         String nome = txtNome.getText();
         String email = txtEmail.getText();
-        int cpf = Integer.parseInt(txtCpf.getText());
+        int crm = Integer.parseInt(txtCrm.getText());
+        String profissionalizacao = txtProfissionalizacao.getText();
+        String tipo = txtTipoAtendimento.getText();
         String senha1 = new String(senhaPasswordField1.getPassword());
         String senha2 = new String(senhaPasswordField2.getPassword());
-        // Verifica se as senhas são iguais
+        //Verifica se as senehas são iguais
         if (senha1.equals(senha2)) {
             try {
-                // Criando um objeto Paciente com os dados inseridos
-                Paciente paciente = new Paciente(0, nome, cpf, email, senha1);
-                PacienteDAO pacientedao = new PacienteDAO();
-                // Inserindo o paciente no banco de dados
-                pacientedao.createPaciente(paciente);
-                System.out.println("Paciente inserido com sucesso");
+                // Criando um objeto Psicologo com os dados inseridos
+                Psiquiatra psiquiatra = new Psiquiatra(0, nome, crm, profissionalizacao, tipo, email, senha1);
+                PsiquiatraDAO psiquiatradao = new PsiquiatraDAO();
+                // Inserindo o psicologo no banco de dados
+                psiquiatradao.createPsiquiatra(psiquiatra);
+                System.out.println("Psiquiatra inserido com sucesso");
                 JOptionPane.showMessageDialog(null, "Registro realizado com sucesso.");
-                System.out.println("Paciente inserido com sucesso.");
+                System.out.println("Psiquiatra inserido com sucesso.");
             } catch (Exception e) {
-                System.out.println("Não foi possível inserir paciente " + e.getMessage());
+                System.out.println("Não foi possível inserir psiquiatra " + e.getMessage());
             }
         } else {
             JOptionPane.showMessageDialog(null, "Suas senhas não coincidem. Tente novamente.");
@@ -185,11 +219,11 @@ public class InsertDadosPaciente extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_txtEmailFocusGained
 
-    private void txtCpfFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtCpfFocusGained
-        if (txtCpf.getText().equals("Digite seu CPF")) {
-            txtCpf.setText("");
+    private void txtCrmFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtCrmFocusGained
+        if (txtCrm.getText().equals("Digite seu CRM")) {
+            txtCrm.setText("");
         }
-    }//GEN-LAST:event_txtCpfFocusGained
+    }//GEN-LAST:event_txtCrmFocusGained
 
     private void senhaPasswordField1FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_senhaPasswordField1FocusGained
         // TODO add your handling code here:
@@ -207,11 +241,35 @@ public class InsertDadosPaciente extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_txtEmailFocusLost
 
-    private void txtCpfFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtCpfFocusLost
-        if (txtCpf.getText().equals("")) {
-            txtCpf.setText("Digite seu CPF");
+    private void txtCrmFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtCrmFocusLost
+        if (txtCrm.getText().equals("")) {
+            txtCrm.setText("Digite seu CRM");
         }
-    }//GEN-LAST:event_txtCpfFocusLost
+    }//GEN-LAST:event_txtCrmFocusLost
+
+    private void txtProfissionalizacaoFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtProfissionalizacaoFocusGained
+        if (txtProfissionalizacao.getText().equals("Digite sua Profissionalização")) {
+            txtProfissionalizacao.setText("");
+        }
+    }//GEN-LAST:event_txtProfissionalizacaoFocusGained
+
+    private void txtProfissionalizacaoFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtProfissionalizacaoFocusLost
+        if (txtProfissionalizacao.getText().equals("")) {
+            txtProfissionalizacao.setText("Digite sua Profissionalização");
+        }
+    }//GEN-LAST:event_txtProfissionalizacaoFocusLost
+
+    private void txtTipoAtendimentoFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtTipoAtendimentoFocusGained
+        if (txtTipoAtendimento.getText().equals("On-line ou Presencial")) {
+            txtTipoAtendimento.setText("");
+        }
+    }//GEN-LAST:event_txtTipoAtendimentoFocusGained
+
+    private void txtTipoAtendimentoFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtTipoAtendimentoFocusLost
+        if (txtTipoAtendimento.getText().equals("")) {
+            txtTipoAtendimento.setText("On-line ou Presencial");
+        }
+    }//GEN-LAST:event_txtTipoAtendimentoFocusLost
 
     /**
      * @param args the command line arguments
@@ -230,14 +288,42 @@ public class InsertDadosPaciente extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(InsertDadosPaciente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(InsertDadosPsiquiatra.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(InsertDadosPaciente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(InsertDadosPsiquiatra.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(InsertDadosPaciente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(InsertDadosPsiquiatra.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(InsertDadosPaciente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(InsertDadosPsiquiatra.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
@@ -246,7 +332,7 @@ public class InsertDadosPaciente extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new InsertDadosPaciente().setVisible(true);
+                new InsertDadosPsiquiatra().setVisible(true);
             }
         });
     }
@@ -258,8 +344,10 @@ public class InsertDadosPaciente extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPasswordField senhaPasswordField1;
     private javax.swing.JPasswordField senhaPasswordField2;
-    private javax.swing.JTextField txtCpf;
+    private javax.swing.JTextField txtCrm;
     private javax.swing.JTextField txtEmail;
     private javax.swing.JTextField txtNome;
+    private javax.swing.JTextField txtProfissionalizacao;
+    private javax.swing.JTextField txtTipoAtendimento;
     // End of variables declaration//GEN-END:variables
 }

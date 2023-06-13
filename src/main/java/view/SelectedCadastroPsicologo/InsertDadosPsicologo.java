@@ -46,7 +46,7 @@ public class InsertDadosPsicologo extends javax.swing.JFrame {
         Background = new images.SVGImage();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Cadastro Paciente");
+        setTitle("Dados Pessoais | Psicologo");
         setName("InsertPersonalDataFrame"); // NOI18N
         setResizable(false);
 
@@ -195,11 +195,11 @@ public class InsertDadosPsicologo extends javax.swing.JFrame {
                 PsicologoDAO psicologodao = new PsicologoDAO();
                 // Inserindo o psicologo no banco de dados
                 psicologodao.createPsicologo(psicologo);
-                System.out.println("Paciente inserido com sucesso");
+                System.out.println("Psicologo inserido com sucesso");
                 JOptionPane.showMessageDialog(null, "Registro realizado com sucesso.");
-                System.out.println("Paciente inserido com sucesso.");
+                System.out.println("Psicologo inserido com sucesso.");
             } catch (Exception e) {
-                System.out.println("Não foi possível inserir paciente " + e.getMessage());
+                System.out.println("Não foi possível inserir psicologo " + e.getMessage());
             }
         } else {
             JOptionPane.showMessageDialog(null, "Suas senhas não coincidem. Tente novamente.");

@@ -3,19 +3,26 @@ package model.bean;
 public class Psiquiatra extends Pessoa {
 
     private int numConselho;
-    private String profissionalização;
+    private String profissionalizacao;
     private String tipoConsulta;
     private Telefone telefone; // Objeto Telefone que armazena o número de telefone do paciente
     private Endereco endereco; // Objeto Endereco que representa o endereço do paciente
 
     // CONSTRUTOR
-    public Psiquiatra(int numConselho, String profissionalização, String tipoConsulta, Telefone telefone, Endereco endereco, int idPessoa, String nome, String email, String senha) {
+    public Psiquiatra(int numConselho, String profissionalizacao, String tipoConsulta, Telefone telefone, Endereco endereco, int idPessoa, String nome, String email, String senha) {
         super(idPessoa, nome, email, senha);
         this.numConselho = numConselho;
-        this.profissionalização = profissionalização;
+        this.profissionalizacao = profissionalizacao;
         this.tipoConsulta = tipoConsulta;
         this.telefone = telefone;
         this.endereco = endereco;
+    }
+    
+    public Psiquiatra(int idPessoa, String nome, int numConselho, String profissionalizacao, String tipoConsulta, String email, String senha){
+        super(idPessoa, nome, email, senha);
+        this.numConselho = numConselho;
+        this.profissionalizacao = profissionalizacao;
+        this.tipoConsulta = tipoConsulta;
     }
 
     // Getters & Setters
@@ -27,12 +34,12 @@ public class Psiquiatra extends Pessoa {
         this.numConselho = numConselho;
     }
 
-    public String getProfissionalização() {
-        return profissionalização;
+    public String getProfissionalizacao() {
+        return profissionalizacao;
     }
 
-    public void setProfissionalização(String profissionalização) {
-        this.profissionalização = profissionalização;
+    public void setProfissionalizacao(String profissionalizacao) {
+        this.profissionalizacao = profissionalizacao;
     }
 
     public String getTipoConsulta() {

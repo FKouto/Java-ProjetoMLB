@@ -3,6 +3,7 @@ package view;
 import javax.swing.*;
 import view.SelectedCadastroPaciente.InsertTelefonePaciente;
 import view.SelectedCadastroPsicologo.InsertTelefonePsicologo;
+import view.SelectedCadastroPsiquiatra.InsertTelefonePsiquiatra;
 
 public class ViewSelectTypeCadastro extends javax.swing.JFrame {
 
@@ -116,7 +117,7 @@ public class ViewSelectTypeCadastro extends javax.swing.JFrame {
     }//GEN-LAST:event_btnPacienteActionPerformed
 
     private void btnPsicologoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPsicologoActionPerformed
-        // Cria uma instância da classe ViewSelectedProfissional
+        // Cria uma instância da classe ViewSelectedPsicologo
         InsertTelefonePsicologo openSelectedPsicologo = new InsertTelefonePsicologo();
         // Torna a janela atual invisível
         this.setVisible(false);
@@ -131,7 +132,12 @@ public class ViewSelectTypeCadastro extends javax.swing.JFrame {
     }//GEN-LAST:event_btnReturnMouseClicked
 
     private void btnPsiquiatraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPsiquiatraActionPerformed
-        // TODO add your handling code here:
+        // Cria uma instância da classe ViewSelectedPsiquiatra
+        InsertTelefonePsiquiatra openSelectedPsiquiatra = new InsertTelefonePsiquiatra();
+        // Torna a janela atual invisível
+        this.setVisible(false);
+        // Torna a janela openSelectedProfissional visível
+        openSelectedPsiquiatra.setVisible(true);
     }//GEN-LAST:event_btnPsiquiatraActionPerformed
 
     /**
