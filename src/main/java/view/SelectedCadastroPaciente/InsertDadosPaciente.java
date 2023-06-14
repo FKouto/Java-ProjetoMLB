@@ -3,6 +3,7 @@ package view.SelectedCadastroPaciente;
 import model.dao.PacienteDAO;
 import javax.swing.*;
 import model.bean.Paciente;
+import view.GoToLogin;
 
 public class InsertDadosPaciente extends javax.swing.JFrame {
 
@@ -162,8 +163,9 @@ public class InsertDadosPaciente extends javax.swing.JFrame {
                 // Inserindo o paciente no banco de dados
                 pacientedao.createPaciente(paciente);
                 System.out.println("Paciente inserido com sucesso");
-                JOptionPane.showMessageDialog(null, "Registro realizado com sucesso.");
-                System.out.println("Paciente inserido com sucesso.");
+                GoToLogin created = new GoToLogin();
+                created.setVisible(true);
+                this.dispose();
             } catch (Exception e) {
                 System.out.println("Não foi possível inserir paciente " + e.getMessage());
             }

@@ -9,7 +9,7 @@ import model.bean.Telefone;
 public class PsicologoDAO {
 
     // Verifica se o usuário existe no banco de dados
-    public boolean existePsicologo(Psicologo psicologo) throws Exception {
+    public boolean existe(Psicologo psicologo) throws Exception {
         String sql = "SELECT * FROM paciente WHERE email = ? AND senha = ?";
         try (Connection conn = ConexaoBD.obtemConexao(); PreparedStatement ps = conn.prepareStatement(sql)) {
             ps.setString(1, psicologo.getEmail());

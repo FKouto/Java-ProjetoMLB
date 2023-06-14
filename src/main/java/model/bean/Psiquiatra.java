@@ -24,6 +24,10 @@ public class Psiquiatra extends Pessoa {
         this.profissionalizacao = profissionalizacao;
         this.tipoConsulta = tipoConsulta;
     }
+    
+    public Psiquiatra(String email, String senha){
+        super(email, senha);
+    }
 
     // Getters & Setters
     public int getNumConselho() {

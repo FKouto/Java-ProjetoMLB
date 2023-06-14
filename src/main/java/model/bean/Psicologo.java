@@ -24,6 +24,10 @@ public class Psicologo extends Pessoa {
         this.profissionalizacao = profissionalizacao;
         this.tipoConsulta = tipoConsulta;
     }
+    
+    public Psicologo(String email, String senha){
+        super(email,senha);
+    }
 
     // Getters & Setters
     public int getNumConselho() {

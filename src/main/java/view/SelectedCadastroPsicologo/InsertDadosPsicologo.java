@@ -3,6 +3,7 @@ package view.SelectedCadastroPsicologo;
 import model.dao.PsicologoDAO;
 import javax.swing.*;
 import model.bean.Psicologo;
+import view.GoToLogin;
 
 public class InsertDadosPsicologo extends javax.swing.JFrame {
 
@@ -196,8 +197,9 @@ public class InsertDadosPsicologo extends javax.swing.JFrame {
                 // Inserindo o psicologo no banco de dados
                 psicologodao.createPsicologo(psicologo);
                 System.out.println("Psicologo inserido com sucesso");
-                JOptionPane.showMessageDialog(null, "Registro realizado com sucesso.");
-                System.out.println("Psicologo inserido com sucesso.");
+                GoToLogin created = new GoToLogin();
+                created.setVisible(true);
+                this.dispose();
             } catch (Exception e) {
                 System.out.println("Não foi possível inserir psicologo " + e.getMessage());
             }

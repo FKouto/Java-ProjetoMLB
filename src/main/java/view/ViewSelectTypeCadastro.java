@@ -62,7 +62,7 @@ public class ViewSelectTypeCadastro extends javax.swing.JFrame {
         btnPsicologo.setBackground(new java.awt.Color(227, 1, 64));
         btnPsicologo.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
         btnPsicologo.setForeground(new java.awt.Color(255, 255, 255));
-        btnPsicologo.setText("Psiquiatra");
+        btnPsicologo.setText("Psícologo");
         btnPsicologo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnPsicologoActionPerformed(evt);
@@ -73,7 +73,7 @@ public class ViewSelectTypeCadastro extends javax.swing.JFrame {
         btnPsiquiatra.setBackground(new java.awt.Color(227, 1, 64));
         btnPsiquiatra.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
         btnPsiquiatra.setForeground(new java.awt.Color(255, 255, 255));
-        btnPsiquiatra.setText("Psicólogo");
+        btnPsiquiatra.setText("Psiquiatra");
         btnPsiquiatra.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnPsiquiatraActionPerformed(evt);
