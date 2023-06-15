@@ -10,12 +10,12 @@ C:\Users\couto\OneDrive\Documentos\GitHub\PLMB - Local\src\main\java\model\bean\
 C:\Users\couto\OneDrive\Documentos\GitHub\PLMB - Local\src\main\java\model\dao\LoginDAO.java
 C:\Users\couto\OneDrive\Documentos\GitHub\PLMB - Local\src\main\java\model\bean\Login.java
 C:\Users\couto\OneDrive\Documentos\GitHub\PLMB - Local\src\main\java\model\dao\PsiquiatraDAO.java
+C:\Users\couto\OneDrive\Documentos\GitHub\PLMB - Local\src\main\java\view\Dashboard\DashboardMeuPerfil.java
 C:\Users\couto\OneDrive\Documentos\GitHub\PLMB - Local\src\main\java\view\GoToLogin.java
 C:\Users\couto\OneDrive\Documentos\GitHub\PLMB - Local\src\main\java\images\SVGImage.java
 C:\Users\couto\OneDrive\Documentos\GitHub\PLMB - Local\src\main\java\view\SelectedCadastroPaciente\InsertTelefonePaciente.java
 C:\Users\couto\OneDrive\Documentos\GitHub\PLMB - Local\src\main\java\model\bean\Paciente.java
 C:\Users\couto\OneDrive\Documentos\GitHub\PLMB - Local\src\main\java\model\dao\PsicologoDAO.java
-C:\Users\couto\OneDrive\Documentos\GitHub\PLMB - Local\src\main\java\view\Dashboard.java
 C:\Users\couto\OneDrive\Documentos\GitHub\PLMB - Local\src\main\java\model\bean\Psicologo.java
 C:\Users\couto\OneDrive\Documentos\GitHub\PLMB - Local\src\main\java\FelipeBranch\vazia.java
 C:\Users\couto\OneDrive\Documentos\GitHub\PLMB - Local\src\main\java\view\SelectedCadastroPsicologo\InsertTelefonePsicologo.java
@@ -24,7 +24,7 @@ C:\Users\couto\OneDrive\Documentos\GitHub\PLMB - Local\src\main\java\model\bean\
 C:\Users\couto\OneDrive\Documentos\GitHub\PLMB - Local\src\main\java\model\bean\Telefone.java
 C:\Users\couto\OneDrive\Documentos\GitHub\PLMB - Local\src\main\java\view\SelectedCadastroPsiquiatra\InsertTelefonePsiquiatra.java
 C:\Users\couto\OneDrive\Documentos\GitHub\PLMB - Local\src\main\java\model\dao\PacienteDAO.java
-C:\Users\couto\OneDrive\Documentos\GitHub\PLMB - Local\src\main\java\view\DashboardPsicologo.java
 C:\Users\couto\OneDrive\Documentos\GitHub\PLMB - Local\src\main\java\view\ViewLogin.java
+C:\Users\couto\OneDrive\Documentos\GitHub\PLMB - Local\src\main\java\view\Dashboard\DashboardPrincipal.java
 C:\Users\couto\OneDrive\Documentos\GitHub\PLMB - Local\src\main\java\view\SelectedCadastroPaciente\InsertEnderecoPaciente.java
 C:\Users\couto\OneDrive\Documentos\GitHub\PLMB - Local\src\main\java\view\SelectedCadastroPsiquiatra\InsertDadosPsiquiatra.java
