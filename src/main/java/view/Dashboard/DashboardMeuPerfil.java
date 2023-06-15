@@ -15,6 +15,10 @@ public class DashboardMeuPerfil extends javax.swing.JFrame {
         // Define a posição da janela como centralizada em relação à tela.
         this.setLocationRelativeTo(null);
         // Imagens
+        background.setSvgImage("images/Dashboard/MeuPerfil/backgroundMeuPerfil.svg",1310, 740);
+        btnDadosPessoais.setSvgImage("images/Dashboard/MeuPerfil/buttonDados.svg",144,39);
+        btnContato.setSvgImage("images/Dashboard/MeuPerfil/buttonContato.svg",84,39);
+        btnEndereco.setSvgImage("images/Dashboard/MeuPerfil/buttonEndereco.svg",95,39);
         btnMeuPerfil.setSvgImage("images/Dashboard/meuperfil.svg", 115, 23);
         btnInicio.setSvgImage("images/Dashboard/inicioicon.svg", 76, 22);
         btnSair.setSvgImage("images/Dashboard/btnSair.svg", 64, 32);
@@ -41,10 +45,13 @@ public class DashboardMeuPerfil extends javax.swing.JFrame {
         txtCidade = new javax.swing.JTextField();
         txtEstado = new javax.swing.JTextField();
         txtCep = new javax.swing.JTextField();
+        btnDadosPessoais = new images.SVGImage();
+        btnContato = new images.SVGImage();
+        btnEndereco = new images.SVGImage();
         btnMeuPerfil = new images.SVGImage();
         btnInicio = new images.SVGImage();
         btnSair = new images.SVGImage();
-        jLabel1 = new javax.swing.JLabel();
+        background = new images.SVGImage();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Dashboard - Mente Livre Brasil");
@@ -208,6 +215,15 @@ public class DashboardMeuPerfil extends javax.swing.JFrame {
         });
         jPanel1.add(txtCep, new org.netbeans.lib.awtextra.AbsoluteConstraints(814, 467, 230, 30));
 
+        btnDadosPessoais.setText("sVGImage1");
+        jPanel1.add(btnDadosPessoais, new org.netbeans.lib.awtextra.AbsoluteConstraints(462, 604, 144, 39));
+
+        btnContato.setText("sVGImage2");
+        jPanel1.add(btnContato, new org.netbeans.lib.awtextra.AbsoluteConstraints(638, 604, 84, 39));
+
+        btnEndereco.setText("sVGImage3");
+        jPanel1.add(btnEndereco, new org.netbeans.lib.awtextra.AbsoluteConstraints(754, 604, 95, 39));
+
         btnMeuPerfil.setText("meuperfilicon");
         jPanel1.add(btnMeuPerfil, new org.netbeans.lib.awtextra.AbsoluteConstraints(48, 29, 115, 23));
 
@@ -222,9 +238,8 @@ public class DashboardMeuPerfil extends javax.swing.JFrame {
         btnSair.setText("sair");
         jPanel1.add(btnSair, new org.netbeans.lib.awtextra.AbsoluteConstraints(48, 675, 64, 32));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/backgroundMeuPerfil.png"))); // NOI18N
-        jLabel1.setText("jLabel1");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1310, 740));
+        background.setText("sVGImage1");
+        jPanel1.add(background, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1310, 740));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1310, 740));
 
@@ -373,10 +388,13 @@ public class DashboardMeuPerfil extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private images.SVGImage background;
+    private images.SVGImage btnContato;
+    private images.SVGImage btnDadosPessoais;
+    private images.SVGImage btnEndereco;
     private images.SVGImage btnInicio;
     private images.SVGImage btnMeuPerfil;
     private images.SVGImage btnSair;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JTextField txtBairro;
     private javax.swing.JTextField txtCelular;
