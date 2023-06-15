@@ -9,10 +9,10 @@ public class Psicologo extends Pessoa {
     private Endereco endereco; // Objeto Endereco que representa o endereço do paciente
 
     // CONSTRUTOR
-    public Psicologo(int numConselho, String profissionalização, String tipoConsulta, Telefone telefone, Endereco endereco, int idPessoa, String nome, String email, String senha) {
+    public Psicologo(int numConselho, String profissionalizacao, String tipoConsulta, Telefone telefone, Endereco endereco, int idPessoa, String nome, String email, String senha) {
         super(idPessoa, nome, email, senha);
         this.numConselho = numConselho;
-        this.profissionalizacao = profissionalização;
+        this.profissionalizacao = profissionalizacao;
         this.tipoConsulta = tipoConsulta;
         this.telefone = telefone;
         this.endereco = endereco;
@@ -28,6 +28,14 @@ public class Psicologo extends Pessoa {
     public Psicologo(String email, String senha){
         super(email,senha);
     }
+    /*
+    public Psicologo(String nome, String profissionalizacao, String tipoConsulta, Telefone telefone, Endereco endereco){
+        super(nome);
+        this.profissionalizacao = profissionalizacao;
+        this.tipoConsulta = tipoConsulta;
+        this.telefone = telefone;
+        this.endereco = endereco;
+    }*/
 
     // Getters & Setters
     public int getNumConselho() {

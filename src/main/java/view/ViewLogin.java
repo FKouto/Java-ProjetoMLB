@@ -3,6 +3,7 @@ package view;
 import javax.swing.*;
 import model.bean.Login;
 import model.dao.LoginDAO;
+import view.Dashboard.DashboardPrincipal;
 
 public class ViewLogin extends javax.swing.JFrame {
 
@@ -165,7 +166,9 @@ public class ViewLogin extends javax.swing.JFrame {
             Login login = new Login(email, senha);
             LoginDAO logindao = new LoginDAO();
             if (logindao.existe(login)) {
-                JOptionPane.showMessageDialog(null, "Bem-Vindo!");
+                DashboardPrincipal GoToDash = new DashboardPrincipal();
+                GoToDash.setVisible(true);
+                this.dispose();
             } else {
                 JOptionPane.showMessageDialog(null, "E-mail ou senha incorretos. \n Verifique suas informações e tente novamente.");
             }

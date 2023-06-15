@@ -11,6 +11,10 @@ public abstract class Pessoa {
     public Pessoa() {
     }
     
+    public Pessoa(String nome){
+        this.nome = nome;
+    }
+    
     public Pessoa(int idPessoa, String nome, String email, String senha) {
         this.idPessoa = idPessoa;
         this.nome = nome;

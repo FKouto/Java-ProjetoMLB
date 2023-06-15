@@ -25,6 +25,7 @@ public class Psiquiatra extends Pessoa {
         this.tipoConsulta = tipoConsulta;
     }
     
+    
     public Psiquiatra(String email, String senha){
         super(email, senha);
     }
