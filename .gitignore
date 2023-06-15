@@ -1,4 +1,4 @@
 pmlb/
 .classpath
-target/
+/target
 .settings
