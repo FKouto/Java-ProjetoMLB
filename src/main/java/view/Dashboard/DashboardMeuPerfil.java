@@ -1,6 +1,11 @@
 package view.Dashboard;
 
+import database.ConexaoBD;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import javax.swing.ImageIcon;
+import view.ViewLogin;
 
 public class DashboardMeuPerfil extends javax.swing.JFrame {
 
@@ -15,10 +20,10 @@ public class DashboardMeuPerfil extends javax.swing.JFrame {
         // Define a posição da janela como centralizada em relação à tela.
         this.setLocationRelativeTo(null);
         // Imagens
-        background.setSvgImage("images/Dashboard/MeuPerfil/backgroundMeuPerfil.svg",1310, 740);
-        btnDadosPessoais.setSvgImage("images/Dashboard/MeuPerfil/buttonDados.svg",144,39);
-        btnContato.setSvgImage("images/Dashboard/MeuPerfil/buttonContato.svg",84,39);
-        btnEndereco.setSvgImage("images/Dashboard/MeuPerfil/buttonEndereco.svg",95,39);
+        background.setSvgImage("images/Dashboard/MeuPerfil/backgroundMeuPerfil.svg", 1310, 740);
+        btnDadosPessoais.setSvgImage("images/Dashboard/MeuPerfil/buttonDados.svg", 144, 39);
+        btnContato.setSvgImage("images/Dashboard/MeuPerfil/buttonContato.svg", 84, 39);
+        btnEndereco.setSvgImage("images/Dashboard/MeuPerfil/buttonEndereco.svg", 95, 39);
         btnMeuPerfil.setSvgImage("images/Dashboard/meuperfil.svg", 115, 23);
         btnInicio.setSvgImage("images/Dashboard/inicioicon.svg", 76, 22);
         btnSair.setSvgImage("images/Dashboard/btnSair.svg", 64, 32);
@@ -61,9 +66,9 @@ public class DashboardMeuPerfil extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        txtNome.setEditable(false);
         txtNome.setBackground(new java.awt.Color(247, 247, 247));
         txtNome.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
-        txtNome.setText("Digite seu e-mail");
         txtNome.setBorder(null);
         txtNome.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
@@ -75,9 +80,9 @@ public class DashboardMeuPerfil extends javax.swing.JFrame {
         });
         jPanel1.add(txtNome, new org.netbeans.lib.awtextra.AbsoluteConstraints(266, 287, 230, 30));
 
+        txtEmail.setEditable(false);
         txtEmail.setBackground(new java.awt.Color(247, 247, 247));
         txtEmail.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
-        txtEmail.setText("Digite seu e-mail");
         txtEmail.setBorder(null);
         txtEmail.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
@@ -89,9 +94,9 @@ public class DashboardMeuPerfil extends javax.swing.JFrame {
         });
         jPanel1.add(txtEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(266, 332, 230, 30));
 
+        txtCpf.setEditable(false);
         txtCpf.setBackground(new java.awt.Color(247, 247, 247));
         txtCpf.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
-        txtCpf.setText("Digite seu e-mail");
         txtCpf.setBorder(null);
         txtCpf.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
@@ -103,9 +108,9 @@ public class DashboardMeuPerfil extends javax.swing.JFrame {
         });
         jPanel1.add(txtCpf, new org.netbeans.lib.awtextra.AbsoluteConstraints(266, 377, 230, 30));
 
+        txtSenha.setEditable(false);
         txtSenha.setBackground(new java.awt.Color(247, 247, 247));
         txtSenha.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
-        txtSenha.setText("Digite seu e-mail");
         txtSenha.setBorder(null);
         txtSenha.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
@@ -117,9 +122,9 @@ public class DashboardMeuPerfil extends javax.swing.JFrame {
         });
         jPanel1.add(txtSenha, new org.netbeans.lib.awtextra.AbsoluteConstraints(266, 422, 230, 30));
 
+        txtCelular.setEditable(false);
         txtCelular.setBackground(new java.awt.Color(247, 247, 247));
         txtCelular.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
-        txtCelular.setText("Digite seu e-mail");
         txtCelular.setBorder(null);
         txtCelular.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
@@ -131,9 +136,9 @@ public class DashboardMeuPerfil extends javax.swing.JFrame {
         });
         jPanel1.add(txtCelular, new org.netbeans.lib.awtextra.AbsoluteConstraints(814, 332, 230, 30));
 
+        txtCelular1.setEditable(false);
         txtCelular1.setBackground(new java.awt.Color(247, 247, 247));
         txtCelular1.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
-        txtCelular1.setText("Digite seu e-mail");
         txtCelular1.setBorder(null);
         txtCelular1.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
@@ -145,9 +150,9 @@ public class DashboardMeuPerfil extends javax.swing.JFrame {
         });
         jPanel1.add(txtCelular1, new org.netbeans.lib.awtextra.AbsoluteConstraints(538, 287, 230, 30));
 
+        txtRua.setEditable(false);
         txtRua.setBackground(new java.awt.Color(247, 247, 247));
         txtRua.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
-        txtRua.setText("Digite seu e-mail");
         txtRua.setBorder(null);
         txtRua.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
@@ -159,9 +164,9 @@ public class DashboardMeuPerfil extends javax.swing.JFrame {
         });
         jPanel1.add(txtRua, new org.netbeans.lib.awtextra.AbsoluteConstraints(814, 287, 230, 30));
 
+        txtBairro.setEditable(false);
         txtBairro.setBackground(new java.awt.Color(247, 247, 247));
         txtBairro.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
-        txtBairro.setText("Digite seu e-mail");
         txtBairro.setBorder(null);
         txtBairro.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
@@ -173,9 +178,9 @@ public class DashboardMeuPerfil extends javax.swing.JFrame {
         });
         jPanel1.add(txtBairro, new org.netbeans.lib.awtextra.AbsoluteConstraints(538, 332, 230, 30));
 
+        txtCidade.setEditable(false);
         txtCidade.setBackground(new java.awt.Color(247, 247, 247));
         txtCidade.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
-        txtCidade.setText("Digite seu e-mail");
         txtCidade.setBorder(null);
         txtCidade.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
@@ -187,9 +192,9 @@ public class DashboardMeuPerfil extends javax.swing.JFrame {
         });
         jPanel1.add(txtCidade, new org.netbeans.lib.awtextra.AbsoluteConstraints(814, 377, 230, 30));
 
+        txtEstado.setEditable(false);
         txtEstado.setBackground(new java.awt.Color(247, 247, 247));
         txtEstado.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
-        txtEstado.setText("Digite seu e-mail");
         txtEstado.setBorder(null);
         txtEstado.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
@@ -201,9 +206,9 @@ public class DashboardMeuPerfil extends javax.swing.JFrame {
         });
         jPanel1.add(txtEstado, new org.netbeans.lib.awtextra.AbsoluteConstraints(814, 422, 230, 30));
 
+        txtCep.setEditable(false);
         txtCep.setBackground(new java.awt.Color(247, 247, 247));
         txtCep.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
-        txtCep.setText("Digite seu e-mail");
         txtCep.setBorder(null);
         txtCep.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
@@ -344,6 +349,44 @@ public class DashboardMeuPerfil extends javax.swing.JFrame {
     private void txtCepFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtCepFocusLost
         // TODO add your handling code here:
     }//GEN-LAST:event_txtCepFocusLost
+
+    public void obterPaciente() throws Exception {
+        String email = ViewLogin.emailLogin;
+        String sql = "SELECT p.nome, p.cpf, p.email, p.senha, t.celular, e.rua, e.bairro, e.cidade, e.estado, e.cep"
+                + "FROM paciente p"
+                + "JOIN telefone_paciente t ON p.cod_tel = t.cod_tel"
+                + "JOIN endereco_paciente e ON p.cod_endereco = e.cod_endereco"
+                + "WHERE p.email = ?";
+        try (Connection conn = ConexaoBD.obtemConexao(); PreparedStatement ps = conn.prepareStatement(sql)) {
+            ps.setString(1, email);
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+                String nome = rs.getString("nome");
+                String cpf = rs.getString("cpf");
+                String senha = rs.getString("senha");
+                String celular = rs.getString("celular");
+                String rua = rs.getString("rua");
+                String bairro = rs.getString("bairro");
+                String cidade = rs.getString("cidade");
+                String estado = rs.getString("estado");
+                String cep = rs.getString("cep");
+                // Atribuir os valores às JTextFields correspondentes
+                txtNome.setText(nome);
+                txtCpf.setText(cpf);
+                txtEmail.setText(email);
+                txtSenha.setText(senha);
+                txtCelular.setText(celular);
+                txtRua.setText(rua);
+                txtBairro.setText(bairro);
+                txtCidade.setText(cidade);
+                txtEstado.setText(estado);
+                txtCep.setText(cep);
+            }
+            else{
+                System.out.println("Dados não encontrados.");
+            }
+        }
+    }
 
     /**
      * @param args the command line arguments
