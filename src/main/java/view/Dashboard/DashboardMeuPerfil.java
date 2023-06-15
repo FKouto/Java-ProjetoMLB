@@ -22,6 +22,9 @@ public class DashboardMeuPerfil extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
         // Imagens
         background.setSvgImage("images/Dashboard/MeuPerfil/backgroundMeuPerfil.svg", 1310, 740);
+        PopUp.setSvgImage("images/Dashboard/MeuPerfil/backgroundPopUpScreen.svg",1310,740);
+        btnVoltar.setSvgImage("images/Dashboard/MeuPerfil/buttonVoltar.svg", 68, 39);
+        btnContinuar.setSvgImage("images/Dashboard/MeuPerfil/buttonContinuar.svg", 99, 39);
         btnDadosPessoais.setSvgImage("images/Dashboard/MeuPerfil/buttonDados.svg", 144, 39);
         btnContato.setSvgImage("images/Dashboard/MeuPerfil/buttonContato.svg", 84, 39);
         btnEndereco.setSvgImage("images/Dashboard/MeuPerfil/buttonEndereco.svg", 95, 39);
@@ -40,6 +43,10 @@ public class DashboardMeuPerfil extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
+        txtEnterEmail = new javax.swing.JTextField();
+        btnContinuar = new images.SVGImage();
+        btnVoltar = new images.SVGImage();
+        PopUp = new images.SVGImage();
         txtNome = new javax.swing.JTextField();
         txtEmail = new javax.swing.JTextField();
         txtCpf = new javax.swing.JTextField();
@@ -66,6 +73,28 @@ public class DashboardMeuPerfil extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        txtEnterEmail.setBackground(new java.awt.Color(247, 247, 247));
+        txtEnterEmail.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        txtEnterEmail.setBorder(null);
+        txtEnterEmail.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txtEnterEmailFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtEnterEmailFocusLost(evt);
+            }
+        });
+        jPanel1.add(txtEnterEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(504, 364, 300, 30));
+
+        btnContinuar.setText("sVGImage2");
+        jPanel1.add(btnContinuar, new org.netbeans.lib.awtextra.AbsoluteConstraints(648, 421, 99, 39));
+
+        btnVoltar.setText("sVGImage1");
+        jPanel1.add(btnVoltar, new org.netbeans.lib.awtextra.AbsoluteConstraints(564, 421, 68, 39));
+
+        PopUp.setText("sVGImage3");
+        jPanel1.add(PopUp, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1310, 740));
 
         txtNome.setEditable(false);
         txtNome.setBackground(new java.awt.Color(247, 247, 247));
@@ -362,14 +391,23 @@ public class DashboardMeuPerfil extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtCepFocusLost
 
+    private void txtEnterEmailFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtEnterEmailFocusGained
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtEnterEmailFocusGained
+
+    private void txtEnterEmailFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtEnterEmailFocusLost
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtEnterEmailFocusLost
+
     public void obterPaciente() throws Exception {
-        String email = ViewLogin.email;
+        
         String sql = "SELECT p.nome, p.cpf, p.email, p.senha, t.celular, e.rua, e.bairro, e.cidade, e.estado, e.cep"
                 + "FROM paciente p"
                 + "JOIN telefone_paciente t ON p.cod_tel = t.cod_tel"
                 + "JOIN endereco_paciente e ON p.cod_endereco = e.cod_endereco"
                 + "WHERE p.email = ?";
         try (Connection conn = ConexaoBD.obtemConexao(); PreparedStatement ps = conn.prepareStatement(sql)) {
+            /*
             ps.setString(1, email);
             ResultSet rs = ps.executeQuery();
             if (rs.next()) {
@@ -393,24 +431,11 @@ public class DashboardMeuPerfil extends javax.swing.JFrame {
                 txtBairro.setText(bairro);
                 txtCidade.setText(cidade);
                 txtEstado.setText(estado);
-                txtCep.setText(cep);*/
-                // Atualizar as JTextFields na interface gráfica usando o EDT
-                SwingUtilities.invokeLater(() -> {
-                    txtNome.setText(nome);
-                    txtCpf.setText(cpf);
-                    txtEmail.setText(email);
-                    txtSenha.setText(senha);
-                    txtCelular.setText(celular);
-                    txtRua.setText(rua);
-                    txtBairro.setText(bairro);
-                    txtCidade.setText(cidade);
-                    txtEstado.setText(estado);
-                    txtCep.setText(cep);
-                });
+                txtCep.setText(cep);
             }
             else{
                 System.out.println("Dados não encontrados.");
-            }
+            }*/
         }
     }
 
@@ -457,13 +482,16 @@ public class DashboardMeuPerfil extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private images.SVGImage PopUp;
     private images.SVGImage background;
     private images.SVGImage btnContato;
+    private images.SVGImage btnContinuar;
     private images.SVGImage btnDadosPessoais;
     private images.SVGImage btnEndereco;
     private images.SVGImage btnInicio;
     private images.SVGImage btnMeuPerfil;
     private images.SVGImage btnSair;
+    private images.SVGImage btnVoltar;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JTextField txtBairro;
     private javax.swing.JTextField txtCelular;
@@ -472,6 +500,7 @@ public class DashboardMeuPerfil extends javax.swing.JFrame {
     private javax.swing.JTextField txtCidade;
     private javax.swing.JTextField txtCpf;
     private javax.swing.JTextField txtEmail;
+    private javax.swing.JTextField txtEnterEmail;
     private javax.swing.JTextField txtEstado;
     private javax.swing.JTextField txtNome;
     private javax.swing.JTextField txtRua;
