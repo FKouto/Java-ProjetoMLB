@@ -67,6 +67,11 @@ public class DashboardPrincipal extends javax.swing.JFrame {
         jPanel1.add(backgroundHomeScreen, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 100, 709, 520));
 
         btnMeuPerfil.setText("meuperfilicon");
+        btnMeuPerfil.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnMeuPerfilMouseClicked(evt);
+            }
+        });
         jPanel1.add(btnMeuPerfil, new org.netbeans.lib.awtextra.AbsoluteConstraints(48, 29, 115, 23));
 
         btnInicio.setText("inicio");
@@ -240,6 +245,12 @@ public class DashboardPrincipal extends javax.swing.JFrame {
     private void btnPsiquiatraMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPsiquiatraMouseEntered
         
     }//GEN-LAST:event_btnPsiquiatraMouseEntered
+
+    private void btnMeuPerfilMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMeuPerfilMouseClicked
+        DashboardMeuPerfil GoToMeuPerfil = new DashboardMeuPerfil();
+        GoToMeuPerfil.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_btnMeuPerfilMouseClicked
     // CONSTRUTOR TABELA PSIQUIATRA
     public void consultarPsiquiatra() throws Exception {
         DefaultTableModel model = (DefaultTableModel) tablePsiquiatra.getModel();

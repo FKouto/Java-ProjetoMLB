@@ -5,6 +5,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import javax.swing.ImageIcon;
+import javax.swing.SwingUtilities;
 import view.ViewLogin;
 
 public class DashboardMeuPerfil extends javax.swing.JFrame {
@@ -70,6 +71,7 @@ public class DashboardMeuPerfil extends javax.swing.JFrame {
         txtNome.setBackground(new java.awt.Color(247, 247, 247));
         txtNome.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         txtNome.setBorder(null);
+        txtNome.setEnabled(false);
         txtNome.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 txtNomeFocusGained(evt);
@@ -84,6 +86,7 @@ public class DashboardMeuPerfil extends javax.swing.JFrame {
         txtEmail.setBackground(new java.awt.Color(247, 247, 247));
         txtEmail.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         txtEmail.setBorder(null);
+        txtEmail.setEnabled(false);
         txtEmail.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 txtEmailFocusGained(evt);
@@ -98,6 +101,7 @@ public class DashboardMeuPerfil extends javax.swing.JFrame {
         txtCpf.setBackground(new java.awt.Color(247, 247, 247));
         txtCpf.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         txtCpf.setBorder(null);
+        txtCpf.setEnabled(false);
         txtCpf.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 txtCpfFocusGained(evt);
@@ -112,6 +116,7 @@ public class DashboardMeuPerfil extends javax.swing.JFrame {
         txtSenha.setBackground(new java.awt.Color(247, 247, 247));
         txtSenha.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         txtSenha.setBorder(null);
+        txtSenha.setEnabled(false);
         txtSenha.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 txtSenhaFocusGained(evt);
@@ -126,6 +131,7 @@ public class DashboardMeuPerfil extends javax.swing.JFrame {
         txtCelular.setBackground(new java.awt.Color(247, 247, 247));
         txtCelular.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         txtCelular.setBorder(null);
+        txtCelular.setEnabled(false);
         txtCelular.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 txtCelularFocusGained(evt);
@@ -140,6 +146,7 @@ public class DashboardMeuPerfil extends javax.swing.JFrame {
         txtCelular1.setBackground(new java.awt.Color(247, 247, 247));
         txtCelular1.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         txtCelular1.setBorder(null);
+        txtCelular1.setEnabled(false);
         txtCelular1.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 txtCelular1FocusGained(evt);
@@ -154,6 +161,7 @@ public class DashboardMeuPerfil extends javax.swing.JFrame {
         txtRua.setBackground(new java.awt.Color(247, 247, 247));
         txtRua.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         txtRua.setBorder(null);
+        txtRua.setEnabled(false);
         txtRua.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 txtRuaFocusGained(evt);
@@ -168,6 +176,7 @@ public class DashboardMeuPerfil extends javax.swing.JFrame {
         txtBairro.setBackground(new java.awt.Color(247, 247, 247));
         txtBairro.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         txtBairro.setBorder(null);
+        txtBairro.setEnabled(false);
         txtBairro.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 txtBairroFocusGained(evt);
@@ -182,6 +191,7 @@ public class DashboardMeuPerfil extends javax.swing.JFrame {
         txtCidade.setBackground(new java.awt.Color(247, 247, 247));
         txtCidade.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         txtCidade.setBorder(null);
+        txtCidade.setEnabled(false);
         txtCidade.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 txtCidadeFocusGained(evt);
@@ -196,6 +206,7 @@ public class DashboardMeuPerfil extends javax.swing.JFrame {
         txtEstado.setBackground(new java.awt.Color(247, 247, 247));
         txtEstado.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         txtEstado.setBorder(null);
+        txtEstado.setEnabled(false);
         txtEstado.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 txtEstadoFocusGained(evt);
@@ -210,6 +221,7 @@ public class DashboardMeuPerfil extends javax.swing.JFrame {
         txtCep.setBackground(new java.awt.Color(247, 247, 247));
         txtCep.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         txtCep.setBorder(null);
+        txtCep.setEnabled(false);
         txtCep.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 txtCepFocusGained(evt);
@@ -351,7 +363,7 @@ public class DashboardMeuPerfil extends javax.swing.JFrame {
     }//GEN-LAST:event_txtCepFocusLost
 
     public void obterPaciente() throws Exception {
-        String email = ViewLogin.emailLogin;
+        String email = ViewLogin.email;
         String sql = "SELECT p.nome, p.cpf, p.email, p.senha, t.celular, e.rua, e.bairro, e.cidade, e.estado, e.cep"
                 + "FROM paciente p"
                 + "JOIN telefone_paciente t ON p.cod_tel = t.cod_tel"
@@ -371,6 +383,7 @@ public class DashboardMeuPerfil extends javax.swing.JFrame {
                 String estado = rs.getString("estado");
                 String cep = rs.getString("cep");
                 // Atribuir os valores às JTextFields correspondentes
+                /*
                 txtNome.setText(nome);
                 txtCpf.setText(cpf);
                 txtEmail.setText(email);
@@ -380,7 +393,20 @@ public class DashboardMeuPerfil extends javax.swing.JFrame {
                 txtBairro.setText(bairro);
                 txtCidade.setText(cidade);
                 txtEstado.setText(estado);
-                txtCep.setText(cep);
+                txtCep.setText(cep);*/
+                // Atualizar as JTextFields na interface gráfica usando o EDT
+                SwingUtilities.invokeLater(() -> {
+                    txtNome.setText(nome);
+                    txtCpf.setText(cpf);
+                    txtEmail.setText(email);
+                    txtSenha.setText(senha);
+                    txtCelular.setText(celular);
+                    txtRua.setText(rua);
+                    txtBairro.setText(bairro);
+                    txtCidade.setText(cidade);
+                    txtEstado.setText(estado);
+                    txtCep.setText(cep);
+                });
             }
             else{
                 System.out.println("Dados não encontrados.");
