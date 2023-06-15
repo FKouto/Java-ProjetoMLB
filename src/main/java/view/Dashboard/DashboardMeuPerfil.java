@@ -4,9 +4,11 @@ import database.ConexaoBD;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.ImageIcon;
-import javax.swing.SwingUtilities;
-import view.ViewLogin;
+import model.bean.Paciente;
+import model.dao.PacienteDAO;
 
 public class DashboardMeuPerfil extends javax.swing.JFrame {
 
@@ -22,7 +24,7 @@ public class DashboardMeuPerfil extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
         // Imagens
         background.setSvgImage("images/Dashboard/MeuPerfil/backgroundMeuPerfil.svg", 1310, 740);
-        PopUp.setSvgImage("images/Dashboard/MeuPerfil/backgroundPopUpScreen.svg",1310,740);
+        PopUp.setSvgImage("images/Dashboard/MeuPerfil/backgroundPopUpScreen.svg", 1310, 740);
         btnVoltar.setSvgImage("images/Dashboard/MeuPerfil/buttonVoltar.svg", 68, 39);
         btnContinuar.setSvgImage("images/Dashboard/MeuPerfil/buttonContinuar.svg", 99, 39);
         btnDadosPessoais.setSvgImage("images/Dashboard/MeuPerfil/buttonDados.svg", 144, 39);
@@ -51,10 +53,10 @@ public class DashboardMeuPerfil extends javax.swing.JFrame {
         txtEmail = new javax.swing.JTextField();
         txtCpf = new javax.swing.JTextField();
         txtSenha = new javax.swing.JTextField();
-        txtCelular = new javax.swing.JTextField();
-        txtCelular1 = new javax.swing.JTextField();
-        txtRua = new javax.swing.JTextField();
         txtBairro = new javax.swing.JTextField();
+        txtCelular = new javax.swing.JTextField();
+        txtRua = new javax.swing.JTextField();
+        txtCelular1 = new javax.swing.JTextField();
         txtCidade = new javax.swing.JTextField();
         txtEstado = new javax.swing.JTextField();
         txtCep = new javax.swing.JTextField();
@@ -88,12 +90,22 @@ public class DashboardMeuPerfil extends javax.swing.JFrame {
         jPanel1.add(txtEnterEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(504, 364, 300, 30));
 
         btnContinuar.setText("sVGImage2");
+        btnContinuar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnContinuarMouseClicked(evt);
+            }
+        });
         jPanel1.add(btnContinuar, new org.netbeans.lib.awtextra.AbsoluteConstraints(648, 421, 99, 39));
 
         btnVoltar.setText("sVGImage1");
         jPanel1.add(btnVoltar, new org.netbeans.lib.awtextra.AbsoluteConstraints(564, 421, 68, 39));
 
         PopUp.setText("sVGImage3");
+        PopUp.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                PopUpMouseClicked(evt);
+            }
+        });
         jPanel1.add(PopUp, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1310, 740));
 
         txtNome.setEditable(false);
@@ -156,6 +168,21 @@ public class DashboardMeuPerfil extends javax.swing.JFrame {
         });
         jPanel1.add(txtSenha, new org.netbeans.lib.awtextra.AbsoluteConstraints(266, 422, 230, 30));
 
+        txtBairro.setEditable(false);
+        txtBairro.setBackground(new java.awt.Color(247, 247, 247));
+        txtBairro.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        txtBairro.setBorder(null);
+        txtBairro.setEnabled(false);
+        txtBairro.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txtBairroFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtBairroFocusLost(evt);
+            }
+        });
+        jPanel1.add(txtBairro, new org.netbeans.lib.awtextra.AbsoluteConstraints(814, 332, 230, 30));
+
         txtCelular.setEditable(false);
         txtCelular.setBackground(new java.awt.Color(247, 247, 247));
         txtCelular.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
@@ -169,22 +196,7 @@ public class DashboardMeuPerfil extends javax.swing.JFrame {
                 txtCelularFocusLost(evt);
             }
         });
-        jPanel1.add(txtCelular, new org.netbeans.lib.awtextra.AbsoluteConstraints(814, 332, 230, 30));
-
-        txtCelular1.setEditable(false);
-        txtCelular1.setBackground(new java.awt.Color(247, 247, 247));
-        txtCelular1.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
-        txtCelular1.setBorder(null);
-        txtCelular1.setEnabled(false);
-        txtCelular1.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                txtCelular1FocusGained(evt);
-            }
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                txtCelular1FocusLost(evt);
-            }
-        });
-        jPanel1.add(txtCelular1, new org.netbeans.lib.awtextra.AbsoluteConstraints(538, 287, 230, 30));
+        jPanel1.add(txtCelular, new org.netbeans.lib.awtextra.AbsoluteConstraints(538, 287, 230, 30));
 
         txtRua.setEditable(false);
         txtRua.setBackground(new java.awt.Color(247, 247, 247));
@@ -201,20 +213,20 @@ public class DashboardMeuPerfil extends javax.swing.JFrame {
         });
         jPanel1.add(txtRua, new org.netbeans.lib.awtextra.AbsoluteConstraints(814, 287, 230, 30));
 
-        txtBairro.setEditable(false);
-        txtBairro.setBackground(new java.awt.Color(247, 247, 247));
-        txtBairro.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
-        txtBairro.setBorder(null);
-        txtBairro.setEnabled(false);
-        txtBairro.addFocusListener(new java.awt.event.FocusAdapter() {
+        txtCelular1.setEditable(false);
+        txtCelular1.setBackground(new java.awt.Color(247, 247, 247));
+        txtCelular1.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        txtCelular1.setBorder(null);
+        txtCelular1.setEnabled(false);
+        txtCelular1.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
-                txtBairroFocusGained(evt);
+                txtCelular1FocusGained(evt);
             }
             public void focusLost(java.awt.event.FocusEvent evt) {
-                txtBairroFocusLost(evt);
+                txtCelular1FocusLost(evt);
             }
         });
-        jPanel1.add(txtBairro, new org.netbeans.lib.awtextra.AbsoluteConstraints(538, 332, 230, 30));
+        jPanel1.add(txtCelular1, new org.netbeans.lib.awtextra.AbsoluteConstraints(538, 332, 230, 30));
 
         txtCidade.setEditable(false);
         txtCidade.setBackground(new java.awt.Color(247, 247, 247));
@@ -279,7 +291,7 @@ public class DashboardMeuPerfil extends javax.swing.JFrame {
                 btnInicioMouseClicked(evt);
             }
         });
-        jPanel1.add(btnInicio, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 29, 76, 22));
+        jPanel1.add(btnInicio, new org.netbeans.lib.awtextra.AbsoluteConstraints(617, 29, 76, 22));
 
         btnSair.setText("sair");
         jPanel1.add(btnSair, new org.netbeans.lib.awtextra.AbsoluteConstraints(48, 675, 64, 32));
@@ -335,6 +347,14 @@ public class DashboardMeuPerfil extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtSenhaFocusLost
 
+    private void txtBairroFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtBairroFocusGained
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtBairroFocusGained
+
+    private void txtBairroFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtBairroFocusLost
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtBairroFocusLost
+
     private void txtCelularFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtCelularFocusGained
         // TODO add your handling code here:
     }//GEN-LAST:event_txtCelularFocusGained
@@ -342,14 +362,6 @@ public class DashboardMeuPerfil extends javax.swing.JFrame {
     private void txtCelularFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtCelularFocusLost
         // TODO add your handling code here:
     }//GEN-LAST:event_txtCelularFocusLost
-
-    private void txtCelular1FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtCelular1FocusGained
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtCelular1FocusGained
-
-    private void txtCelular1FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtCelular1FocusLost
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtCelular1FocusLost
 
     private void txtRuaFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtRuaFocusGained
         // TODO add your handling code here:
@@ -359,13 +371,13 @@ public class DashboardMeuPerfil extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtRuaFocusLost
 
-    private void txtBairroFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtBairroFocusGained
+    private void txtCelular1FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtCelular1FocusGained
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtBairroFocusGained
+    }//GEN-LAST:event_txtCelular1FocusGained
 
-    private void txtBairroFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtBairroFocusLost
+    private void txtCelular1FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtCelular1FocusLost
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtBairroFocusLost
+    }//GEN-LAST:event_txtCelular1FocusLost
 
     private void txtCidadeFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtCidadeFocusGained
         // TODO add your handling code here:
@@ -399,45 +411,61 @@ public class DashboardMeuPerfil extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtEnterEmailFocusLost
 
-    public void obterPaciente() throws Exception {
-        
-        String sql = "SELECT p.nome, p.cpf, p.email, p.senha, t.celular, e.rua, e.bairro, e.cidade, e.estado, e.cep"
-                + "FROM paciente p"
-                + "JOIN telefone_paciente t ON p.cod_tel = t.cod_tel"
-                + "JOIN endereco_paciente e ON p.cod_endereco = e.cod_endereco"
-                + "WHERE p.email = ?";
-        try (Connection conn = ConexaoBD.obtemConexao(); PreparedStatement ps = conn.prepareStatement(sql)) {
-            /*
-            ps.setString(1, email);
-            ResultSet rs = ps.executeQuery();
-            if (rs.next()) {
-                String nome = rs.getString("nome");
-                String cpf = rs.getString("cpf");
-                String senha = rs.getString("senha");
-                String celular = rs.getString("celular");
-                String rua = rs.getString("rua");
-                String bairro = rs.getString("bairro");
-                String cidade = rs.getString("cidade");
-                String estado = rs.getString("estado");
-                String cep = rs.getString("cep");
-                // Atribuir os valores às JTextFields correspondentes
-                /*
-                txtNome.setText(nome);
-                txtCpf.setText(cpf);
-                txtEmail.setText(email);
-                txtSenha.setText(senha);
-                txtCelular.setText(celular);
-                txtRua.setText(rua);
-                txtBairro.setText(bairro);
-                txtCidade.setText(cidade);
-                txtEstado.setText(estado);
-                txtCep.setText(cep);
+    private void btnContinuarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnContinuarMouseClicked
+        String email = txtEnterEmail.getText();
+        try {
+            Paciente paciente = new Paciente(email);
+            PacienteDAO pacientedao = new PacienteDAO();
+            if (pacientedao.obterPacienteDash(paciente)) {
+                String sql = "SELECT p.nome, p.cpf, p.email, p.senha, t.celular, e.rua, e.bairro, e.cidade, e.estado, e.cep "
+                        + "FROM paciente p "
+                        + "JOIN telefone_paciente t ON p.cod_tel = t.cod_tel "
+                        + "JOIN endereco_paciente e ON p.cod_endereco = e.cod_endereco "
+                        + "WHERE p.email = ?";
+                try (Connection conn = ConexaoBD.obtemConexao(); PreparedStatement ps = conn.prepareStatement(sql)) {
+                    ps.setString(1, email);
+                    ResultSet rs = ps.executeQuery();
+                    if (rs.next()) {
+                        String nome = rs.getString("nome");
+                        String cpf = rs.getString("cpf");
+                        String senha = rs.getString("senha");
+                        String celular = rs.getString("celular");
+                        String rua = rs.getString("rua");
+                        String bairro = rs.getString("bairro");
+                        String cidade = rs.getString("cidade");
+                        String estado = rs.getString("estado");
+                        String cep = rs.getString("cep");
+                        // Atribuir os valores às JTextFields correspondentes
+                        txtNome.setText(nome);
+                        txtCpf.setText(cpf);
+                        txtEmail.setText(email);
+                        txtSenha.setText(senha);
+                        txtBairro.setText(bairro);
+                        txtCelular.setText(celular);
+                        txtRua.setText(rua);
+                        txtCelular1.setText(celular);
+                        txtCidade.setText(cidade);
+                        txtEstado.setText(estado);
+                        txtCep.setText(cep);
+                        PopUp.setVisible(false);
+                        btnVoltar.setVisible(false);
+                        btnContinuar.setVisible(false);
+                        txtEnterEmail.setVisible(false);
+                    } else {
+                        System.out.println("Dados não encontrados.");
+                    }
+                }
             }
-            else{
-                System.out.println("Dados não encontrados.");
-            }*/
+        } catch (Exception ex) {
+            Logger.getLogger(DashboardMeuPerfil.class.getName()).log(Level.SEVERE, null, ex);
         }
-    }
+    }//GEN-LAST:event_btnContinuarMouseClicked
+
+    private void PopUpMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PopUpMouseClicked
+        DashboardPrincipal returnToPrincipal = new DashboardPrincipal();
+        returnToPrincipal.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_PopUpMouseClicked
 
     /**
      * @param args the command line arguments

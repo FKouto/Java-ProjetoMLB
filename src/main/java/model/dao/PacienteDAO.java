@@ -20,23 +20,15 @@ public class PacienteDAO {
         }
     }
 
-    // Obter nome do usuário com base no e-mail para mostrar Bem-Vindo (nome)... usado junto com o método acima
-    public String obterNomePaciente(String email) throws Exception {
-        // Variável para armazenar o nome do paciente
-        String nomePaciente = null;
-        // Consulta SQL para selecionar o nome do paciente com base no email
-        String sql = "SELECT nome FROM paciente WHERE email = ?";
+    // Obter Paciente
+    public boolean obterPacienteDash(Paciente paciente)throws Exception{
+        String sql = "SELECT * FROM paciente WHERE email = ?";
         try (Connection conn = ConexaoBD.obtemConexao(); PreparedStatement ps = conn.prepareStatement(sql)) {
-            // Obtém o valor da coluna "nome" do resultado da consulta SQL
-            ps.setString(1, email);
+            ps.setString(1, paciente.getEmail());
             try (ResultSet rs = ps.executeQuery()) {
-                if (rs.next()) {
-                    // Retorna o nome do paciente obtido da consulta SQL (pode ser nulo se nenhum paciente for encontrado)
-                    nomePaciente = rs.getString("nome");
-                }
+                return rs.next();
             }
         }
-        return nomePaciente;
     }
 
     // CRUD

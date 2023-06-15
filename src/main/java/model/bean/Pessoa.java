@@ -11,8 +11,8 @@ public abstract class Pessoa {
     public Pessoa() {
     }
     
-    public Pessoa(String nome){
-        this.nome = nome;
+    public Pessoa(String email){
+        this.email = email;
     }
     
     public Pessoa(int idPessoa, String nome, String email, String senha) {
