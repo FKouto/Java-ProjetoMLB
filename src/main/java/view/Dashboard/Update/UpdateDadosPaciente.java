@@ -1,10 +1,6 @@
 package view.Dashboard.Update;
 
-import view.SelectedCadastroPaciente.*;
-import model.dao.PacienteDAO;
 import javax.swing.*;
-import model.bean.Paciente;
-import view.GoToLogin;
 
 public class UpdateDadosPaciente extends javax.swing.JFrame {
 
@@ -17,8 +13,6 @@ public class UpdateDadosPaciente extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
         // Define a imagem de fundo SVG
         Background.setSvgImage("images/InsertPersonalDataBackground.svg", 1000, 640);
-        // Imagem botão de retorno
-        //btnReturn.setSvgImage("images/returnIcon.svg", 44, 35);
         txtNome.setFocusable(true);
         txtEmail.setFocusable(true);
         txtCpf.setFocusable(true);
@@ -134,31 +128,6 @@ public class UpdateDadosPaciente extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAtualizarDadosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAtualizarDadosActionPerformed
-        // Aula dia 13 - Apostila 13_apostila... Pag3
-        // Obtendo os dados
-        String nome = txtNome.getText();
-        String email = txtEmail.getText();
-        int cpf = Integer.parseInt(txtCpf.getText());
-        String senha1 = new String(senhaPasswordField1.getPassword());
-        String senha2 = new String(senhaPasswordField2.getPassword());
-        // Verifica se as senhas são iguais
-        if (senha1.equals(senha2)) {
-            try {
-                // Criando um objeto Paciente com os dados inseridos
-                Paciente paciente = new Paciente(0, nome, cpf, email, senha1);
-                PacienteDAO pacientedao = new PacienteDAO();
-                // Inserindo o paciente no banco de dados
-                pacientedao.createPaciente(paciente);
-                System.out.println("Paciente inserido com sucesso");
-                GoToLogin created = new GoToLogin();
-                created.setVisible(true);
-                this.dispose();
-            } catch (Exception e) {
-                System.out.println("Não foi possível inserir paciente " + e.getMessage());
-            }
-        } else {
-            JOptionPane.showMessageDialog(null, "Suas senhas não coincidem. Tente novamente.");
-        }
 
     }//GEN-LAST:event_btnAtualizarDadosActionPerformed
     //FocusGained (Funciona para limpar o campo quando é selecionado)

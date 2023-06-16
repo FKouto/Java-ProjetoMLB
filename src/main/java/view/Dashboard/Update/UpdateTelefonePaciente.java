@@ -1,10 +1,6 @@
 package view.Dashboard.Update;
 
-import view.SelectedCadastroPaciente.*;
 import javax.swing.*;
-import model.bean.Telefone;
-import model.dao.PacienteDAO;
-import view.ViewSelectTypeCadastro;
 
 public class UpdateTelefonePaciente extends javax.swing.JFrame {
 
@@ -17,8 +13,6 @@ public class UpdateTelefonePaciente extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
         // Define a imagem de fundo SVG
         Background.setSvgImage("images/InsertTelefonePacienteBackgroung.svg", 1000, 640);
-        // Imagem botão de retorno
-        btnReturn.setSvgImage("images/returnIcon.svg", 44, 35);
         //FocusGained Placeholder
         txtCelular.setFocusable(true);
         txtCelular1.setFocusable(true);
@@ -34,10 +28,9 @@ public class UpdateTelefonePaciente extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        btnReturn = new images.SVGImage();
         txtCelular = new javax.swing.JTextField();
         txtCelular1 = new javax.swing.JTextField();
-        btnInserirTelefone = new javax.swing.JButton();
+        btnAtualizarTelefone = new javax.swing.JButton();
         Background = new images.SVGImage();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -47,13 +40,6 @@ public class UpdateTelefonePaciente extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        btnReturn.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnReturnMouseClicked(evt);
-            }
-        });
-        jPanel1.add(btnReturn, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 30, 44, 35));
 
         txtCelular.setBackground(new java.awt.Color(247, 247, 247));
         txtCelular.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
@@ -83,16 +69,16 @@ public class UpdateTelefonePaciente extends javax.swing.JFrame {
         });
         jPanel1.add(txtCelular1, new org.netbeans.lib.awtextra.AbsoluteConstraints(385, 306, 230, 30));
 
-        btnInserirTelefone.setBackground(new java.awt.Color(227, 1, 64));
-        btnInserirTelefone.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
-        btnInserirTelefone.setForeground(new java.awt.Color(255, 255, 255));
-        btnInserirTelefone.setText("Próximo");
-        btnInserirTelefone.addActionListener(new java.awt.event.ActionListener() {
+        btnAtualizarTelefone.setBackground(new java.awt.Color(227, 1, 64));
+        btnAtualizarTelefone.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        btnAtualizarTelefone.setForeground(new java.awt.Color(255, 255, 255));
+        btnAtualizarTelefone.setText("Salvar Alteração");
+        btnAtualizarTelefone.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnInserirTelefoneActionPerformed(evt);
+                btnAtualizarTelefoneActionPerformed(evt);
             }
         });
-        jPanel1.add(btnInserirTelefone, new org.netbeans.lib.awtextra.AbsoluteConstraints(377, 345, 245, 38));
+        jPanel1.add(btnAtualizarTelefone, new org.netbeans.lib.awtextra.AbsoluteConstraints(377, 345, 245, 38));
 
         Background.setText("sVGImage1");
         jPanel1.add(Background, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1000, 640));
@@ -110,36 +96,10 @@ public class UpdateTelefonePaciente extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-    /*Ação do botão voltar*/
-    private void btnReturnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnReturnMouseClicked
-        ViewSelectTypeCadastro returnToTypeCadastro = new ViewSelectTypeCadastro();
-        returnToTypeCadastro.setVisible(true);
-        this.dispose();
-    }//GEN-LAST:event_btnReturnMouseClicked
 
-    private void btnInserirTelefoneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInserirTelefoneActionPerformed
-        String celular = txtCelular.getText();
-        String celular1 = txtCelular1.getText();
-        // Verifica se os número são iguais
-        if (celular.equals(celular1)) {
-            try {
-                // Criando um objeto Telefone com os dados inseridos
-                Telefone telefone = new Telefone(0, celular);
-                PacienteDAO pacientedao = new PacienteDAO();
-                // Inserindo o telefone no banco de dados
-                pacientedao.createTelefonePaciente(telefone);
-                System.out.println("Telefone inserido com sucesso.");
-                InsertEnderecoPaciente clickNextPage = new InsertEnderecoPaciente();
-                clickNextPage.setVisible(true);
-                this.dispose();
+    private void btnAtualizarTelefoneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAtualizarTelefoneActionPerformed
 
-            } catch (Exception e) {
-                System.out.println("Não foi possivel inserir" + e.getMessage());
-            }
-        } else {
-            JOptionPane.showMessageDialog(null, "Números não coincidem. Tente novamente.");
-        }
-    }//GEN-LAST:event_btnInserirTelefoneActionPerformed
+    }//GEN-LAST:event_btnAtualizarTelefoneActionPerformed
     //FocusGained (Funciona para limpar o campo quando é selecionado)
     private void txtCelularFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtCelularFocusGained
         if (txtCelular.getText().equals("Celular")) {
@@ -217,8 +177,7 @@ public class UpdateTelefonePaciente extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private images.SVGImage Background;
-    private javax.swing.JButton btnInserirTelefone;
-    private images.SVGImage btnReturn;
+    private javax.swing.JButton btnAtualizarTelefone;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JTextField txtCelular;
     private javax.swing.JTextField txtCelular1;

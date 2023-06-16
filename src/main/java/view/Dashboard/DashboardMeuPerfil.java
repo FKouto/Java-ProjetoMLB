@@ -10,9 +10,10 @@ import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import model.bean.Paciente;
 import model.dao.PacienteDAO;
+import view.Dashboard.Delete.ExcluirPaciente;
 import view.ViewLogin;
 
-public class DashboardMeuPerfil extends javax.swing.JFrame {
+public final class DashboardMeuPerfil extends javax.swing.JFrame {
 
     /**
      * Creates new form Dashboard
@@ -24,6 +25,7 @@ public class DashboardMeuPerfil extends javax.swing.JFrame {
         setIconImage(new ImageIcon(getClass().getResource("/images/icon.png")).getImage());
         // Define a posição da janela como centralizada em relação à tela.
         this.setLocationRelativeTo(null);
+        // Solicitando o inserir public void inserirDadosPaciente()
         try {
             inserirDadosPaciente();
         } catch (Exception ex) {
@@ -40,6 +42,7 @@ public class DashboardMeuPerfil extends javax.swing.JFrame {
         btnMeuPerfil.setSvgImage("images/Dashboard/meuperfil.svg", 115, 23);
         btnInicio.setSvgImage("images/Dashboard/inicioicon.svg", 76, 22);
         btnSair.setSvgImage("images/Dashboard/btnSair.svg", 64, 32);
+        btnExcluir.setSvgImage("images/Dashboard/MeuPerfil/buttonExcluir.svg", 125, 39);
     }
 
     /**
@@ -69,6 +72,7 @@ public class DashboardMeuPerfil extends javax.swing.JFrame {
         btnMeuPerfil = new images.SVGImage();
         btnInicio = new images.SVGImage();
         btnSair = new images.SVGImage();
+        btnExcluir = new images.SVGImage();
         background = new images.SVGImage();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -114,14 +118,6 @@ public class DashboardMeuPerfil extends javax.swing.JFrame {
         txtCelular.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         txtCelular.setBorder(null);
         txtCelular.setEnabled(false);
-        txtCelular.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                txtCelularFocusGained(evt);
-            }
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                txtCelularFocusLost(evt);
-            }
-        });
         jPanel1.add(txtCelular, new org.netbeans.lib.awtextra.AbsoluteConstraints(538, 287, 230, 30));
 
         txtCelular1.setEditable(false);
@@ -143,14 +139,6 @@ public class DashboardMeuPerfil extends javax.swing.JFrame {
         txtBairro.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         txtBairro.setBorder(null);
         txtBairro.setEnabled(false);
-        txtBairro.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                txtBairroFocusGained(evt);
-            }
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                txtBairroFocusLost(evt);
-            }
-        });
         jPanel1.add(txtBairro, new org.netbeans.lib.awtextra.AbsoluteConstraints(814, 332, 230, 30));
 
         txtCidade.setEditable(false);
@@ -202,6 +190,14 @@ public class DashboardMeuPerfil extends javax.swing.JFrame {
         });
         jPanel1.add(btnSair, new org.netbeans.lib.awtextra.AbsoluteConstraints(48, 675, 64, 32));
 
+        btnExcluir.setText("sVGImage1");
+        btnExcluir.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnExcluirMouseClicked(evt);
+            }
+        });
+        jPanel1.add(btnExcluir, new org.netbeans.lib.awtextra.AbsoluteConstraints(1145, 661, 125, 39));
+
         background.setText("sVGImage1");
         jPanel1.add(background, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1310, 740));
 
@@ -215,22 +211,6 @@ public class DashboardMeuPerfil extends javax.swing.JFrame {
         returnToPrincipal.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_btnInicioMouseClicked
-
-    private void txtBairroFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtBairroFocusGained
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtBairroFocusGained
-
-    private void txtBairroFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtBairroFocusLost
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtBairroFocusLost
-
-    private void txtCelularFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtCelularFocusGained
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtCelularFocusGained
-
-    private void txtCelularFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtCelularFocusLost
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtCelularFocusLost
 
     public void inserirDadosPaciente() throws Exception {
         String email = ViewLogin.emailLogin;
@@ -281,6 +261,12 @@ public class DashboardMeuPerfil extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_btnSairMouseClicked
 
+    private void btnExcluirMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnExcluirMouseClicked
+        ExcluirPaciente GoToExcluirPacienteFrame = new ExcluirPaciente();
+        GoToExcluirPacienteFrame.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_btnExcluirMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -328,6 +314,7 @@ public class DashboardMeuPerfil extends javax.swing.JFrame {
     private images.SVGImage btnContato;
     private images.SVGImage btnDadosPessoais;
     private images.SVGImage btnEndereco;
+    private images.SVGImage btnExcluir;
     private images.SVGImage btnInicio;
     private images.SVGImage btnMeuPerfil;
     private images.SVGImage btnSair;

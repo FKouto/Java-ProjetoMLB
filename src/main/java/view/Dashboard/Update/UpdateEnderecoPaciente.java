@@ -16,8 +16,6 @@ public class UpdateEnderecoPaciente extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
         // Define a imagem de fundo SVG
         Background.setSvgImage("images/InsertAddressPacienteBackground.svg", 1000, 640);
-        // Imagem botão de retorno
-        btnReturn.setSvgImage("images/returnIcon.svg", 44, 35);
         //FocusGained Placeholder
         txtRua.setFocusable(true);
         txtBairro.setFocusable(true);
@@ -36,13 +34,12 @@ public class UpdateEnderecoPaciente extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        btnReturn = new images.SVGImage();
         txtRua = new javax.swing.JTextField();
         txtBairro = new javax.swing.JTextField();
         txtCidade = new javax.swing.JTextField();
         txtEstado = new javax.swing.JTextField();
         txtCep = new javax.swing.JTextField();
-        btnInserirEndereco = new javax.swing.JButton();
+        btnAtualizarEndereco = new javax.swing.JButton();
         Background = new images.SVGImage();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -52,13 +49,6 @@ public class UpdateEnderecoPaciente extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        btnReturn.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnReturnMouseClicked(evt);
-            }
-        });
-        jPanel1.add(btnReturn, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 30, 44, 35));
 
         txtRua.setBackground(new java.awt.Color(247, 247, 247));
         txtRua.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
@@ -130,16 +120,16 @@ public class UpdateEnderecoPaciente extends javax.swing.JFrame {
         });
         jPanel1.add(txtCep, new org.netbeans.lib.awtextra.AbsoluteConstraints(385, 375, 230, 30));
 
-        btnInserirEndereco.setBackground(new java.awt.Color(227, 1, 64));
-        btnInserirEndereco.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
-        btnInserirEndereco.setForeground(new java.awt.Color(255, 255, 255));
-        btnInserirEndereco.setText("Próximo");
-        btnInserirEndereco.addActionListener(new java.awt.event.ActionListener() {
+        btnAtualizarEndereco.setBackground(new java.awt.Color(227, 1, 64));
+        btnAtualizarEndereco.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        btnAtualizarEndereco.setForeground(new java.awt.Color(255, 255, 255));
+        btnAtualizarEndereco.setText("Próximo");
+        btnAtualizarEndereco.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnInserirEnderecoActionPerformed(evt);
+                btnAtualizarEnderecoActionPerformed(evt);
             }
         });
-        jPanel1.add(btnInserirEndereco, new org.netbeans.lib.awtextra.AbsoluteConstraints(377, 413, 245, 38));
+        jPanel1.add(btnAtualizarEndereco, new org.netbeans.lib.awtextra.AbsoluteConstraints(377, 413, 245, 38));
 
         Background.setText("sVGImage1");
         jPanel1.add(Background, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1000, 640));
@@ -157,35 +147,10 @@ public class UpdateEnderecoPaciente extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-    /*Ação do botão voltar*/
-    private void btnReturnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnReturnMouseClicked
-        InsertTelefonePaciente returnToTelefone = new InsertTelefonePaciente();
-        returnToTelefone.setVisible(true);
-        this.dispose();
-    }//GEN-LAST:event_btnReturnMouseClicked
 
-    private void btnInserirEnderecoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInserirEnderecoActionPerformed
-        // Aula dia 13 - Apostila 13_apostila... Pag3
-        // Obtem os dados
-        String rua = txtRua.getText();
-        String bairro = txtBairro.getText();
-        String cidade = txtCidade.getText();
-        String estado = txtEstado.getText();
-        int cep = Integer.parseInt(txtCep.getText());
-        try {
-            // Criando um objeto Endereço com os dados inseridos
-            Endereco endereco = new Endereco(0, rua, bairro, cidade, estado, cep);
-            PacienteDAO pacientedao = new PacienteDAO();
-            // Inserindo o endereço no banco de dados
-            pacientedao.createEnderecoPaciente(endereco);
-            InsertDadosPaciente clickNextPage = new InsertDadosPaciente();
-            clickNextPage.setVisible(true);
-            this.dispose();
-            System.out.println("Enderço Salvos com sucesso.");
-        } catch (Exception e) {
-            System.out.println("Não foi possivel inserir endereço." + e.getMessage());
-        }
-    }//GEN-LAST:event_btnInserirEnderecoActionPerformed
+    private void btnAtualizarEnderecoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAtualizarEnderecoActionPerformed
+
+    }//GEN-LAST:event_btnAtualizarEnderecoActionPerformed
     //FocusGained (Funciona para limpar o campo quando é selecionado)
     private void txtRuaFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtRuaFocusGained
         if (txtRua.getText().equals("Rua")) {
@@ -315,8 +280,7 @@ public class UpdateEnderecoPaciente extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private images.SVGImage Background;
-    private javax.swing.JButton btnInserirEndereco;
-    private images.SVGImage btnReturn;
+    private javax.swing.JButton btnAtualizarEndereco;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JTextField txtBairro;
     private javax.swing.JTextField txtCep;
