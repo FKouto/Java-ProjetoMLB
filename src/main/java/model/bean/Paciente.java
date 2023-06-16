@@ -21,7 +21,10 @@ public class Paciente extends Pessoa {
     public Paciente(String email, String senha){
         super(email,senha);
     }
-
+    
+    public Paciente(String email){
+        super(email);
+    }
     // Getters & Setters
     public int getCpf() {
         return cpf;

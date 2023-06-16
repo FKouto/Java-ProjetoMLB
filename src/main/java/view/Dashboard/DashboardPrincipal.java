@@ -42,6 +42,8 @@ public class DashboardPrincipal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
         jPanel1 = new javax.swing.JPanel();
         backgroundHomeScreen = new images.SVGImage();
         btnMeuPerfil = new images.SVGImage();
@@ -55,6 +57,19 @@ public class DashboardPrincipal extends javax.swing.JFrame {
         tablePsiquiatra = new javax.swing.JTable();
         backgroundtable = new images.SVGImage();
 
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane1.setViewportView(jTable1);
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Dashboard - Mente Livre Brasil");
         setResizable(false);
@@ -67,6 +82,11 @@ public class DashboardPrincipal extends javax.swing.JFrame {
         jPanel1.add(backgroundHomeScreen, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 100, 709, 520));
 
         btnMeuPerfil.setText("meuperfilicon");
+        btnMeuPerfil.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnMeuPerfilMouseClicked(evt);
+            }
+        });
         jPanel1.add(btnMeuPerfil, new org.netbeans.lib.awtextra.AbsoluteConstraints(48, 29, 115, 23));
 
         btnInicio.setText("inicio");
@@ -82,9 +102,6 @@ public class DashboardPrincipal extends javax.swing.JFrame {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnPsicologoMouseClicked(evt);
             }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                btnPsicologoMouseEntered(evt);
-            }
         });
         jPanel1.add(btnPsicologo, new org.netbeans.lib.awtextra.AbsoluteConstraints(555, 29, 119, 23));
 
@@ -93,13 +110,15 @@ public class DashboardPrincipal extends javax.swing.JFrame {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnPsiquiatraMouseClicked(evt);
             }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                btnPsiquiatraMouseEntered(evt);
-            }
         });
         jPanel1.add(btnPsiquiatra, new org.netbeans.lib.awtextra.AbsoluteConstraints(687, 29, 121, 23));
 
         btnSair.setText("sair");
+        btnSair.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnSairMouseClicked(evt);
+            }
+        });
         jPanel1.add(btnSair, new org.netbeans.lib.awtextra.AbsoluteConstraints(48, 675, 64, 32));
 
         Table1.setBorder(null);
@@ -202,12 +221,17 @@ public class DashboardPrincipal extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnInicioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnInicioMouseClicked
-        backgroundHomeScreen.setVisible(true);
-        backgroundtable.setVisible(false);
+    private void btnPsiquiatraMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPsiquiatraMouseClicked
+        backgroundHomeScreen.setVisible(false);
+        backgroundtable.setVisible(true);
+        try {
+            consultarPsiquiatra();
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(null, "Não foi possível buscar os dados do banco.");
+        }
         Table1.setVisible(false);
-        Table2.setVisible(false);
-    }//GEN-LAST:event_btnInicioMouseClicked
+        Table2.setVisible(true);
+    }//GEN-LAST:event_btnPsiquiatraMouseClicked
 
     private void btnPsicologoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPsicologoMouseClicked
         backgroundHomeScreen.setVisible(false);
@@ -221,25 +245,22 @@ public class DashboardPrincipal extends javax.swing.JFrame {
         Table2.setVisible(false);
     }//GEN-LAST:event_btnPsicologoMouseClicked
 
-    private void btnPsiquiatraMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPsiquiatraMouseClicked
-        backgroundHomeScreen.setVisible(false);
-        backgroundtable.setVisible(true);
-        try {
-            consultarPsiquiatra();
-        } catch (Exception ex) {
-            JOptionPane.showMessageDialog(null, "Não foi possível buscar os dados do banco.");
-        }
+    private void btnInicioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnInicioMouseClicked
+        backgroundHomeScreen.setVisible(true);
+        backgroundtable.setVisible(false);
         Table1.setVisible(false);
-        Table2.setVisible(true);
-    }//GEN-LAST:event_btnPsiquiatraMouseClicked
+        Table2.setVisible(false);
+    }//GEN-LAST:event_btnInicioMouseClicked
 
-    private void btnPsicologoMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPsicologoMouseEntered
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnPsicologoMouseEntered
+    private void btnMeuPerfilMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMeuPerfilMouseClicked
+        DashboardMeuPerfil GoToMeuPerfil = new DashboardMeuPerfil();
+        GoToMeuPerfil.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_btnMeuPerfilMouseClicked
 
-    private void btnPsiquiatraMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPsiquiatraMouseEntered
-        
-    }//GEN-LAST:event_btnPsiquiatraMouseEntered
+    private void btnSairMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSairMouseClicked
+        this.dispose();
+    }//GEN-LAST:event_btnSairMouseClicked
     // CONSTRUTOR TABELA PSIQUIATRA
     public void consultarPsiquiatra() throws Exception {
         DefaultTableModel model = (DefaultTableModel) tablePsiquiatra.getModel();
@@ -330,6 +351,8 @@ public class DashboardPrincipal extends javax.swing.JFrame {
     private images.SVGImage btnPsiquiatra;
     private images.SVGImage btnSair;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable jTable1;
     private javax.swing.JTable tablePsicologo;
     private javax.swing.JTable tablePsiquiatra;
     // End of variables declaration//GEN-END:variables
