@@ -7,8 +7,10 @@ import java.sql.ResultSet;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
 import model.bean.Paciente;
 import model.dao.PacienteDAO;
+import view.ViewLogin;
 
 public class DashboardMeuPerfil extends javax.swing.JFrame {
 
@@ -22,11 +24,16 @@ public class DashboardMeuPerfil extends javax.swing.JFrame {
         setIconImage(new ImageIcon(getClass().getResource("/images/icon.png")).getImage());
         // Define a posição da janela como centralizada em relação à tela.
         this.setLocationRelativeTo(null);
+        try {
+            inserirDadosPaciente();
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(null, "Não foi possível buscar os dados do banco.");
+        }
         // Imagens
         background.setSvgImage("images/Dashboard/MeuPerfil/backgroundMeuPerfil.svg", 1310, 740);
-        PopUp.setSvgImage("images/Dashboard/MeuPerfil/backgroundPopUpScreen.svg", 1310, 740);
-        btnVoltar.setSvgImage("images/Dashboard/MeuPerfil/buttonVoltar.svg", 68, 39);
-        btnContinuar.setSvgImage("images/Dashboard/MeuPerfil/buttonContinuar.svg", 99, 39);
+        //PopUp.setSvgImage("images/Dashboard/MeuPerfil/backgroundPopUpScreen.svg", 1310, 740);
+        //btnVoltar.setSvgImage("images/Dashboard/MeuPerfil/buttonVoltar.svg", 68, 39);
+        //btnContinuar.setSvgImage("images/Dashboard/MeuPerfil/buttonContinuar.svg", 99, 39);
         btnDadosPessoais.setSvgImage("images/Dashboard/MeuPerfil/buttonDados.svg", 144, 39);
         btnContato.setSvgImage("images/Dashboard/MeuPerfil/buttonContato.svg", 84, 39);
         btnEndereco.setSvgImage("images/Dashboard/MeuPerfil/buttonEndereco.svg", 95, 39);
@@ -45,18 +52,14 @@ public class DashboardMeuPerfil extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        txtEnterEmail = new javax.swing.JTextField();
-        btnContinuar = new images.SVGImage();
-        btnVoltar = new images.SVGImage();
-        PopUp = new images.SVGImage();
         txtNome = new javax.swing.JTextField();
         txtEmail = new javax.swing.JTextField();
         txtCpf = new javax.swing.JTextField();
         txtSenha = new javax.swing.JTextField();
-        txtBairro = new javax.swing.JTextField();
         txtCelular = new javax.swing.JTextField();
-        txtRua = new javax.swing.JTextField();
         txtCelular1 = new javax.swing.JTextField();
+        txtRua = new javax.swing.JTextField();
+        txtBairro = new javax.swing.JTextField();
         txtCidade = new javax.swing.JTextField();
         txtEstado = new javax.swing.JTextField();
         txtCep = new javax.swing.JTextField();
@@ -70,57 +73,19 @@ public class DashboardMeuPerfil extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Dashboard - Mente Livre Brasil");
+        setAlwaysOnTop(true);
+        setMaximumSize(new java.awt.Dimension(1310, 740));
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        txtEnterEmail.setBackground(new java.awt.Color(247, 247, 247));
-        txtEnterEmail.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
-        txtEnterEmail.setBorder(null);
-        txtEnterEmail.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                txtEnterEmailFocusGained(evt);
-            }
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                txtEnterEmailFocusLost(evt);
-            }
-        });
-        jPanel1.add(txtEnterEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(504, 364, 300, 30));
-
-        btnContinuar.setText("sVGImage2");
-        btnContinuar.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnContinuarMouseClicked(evt);
-            }
-        });
-        jPanel1.add(btnContinuar, new org.netbeans.lib.awtextra.AbsoluteConstraints(648, 421, 99, 39));
-
-        btnVoltar.setText("sVGImage1");
-        jPanel1.add(btnVoltar, new org.netbeans.lib.awtextra.AbsoluteConstraints(564, 421, 68, 39));
-
-        PopUp.setText("sVGImage3");
-        PopUp.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                PopUpMouseClicked(evt);
-            }
-        });
-        jPanel1.add(PopUp, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1310, 740));
-
         txtNome.setEditable(false);
         txtNome.setBackground(new java.awt.Color(247, 247, 247));
         txtNome.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         txtNome.setBorder(null);
         txtNome.setEnabled(false);
-        txtNome.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                txtNomeFocusGained(evt);
-            }
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                txtNomeFocusLost(evt);
-            }
-        });
         jPanel1.add(txtNome, new org.netbeans.lib.awtextra.AbsoluteConstraints(266, 287, 230, 30));
 
         txtEmail.setEditable(false);
@@ -128,14 +93,6 @@ public class DashboardMeuPerfil extends javax.swing.JFrame {
         txtEmail.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         txtEmail.setBorder(null);
         txtEmail.setEnabled(false);
-        txtEmail.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                txtEmailFocusGained(evt);
-            }
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                txtEmailFocusLost(evt);
-            }
-        });
         jPanel1.add(txtEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(266, 332, 230, 30));
 
         txtCpf.setEditable(false);
@@ -143,14 +100,6 @@ public class DashboardMeuPerfil extends javax.swing.JFrame {
         txtCpf.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         txtCpf.setBorder(null);
         txtCpf.setEnabled(false);
-        txtCpf.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                txtCpfFocusGained(evt);
-            }
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                txtCpfFocusLost(evt);
-            }
-        });
         jPanel1.add(txtCpf, new org.netbeans.lib.awtextra.AbsoluteConstraints(266, 377, 230, 30));
 
         txtSenha.setEditable(false);
@@ -158,30 +107,7 @@ public class DashboardMeuPerfil extends javax.swing.JFrame {
         txtSenha.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         txtSenha.setBorder(null);
         txtSenha.setEnabled(false);
-        txtSenha.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                txtSenhaFocusGained(evt);
-            }
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                txtSenhaFocusLost(evt);
-            }
-        });
         jPanel1.add(txtSenha, new org.netbeans.lib.awtextra.AbsoluteConstraints(266, 422, 230, 30));
-
-        txtBairro.setEditable(false);
-        txtBairro.setBackground(new java.awt.Color(247, 247, 247));
-        txtBairro.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
-        txtBairro.setBorder(null);
-        txtBairro.setEnabled(false);
-        txtBairro.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                txtBairroFocusGained(evt);
-            }
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                txtBairroFocusLost(evt);
-            }
-        });
-        jPanel1.add(txtBairro, new org.netbeans.lib.awtextra.AbsoluteConstraints(814, 332, 230, 30));
 
         txtCelular.setEditable(false);
         txtCelular.setBackground(new java.awt.Color(247, 247, 247));
@@ -198,49 +124,40 @@ public class DashboardMeuPerfil extends javax.swing.JFrame {
         });
         jPanel1.add(txtCelular, new org.netbeans.lib.awtextra.AbsoluteConstraints(538, 287, 230, 30));
 
-        txtRua.setEditable(false);
-        txtRua.setBackground(new java.awt.Color(247, 247, 247));
-        txtRua.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
-        txtRua.setBorder(null);
-        txtRua.setEnabled(false);
-        txtRua.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                txtRuaFocusGained(evt);
-            }
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                txtRuaFocusLost(evt);
-            }
-        });
-        jPanel1.add(txtRua, new org.netbeans.lib.awtextra.AbsoluteConstraints(814, 287, 230, 30));
-
         txtCelular1.setEditable(false);
         txtCelular1.setBackground(new java.awt.Color(247, 247, 247));
         txtCelular1.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         txtCelular1.setBorder(null);
         txtCelular1.setEnabled(false);
-        txtCelular1.addFocusListener(new java.awt.event.FocusAdapter() {
+        jPanel1.add(txtCelular1, new org.netbeans.lib.awtextra.AbsoluteConstraints(538, 332, 230, 30));
+
+        txtRua.setEditable(false);
+        txtRua.setBackground(new java.awt.Color(247, 247, 247));
+        txtRua.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        txtRua.setBorder(null);
+        txtRua.setEnabled(false);
+        jPanel1.add(txtRua, new org.netbeans.lib.awtextra.AbsoluteConstraints(814, 287, 230, 30));
+
+        txtBairro.setEditable(false);
+        txtBairro.setBackground(new java.awt.Color(247, 247, 247));
+        txtBairro.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        txtBairro.setBorder(null);
+        txtBairro.setEnabled(false);
+        txtBairro.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
-                txtCelular1FocusGained(evt);
+                txtBairroFocusGained(evt);
             }
             public void focusLost(java.awt.event.FocusEvent evt) {
-                txtCelular1FocusLost(evt);
+                txtBairroFocusLost(evt);
             }
         });
-        jPanel1.add(txtCelular1, new org.netbeans.lib.awtextra.AbsoluteConstraints(538, 332, 230, 30));
+        jPanel1.add(txtBairro, new org.netbeans.lib.awtextra.AbsoluteConstraints(814, 332, 230, 30));
 
         txtCidade.setEditable(false);
         txtCidade.setBackground(new java.awt.Color(247, 247, 247));
         txtCidade.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         txtCidade.setBorder(null);
         txtCidade.setEnabled(false);
-        txtCidade.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                txtCidadeFocusGained(evt);
-            }
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                txtCidadeFocusLost(evt);
-            }
-        });
         jPanel1.add(txtCidade, new org.netbeans.lib.awtextra.AbsoluteConstraints(814, 377, 230, 30));
 
         txtEstado.setEditable(false);
@@ -248,14 +165,6 @@ public class DashboardMeuPerfil extends javax.swing.JFrame {
         txtEstado.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         txtEstado.setBorder(null);
         txtEstado.setEnabled(false);
-        txtEstado.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                txtEstadoFocusGained(evt);
-            }
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                txtEstadoFocusLost(evt);
-            }
-        });
         jPanel1.add(txtEstado, new org.netbeans.lib.awtextra.AbsoluteConstraints(814, 422, 230, 30));
 
         txtCep.setEditable(false);
@@ -263,14 +172,6 @@ public class DashboardMeuPerfil extends javax.swing.JFrame {
         txtCep.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         txtCep.setBorder(null);
         txtCep.setEnabled(false);
-        txtCep.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                txtCepFocusGained(evt);
-            }
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                txtCepFocusLost(evt);
-            }
-        });
         jPanel1.add(txtCep, new org.netbeans.lib.awtextra.AbsoluteConstraints(814, 467, 230, 30));
 
         btnDadosPessoais.setText("sVGImage1");
@@ -294,6 +195,11 @@ public class DashboardMeuPerfil extends javax.swing.JFrame {
         jPanel1.add(btnInicio, new org.netbeans.lib.awtextra.AbsoluteConstraints(617, 29, 76, 22));
 
         btnSair.setText("sair");
+        btnSair.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnSairMouseClicked(evt);
+            }
+        });
         jPanel1.add(btnSair, new org.netbeans.lib.awtextra.AbsoluteConstraints(48, 675, 64, 32));
 
         background.setText("sVGImage1");
@@ -305,47 +211,10 @@ public class DashboardMeuPerfil extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnInicioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnInicioMouseClicked
-
+        DashboardPrincipal returnToPrincipal = new DashboardPrincipal();
+        returnToPrincipal.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_btnInicioMouseClicked
-
-    private void txtNomeFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtNomeFocusGained
-        // Verifica se o texto atual do campo de texto (txtEmail) é igual a "Digite seu e-mail".
-        if (txtNome.getText().equals("Digite seu e-mail")) {
-            txtNome.setText("");
-        }
-    }//GEN-LAST:event_txtNomeFocusGained
-
-    private void txtNomeFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtNomeFocusLost
-        // Verifica se o texto atual do campo de texto (txtEmail) está vazio.
-        if (txtNome.getText().equals("")) {
-            txtNome.setText("Digite seu e-mail");
-            // Se estiver vazio, o texto é definido como "Digite seu e-mail".
-        }
-    }//GEN-LAST:event_txtNomeFocusLost
-
-    private void txtEmailFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtEmailFocusGained
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtEmailFocusGained
-
-    private void txtEmailFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtEmailFocusLost
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtEmailFocusLost
-
-    private void txtCpfFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtCpfFocusGained
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtCpfFocusGained
-
-    private void txtCpfFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtCpfFocusLost
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtCpfFocusLost
-
-    private void txtSenhaFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtSenhaFocusGained
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtSenhaFocusGained
-
-    private void txtSenhaFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtSenhaFocusLost
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtSenhaFocusLost
 
     private void txtBairroFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtBairroFocusGained
         // TODO add your handling code here:
@@ -363,56 +232,8 @@ public class DashboardMeuPerfil extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtCelularFocusLost
 
-    private void txtRuaFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtRuaFocusGained
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtRuaFocusGained
-
-    private void txtRuaFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtRuaFocusLost
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtRuaFocusLost
-
-    private void txtCelular1FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtCelular1FocusGained
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtCelular1FocusGained
-
-    private void txtCelular1FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtCelular1FocusLost
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtCelular1FocusLost
-
-    private void txtCidadeFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtCidadeFocusGained
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtCidadeFocusGained
-
-    private void txtCidadeFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtCidadeFocusLost
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtCidadeFocusLost
-
-    private void txtEstadoFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtEstadoFocusGained
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtEstadoFocusGained
-
-    private void txtEstadoFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtEstadoFocusLost
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtEstadoFocusLost
-
-    private void txtCepFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtCepFocusGained
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtCepFocusGained
-
-    private void txtCepFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtCepFocusLost
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtCepFocusLost
-
-    private void txtEnterEmailFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtEnterEmailFocusGained
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtEnterEmailFocusGained
-
-    private void txtEnterEmailFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtEnterEmailFocusLost
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtEnterEmailFocusLost
-
-    private void btnContinuarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnContinuarMouseClicked
-        String email = txtEnterEmail.getText();
+    public void inserirDadosPaciente() throws Exception {
+        String email = ViewLogin.emailLogin;
         try {
             Paciente paciente = new Paciente(email);
             PacienteDAO pacientedao = new PacienteDAO();
@@ -447,10 +268,6 @@ public class DashboardMeuPerfil extends javax.swing.JFrame {
                         txtCidade.setText(cidade);
                         txtEstado.setText(estado);
                         txtCep.setText(cep);
-                        PopUp.setVisible(false);
-                        btnVoltar.setVisible(false);
-                        btnContinuar.setVisible(false);
-                        txtEnterEmail.setVisible(false);
                     } else {
                         System.out.println("Dados não encontrados.");
                     }
@@ -459,13 +276,10 @@ public class DashboardMeuPerfil extends javax.swing.JFrame {
         } catch (Exception ex) {
             Logger.getLogger(DashboardMeuPerfil.class.getName()).log(Level.SEVERE, null, ex);
         }
-    }//GEN-LAST:event_btnContinuarMouseClicked
-
-    private void PopUpMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PopUpMouseClicked
-        DashboardPrincipal returnToPrincipal = new DashboardPrincipal();
-        returnToPrincipal.setVisible(true);
+    }
+    private void btnSairMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSairMouseClicked
         this.dispose();
-    }//GEN-LAST:event_PopUpMouseClicked
+    }//GEN-LAST:event_btnSairMouseClicked
 
     /**
      * @param args the command line arguments
@@ -510,16 +324,13 @@ public class DashboardMeuPerfil extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private images.SVGImage PopUp;
     private images.SVGImage background;
     private images.SVGImage btnContato;
-    private images.SVGImage btnContinuar;
     private images.SVGImage btnDadosPessoais;
     private images.SVGImage btnEndereco;
     private images.SVGImage btnInicio;
     private images.SVGImage btnMeuPerfil;
     private images.SVGImage btnSair;
-    private images.SVGImage btnVoltar;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JTextField txtBairro;
     private javax.swing.JTextField txtCelular;
@@ -528,7 +339,6 @@ public class DashboardMeuPerfil extends javax.swing.JFrame {
     private javax.swing.JTextField txtCidade;
     private javax.swing.JTextField txtCpf;
     private javax.swing.JTextField txtEmail;
-    private javax.swing.JTextField txtEnterEmail;
     private javax.swing.JTextField txtEstado;
     private javax.swing.JTextField txtNome;
     private javax.swing.JTextField txtRua;

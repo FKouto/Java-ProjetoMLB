@@ -6,9 +6,8 @@ import model.dao.LoginDAO;
 import view.Dashboard.DashboardPrincipal;
 
 public class ViewLogin extends javax.swing.JFrame {
-    /**
-     * Creates new form ViewLogin
-     */
+    public static String emailLogin;
+    
     public ViewLogin() {
         initComponents();
         /*Icon Janela*/
@@ -160,6 +159,7 @@ public class ViewLogin extends javax.swing.JFrame {
     private void btnEntrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEntrarActionPerformed
         String email = txtEmail.getText();
         String senha = new String(senhaPasswordField.getPassword());
+        emailLogin = email;
 
         try {
             Login login = new Login(email, senha);
