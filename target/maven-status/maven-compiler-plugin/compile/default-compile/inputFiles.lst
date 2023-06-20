@@ -1,5 +1,7 @@
 C:\Users\couto\OneDrive\Documentos\GitHub\PLMB - Local\src\main\java\view\SelectedCadastroPsiquiatra\InsertEnderecoPsiquiatra.java
+C:\Users\couto\OneDrive\Documentos\GitHub\PLMB - Local\src\main\java\view\Dashboard\Admin\SelectedDelPsiquiatra.java
 C:\Users\couto\OneDrive\Documentos\GitHub\PLMB - Local\src\main\java\model\bean\Psiquiatra.java
+C:\Users\couto\OneDrive\Documentos\GitHub\PLMB - Local\src\main\java\model\dao\FuncionarioDAO.java
 C:\Users\couto\OneDrive\Documentos\GitHub\PLMB - Local\src\main\java\view\SelectedCadastroPaciente\InsertDadosPaciente.java
 C:\Users\couto\OneDrive\Documentos\GitHub\PLMB - Local\src\main\java\view\SelectedCadastroPsicologo\InsertDadosPsicologo.java
 C:\Users\couto\OneDrive\Documentos\GitHub\PLMB - Local\src\main\java\view\SelectedCadastroPsicologo\InsertEnderecoPsicologo.java
@@ -10,10 +12,13 @@ C:\Users\couto\OneDrive\Documentos\GitHub\PLMB - Local\src\main\java\model\dao\L
 C:\Users\couto\OneDrive\Documentos\GitHub\PLMB - Local\src\main\java\view\Dashboard\Update\UpdateEnderecoPaciente.java
 C:\Users\couto\OneDrive\Documentos\GitHub\PLMB - Local\src\main\java\model\bean\Login.java
 C:\Users\couto\OneDrive\Documentos\GitHub\PLMB - Local\src\main\java\model\dao\PsiquiatraDAO.java
+C:\Users\couto\OneDrive\Documentos\GitHub\PLMB - Local\src\main\java\view\Dashboard\Admin\SelectedDelPaciente.java
 C:\Users\couto\OneDrive\Documentos\GitHub\PLMB - Local\src\main\java\view\Dashboard\DashboardMeuPerfil.java
+C:\Users\couto\OneDrive\Documentos\GitHub\PLMB - Local\src\main\java\view\Dashboard\Admin\SelectedDelPsicologo.java
 C:\Users\couto\OneDrive\Documentos\GitHub\PLMB - Local\src\main\java\view\GoToLogin.java
 C:\Users\couto\OneDrive\Documentos\GitHub\PLMB - Local\src\main\java\view\Dashboard\Update\UpdateDadosPsiquiatra.java
 C:\Users\couto\OneDrive\Documentos\GitHub\PLMB - Local\src\main\java\images\SVGImage.java
+C:\Users\couto\OneDrive\Documentos\GitHub\PLMB - Local\src\main\java\view\Dashboard\Admin\SelectTypeDel.java
 C:\Users\couto\OneDrive\Documentos\GitHub\PLMB - Local\src\main\java\view\Dashboard\Admin\AdminDashboard.java
 C:\Users\couto\OneDrive\Documentos\GitHub\PLMB - Local\src\main\java\view\Dashboard\Update\UpdateDadosPsicologo.java
 C:\Users\couto\OneDrive\Documentos\GitHub\PLMB - Local\src\main\java\view\Dashboard\Update\UpdateEnderecoPsicologo.java
