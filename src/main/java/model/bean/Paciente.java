@@ -18,12 +18,20 @@ public class Paciente extends Pessoa {
         this.cpf = cpf;
     }
     
+    public Paciente(int idPessoa, String nome, String email, String senha){
+         super(idPessoa, nome, email, senha);
+    }
+    
     public Paciente(String email, String senha){
         super(email,senha);
     }
     
     public Paciente(String email){
         super(email);
+    }
+    
+    public Paciente(int idPessoa){
+        super(idPessoa);
     }
     // Getters & Setters
     public int getCpf() {

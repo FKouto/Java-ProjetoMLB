@@ -1,13 +1,16 @@
-package view.SelectedCadastroPsicologo;
+package view.Dashboard.Update;
 
+import view.SelectedCadastroPsicologo.*;
 import javax.swing.*;
 import model.bean.Telefone;
 import model.dao.PsicologoDAO;
+import view.Dashboard.DashboardMeuPerfil;
+import view.ViewLogin;
 import view.ViewSelectTypeCadastro;
 
-public class InsertTelefonePsicologo extends javax.swing.JFrame {
+public class UpdateTelefonePsicologo extends javax.swing.JFrame {
 
-    public InsertTelefonePsicologo() {
+    public UpdateTelefonePsicologo() {
         initComponents();
         /*Icon Janela*/
         // Define o ícone da janela como a imagem localizada em "/images/icon.png".
@@ -15,12 +18,9 @@ public class InsertTelefonePsicologo extends javax.swing.JFrame {
         // Define a posição da janela como centralizada em relação à tela.
         this.setLocationRelativeTo(null);
         // Define a imagem de fundo SVG
-        Background.setSvgImage("images/InsertTelefoneProfissionalBackgroung.svg", 1000, 640);
+        Background.setSvgImage("images/Dashboard/Update/updateTelefone.svg", 1000, 640);
         // Imagem botão de retorno
         btnReturn.setSvgImage("images/returnIcon.svg", 44, 35);
-        //FocusGained Placeholder
-        txtCelular.setFocusable(true);
-        txtCelular1.setFocusable(true);
     }
 
     /**
@@ -36,9 +36,8 @@ public class InsertTelefonePsicologo extends javax.swing.JFrame {
         btnReturn = new images.SVGImage();
         txtCelular = new javax.swing.JTextField();
         txtCelular1 = new javax.swing.JTextField();
-        btnInserirTelefone = new javax.swing.JButton();
+        btnAtualizarTelefone = new javax.swing.JButton();
         Background = new images.SVGImage();
-        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Contato | Psicologo");
@@ -57,21 +56,11 @@ public class InsertTelefonePsicologo extends javax.swing.JFrame {
 
         txtCelular.setBackground(new java.awt.Color(247, 247, 247));
         txtCelular.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
-        txtCelular.setText("Número Comercial");
         txtCelular.setBorder(null);
-        txtCelular.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                txtCelularFocusGained(evt);
-            }
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                txtCelularFocusLost(evt);
-            }
-        });
         jPanel1.add(txtCelular, new org.netbeans.lib.awtextra.AbsoluteConstraints(385, 261, 230, 30));
 
         txtCelular1.setBackground(new java.awt.Color(247, 247, 247));
         txtCelular1.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
-        txtCelular1.setText("Número Comercial");
         txtCelular1.setBorder(null);
         txtCelular1.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
@@ -83,23 +72,19 @@ public class InsertTelefonePsicologo extends javax.swing.JFrame {
         });
         jPanel1.add(txtCelular1, new org.netbeans.lib.awtextra.AbsoluteConstraints(385, 306, 230, 30));
 
-        btnInserirTelefone.setBackground(new java.awt.Color(227, 1, 64));
-        btnInserirTelefone.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
-        btnInserirTelefone.setForeground(new java.awt.Color(255, 255, 255));
-        btnInserirTelefone.setText("Próximo");
-        btnInserirTelefone.addActionListener(new java.awt.event.ActionListener() {
+        btnAtualizarTelefone.setBackground(new java.awt.Color(227, 1, 64));
+        btnAtualizarTelefone.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        btnAtualizarTelefone.setForeground(new java.awt.Color(255, 255, 255));
+        btnAtualizarTelefone.setText("Atualizar");
+        btnAtualizarTelefone.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnInserirTelefoneActionPerformed(evt);
+                btnAtualizarTelefoneActionPerformed(evt);
             }
         });
-        jPanel1.add(btnInserirTelefone, new org.netbeans.lib.awtextra.AbsoluteConstraints(377, 345, 245, 38));
+        jPanel1.add(btnAtualizarTelefone, new org.netbeans.lib.awtextra.AbsoluteConstraints(377, 345, 245, 38));
 
         Background.setText("sVGImage1");
         jPanel1.add(Background, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1000, 640));
-
-        jLabel1.setFont(new java.awt.Font("Segoe UI Semibold", 0, 12)); // NOI18N
-        jLabel1.setText("Insira seu telefone comercial");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(424, 227, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -121,20 +106,21 @@ public class InsertTelefonePsicologo extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_btnReturnMouseClicked
 
-    private void btnInserirTelefoneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInserirTelefoneActionPerformed
+    private void btnAtualizarTelefoneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAtualizarTelefoneActionPerformed
         String celular = txtCelular.getText();
-        String celular1 = txtCelular.getText();
-        // Verifica se o número de celular da primera label é igual o da segunda
+        String celular1 = txtCelular1.getText();
+        // Verifica se os número são iguais
         if (celular.equals(celular1)) {
             try {
                 // Criando um objeto Telefone com os dados inseridos
                 Telefone telefone = new Telefone(0, celular);
                 PsicologoDAO psicologodao = new PsicologoDAO();
+                String email = ViewLogin.emailLogin;
                 // Inserindo o telefone no banco de dados
-                psicologodao.createTelefonePsicologo(telefone);
+                psicologodao.updateTelefonePsicologo(email,telefone);
                 System.out.println("Telefone inserido com sucesso.");
-                InsertEnderecoPsicologo clickNextPage = new InsertEnderecoPsicologo();
-                clickNextPage.setVisible(true);
+                DashboardMeuPerfil returnToMeuPerfil = new DashboardMeuPerfil();
+                returnToMeuPerfil.setVisible(true);
                 this.dispose();
 
             } catch (Exception e) {
@@ -143,24 +129,13 @@ public class InsertTelefonePsicologo extends javax.swing.JFrame {
         } else {
             JOptionPane.showMessageDialog(null, "Números não coincidem. Tente novamente.");
         }
-
-    }//GEN-LAST:event_btnInserirTelefoneActionPerformed
-    //FocusGained (Funciona para limpar o campo quando é selecionado)
-    private void txtCelularFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtCelularFocusGained
-        if (txtCelular.getText().equals("Número Comercial")) {
-            txtCelular.setText("");
-        }
-    }//GEN-LAST:event_txtCelularFocusGained
+    }//GEN-LAST:event_btnAtualizarTelefoneActionPerformed
 
     private void txtCelular1FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtCelular1FocusGained
         if (txtCelular1.getText().equals("Número Comercial")) {
             txtCelular1.setText("");
         }
     }//GEN-LAST:event_txtCelular1FocusGained
-
-    private void txtCelularFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtCelularFocusLost
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtCelularFocusLost
 
     private void txtCelular1FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtCelular1FocusLost
         // TODO add your handling code here:
@@ -183,14 +158,46 @@ public class InsertTelefonePsicologo extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(InsertTelefonePsicologo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(UpdateTelefonePsicologo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(InsertTelefonePsicologo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(UpdateTelefonePsicologo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(InsertTelefonePsicologo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(UpdateTelefonePsicologo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(InsertTelefonePsicologo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(UpdateTelefonePsicologo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
@@ -227,16 +234,15 @@ public class InsertTelefonePsicologo extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new InsertTelefonePsicologo().setVisible(true);
+                new UpdateTelefonePsicologo().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private images.SVGImage Background;
-    private javax.swing.JButton btnInserirTelefone;
+    private javax.swing.JButton btnAtualizarTelefone;
     private images.SVGImage btnReturn;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JTextField txtCelular;
     private javax.swing.JTextField txtCelular1;

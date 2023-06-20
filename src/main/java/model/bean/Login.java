@@ -1,7 +1,9 @@
 package model.bean;
 
-public class Login extends Pessoa{
-    public Login(String email, String senha){
-        super(email,senha);
+public abstract class Login extends Pessoa{
+
+    // CONSTRUTOR
+    public Login(String email, String senha) {
+        super(email, senha);
     }
 }

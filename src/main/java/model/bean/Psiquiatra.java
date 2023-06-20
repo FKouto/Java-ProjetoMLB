@@ -29,7 +29,17 @@ public class Psiquiatra extends Pessoa {
     public Psiquiatra(String email, String senha){
         super(email, senha);
     }
-
+    
+    public Psiquiatra(String email){
+        super(email);
+    }
+    
+    public Psiquiatra(int idPessoa, String nome, String profissionalizacao, String tipoConsulta, String email, String senha){
+        super(idPessoa, nome, email, senha);
+        this.profissionalizacao = profissionalizacao;
+        this.tipoConsulta = tipoConsulta;
+    }
+    
     // Getters & Setters
     public int getNumConselho() {
         return numConselho;

@@ -1,8 +1,11 @@
 package view;
 
 import javax.swing.*;
+import model.bean.Funcionario;
 import model.bean.Login;
+import model.dao.FuncionarioDAO;
 import model.dao.LoginDAO;
+import view.Dashboard.Admin.AdminDashboard;
 import view.Dashboard.DashboardPrincipal;
 
 public class ViewLogin extends javax.swing.JFrame {
@@ -162,13 +165,20 @@ public class ViewLogin extends javax.swing.JFrame {
         emailLogin = email;
 
         try {
-            Login login = new Login(email, senha);
+            Login login = new Login(email, senha){};
             LoginDAO logindao = new LoginDAO();
+            Funcionario funcionario = new Funcionario(email,senha);
+            FuncionarioDAO funcionariodao = new FuncionarioDAO();
             if (logindao.existe(login)) {
                 DashboardPrincipal GoToDash = new DashboardPrincipal();
                 GoToDash.setVisible(true);
                 this.dispose();
-            } else {
+            } else if(funcionariodao.existe(funcionario)){
+                AdminDashboard GoToAdminDash = new AdminDashboard();
+                GoToAdminDash.setVisible(true);
+                this.dispose();
+            } 
+            else {
                 JOptionPane.showMessageDialog(null, "E-mail ou senha incorretos. \n Verifique suas informações e tente novamente.");
             }
         } catch (Exception e) {

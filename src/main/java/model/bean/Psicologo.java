@@ -28,14 +28,20 @@ public class Psicologo extends Pessoa {
     public Psicologo(String email, String senha){
         super(email,senha);
     }
-    /*
-    public Psicologo(String nome, String profissionalizacao, String tipoConsulta, Telefone telefone, Endereco endereco){
-        super(nome);
+    
+    public Psicologo(String email){
+        super(email);
+    }
+    
+    public Psicologo(int idPessoa, String nome, String profissionalizacao, String tipoConsulta, String email, String senha){
+        super(idPessoa, nome, email, senha);
         this.profissionalizacao = profissionalizacao;
         this.tipoConsulta = tipoConsulta;
-        this.telefone = telefone;
-        this.endereco = endereco;
-    }*/
+    }
+    
+    public Psicologo(int idPessoa){
+        super(idPessoa);
+    }
 
     // Getters & Setters
     public int getNumConselho() {

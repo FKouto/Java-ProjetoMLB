@@ -1,6 +1,10 @@
 package view.Dashboard.Update;
 
 import javax.swing.*;
+import model.bean.Telefone;
+import model.dao.PacienteDAO;
+import view.Dashboard.DashboardMeuPerfil;
+import view.ViewLogin;
 
 public class UpdateTelefonePaciente extends javax.swing.JFrame {
 
@@ -12,10 +16,7 @@ public class UpdateTelefonePaciente extends javax.swing.JFrame {
         // Define a posição da janela como centralizada em relação à tela.
         this.setLocationRelativeTo(null);
         // Define a imagem de fundo SVG
-        Background.setSvgImage("images/InsertTelefonePacienteBackgroung.svg", 1000, 640);
-        //FocusGained Placeholder
-        txtCelular.setFocusable(true);
-        txtCelular1.setFocusable(true);
+        Background.setSvgImage("images/Dashboard/Update/updateTelefone.svg", 1000, 640);
     }
 
     /**
@@ -43,30 +44,12 @@ public class UpdateTelefonePaciente extends javax.swing.JFrame {
 
         txtCelular.setBackground(new java.awt.Color(247, 247, 247));
         txtCelular.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
-        txtCelular.setText("Celular");
         txtCelular.setBorder(null);
-        txtCelular.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                txtCelularFocusGained(evt);
-            }
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                txtCelularFocusLost(evt);
-            }
-        });
         jPanel1.add(txtCelular, new org.netbeans.lib.awtextra.AbsoluteConstraints(385, 261, 230, 30));
 
         txtCelular1.setBackground(new java.awt.Color(247, 247, 247));
         txtCelular1.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
-        txtCelular1.setText("Celular");
         txtCelular1.setBorder(null);
-        txtCelular1.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                txtCelular1FocusGained(evt);
-            }
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                txtCelular1FocusLost(evt);
-            }
-        });
         jPanel1.add(txtCelular1, new org.netbeans.lib.awtextra.AbsoluteConstraints(385, 306, 230, 30));
 
         btnAtualizarTelefone.setBackground(new java.awt.Color(227, 1, 64));
@@ -98,32 +81,29 @@ public class UpdateTelefonePaciente extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAtualizarTelefoneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAtualizarTelefoneActionPerformed
+        String celular = txtCelular.getText();
+        String celular1 = txtCelular1.getText();
+        // Verifica se os número são iguais
+        if (celular.equals(celular1)) {
+            try {
+                // Criando um objeto Telefone com os dados inseridos
+                Telefone telefone = new Telefone(0, celular);
+                PacienteDAO pacientedao = new PacienteDAO();
+                String email = ViewLogin.emailLogin;
+                // Inserindo o telefone no banco de dados
+                pacientedao.updateTelefonePaciente(email,telefone);
+                System.out.println("Telefone inserido com sucesso.");
+                DashboardMeuPerfil returnToMeuPerfil = new DashboardMeuPerfil();
+                returnToMeuPerfil.setVisible(true);
+                this.dispose();
 
+            } catch (Exception e) {
+                System.out.println("Não foi possivel inserir" + e.getMessage());
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "Números não coincidem. Tente novamente.");
+        }
     }//GEN-LAST:event_btnAtualizarTelefoneActionPerformed
-    //FocusGained (Funciona para limpar o campo quando é selecionado)
-    private void txtCelularFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtCelularFocusGained
-        if (txtCelular.getText().equals("Celular")) {
-            txtCelular.setText("");
-        }
-    }//GEN-LAST:event_txtCelularFocusGained
-
-    private void txtCelular1FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtCelular1FocusGained
-        if (txtCelular1.getText().equals("Celular")) {
-            txtCelular1.setText("");
-        }
-    }//GEN-LAST:event_txtCelular1FocusGained
-    //FocusLost (Restaura o texto padrão se o campo não for mais selecionado e não estiver preenchido)
-    private void txtCelularFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtCelularFocusLost
-        if (txtCelular.getText().equals("")) {
-            txtCelular.setText("Celular");
-        }
-    }//GEN-LAST:event_txtCelularFocusLost
-
-    private void txtCelular1FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtCelular1FocusLost
-        if (txtCelular1.getText().equals("")) {
-            txtCelular1.setText("Celular");
-        }
-    }//GEN-LAST:event_txtCelular1FocusLost
 
     /**
      * @param args the command line arguments

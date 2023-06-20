@@ -9,8 +9,21 @@ import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import model.bean.Paciente;
+import model.bean.Psicologo;
+import model.bean.Psiquiatra;
 import model.dao.PacienteDAO;
-import view.Dashboard.Delete.ExcluirPaciente;
+import model.dao.PsicologoDAO;
+import model.dao.PsiquiatraDAO;
+import view.Dashboard.Delete.ExcluirUsuario;
+import view.Dashboard.Update.UpdateDadosPaciente;
+import view.Dashboard.Update.UpdateDadosPsicologo;
+import view.Dashboard.Update.UpdateDadosPsiquiatra;
+import view.Dashboard.Update.UpdateEnderecoPaciente;
+import view.Dashboard.Update.UpdateEnderecoPsicologo;
+import view.Dashboard.Update.UpdateEnderecoPsiquiatra;
+import view.Dashboard.Update.UpdateTelefonePaciente;
+import view.Dashboard.Update.UpdateTelefonePsicologo;
+import view.Dashboard.Update.UpdateTelefonePsiquiatra;
 import view.ViewLogin;
 
 public final class DashboardMeuPerfil extends javax.swing.JFrame {
@@ -27,7 +40,7 @@ public final class DashboardMeuPerfil extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
         // Solicitando o inserir public void inserirDadosPaciente()
         try {
-            inserirDadosPaciente();
+            inserirDados();
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(null, "Não foi possível buscar os dados do banco.");
         }
@@ -163,12 +176,27 @@ public final class DashboardMeuPerfil extends javax.swing.JFrame {
         jPanel1.add(txtCep, new org.netbeans.lib.awtextra.AbsoluteConstraints(814, 467, 230, 30));
 
         btnDadosPessoais.setText("sVGImage1");
+        btnDadosPessoais.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnDadosPessoaisMouseClicked(evt);
+            }
+        });
         jPanel1.add(btnDadosPessoais, new org.netbeans.lib.awtextra.AbsoluteConstraints(462, 604, 144, 39));
 
         btnContato.setText("sVGImage2");
+        btnContato.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnContatoMouseClicked(evt);
+            }
+        });
         jPanel1.add(btnContato, new org.netbeans.lib.awtextra.AbsoluteConstraints(638, 604, 84, 39));
 
         btnEndereco.setText("sVGImage3");
+        btnEndereco.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnEnderecoMouseClicked(evt);
+            }
+        });
         jPanel1.add(btnEndereco, new org.netbeans.lib.awtextra.AbsoluteConstraints(754, 604, 95, 39));
 
         btnMeuPerfil.setText("meuperfilicon");
@@ -212,7 +240,7 @@ public final class DashboardMeuPerfil extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_btnInicioMouseClicked
 
-    public void inserirDadosPaciente() throws Exception {
+    public void inserirDados() throws Exception {
         String email = ViewLogin.emailLogin;
         try {
             Paciente paciente = new Paciente(email);
@@ -252,20 +280,187 @@ public final class DashboardMeuPerfil extends javax.swing.JFrame {
                         System.out.println("Dados não encontrados.");
                     }
                 }
+            } else {
+                // If the paciente related code fails, check if it's a psicologo
+                Psicologo psicologo = new Psicologo(email);
+                PsicologoDAO psicologodao = new PsicologoDAO();
+                if (psicologodao.obterPsicologoDash(psicologo)) {
+                    String sql = "SELECT p.nome, p.tipo_consulta, p.email, p.senha, t.comercial, e.rua, e.bairro, e.cidade, e.estado, e.cep "
+                            + "FROM psicologo p "
+                            + "JOIN telefone_psicologo t ON p.cod_tel = t.cod_tel "
+                            + "JOIN endereco_psicologo e ON p.cod_endereco = e.cod_endereco "
+                            + "WHERE p.email = ?";
+                    try (Connection conn = ConexaoBD.obtemConexao(); PreparedStatement ps = conn.prepareStatement(sql)) {
+                        ps.setString(1, email);
+                        ResultSet rs = ps.executeQuery();
+                        if (rs.next()) {
+                            String nome = rs.getString("nome");
+                            String tipoConsulta = rs.getString("tipo_consulta");
+                            String senha = rs.getString("senha");
+                            String comercial = rs.getString("comercial");
+                            String rua = rs.getString("rua");
+                            String bairro = rs.getString("bairro");
+                            String cidade = rs.getString("cidade");
+                            String estado = rs.getString("estado");
+                            String cep = rs.getString("cep");
+                            // Atribuir os valores às JTextFields correspondentes
+                            txtNome.setText(nome);
+                            txtCpf.setText(tipoConsulta); // Assuming this field is used for the tipoConsulta value
+                            txtEmail.setText(email);
+                            txtSenha.setText(senha);
+                            txtBairro.setText(bairro);
+                            txtCelular.setText(comercial);
+                            txtRua.setText(rua);
+                            txtCelular1.setText(comercial);
+                            txtCidade.setText(cidade);
+                            txtEstado.setText(estado);
+                            txtCep.setText(cep);
+                        } else {
+                            System.out.println("Dados não encontrados.");
+                        }
+                    }
+                } else {
+                    // If the psicologo related code fails, check if it's a psiquiatra
+                    Psiquiatra psiquiatra = new Psiquiatra(email);
+                    PsiquiatraDAO psiquiatradao = new PsiquiatraDAO();
+                    if (psiquiatradao.obterPsiquiatraDash(psiquiatra)) {
+                        String sql = "SELECT p.nome, p.tipo_consulta, p.email, p.senha, t.comercial, e.rua, e.bairro, e.cidade, e.estado, e.cep "
+                                + "FROM psiquiatra p "
+                                + "JOIN telefone_psiquiatra t ON p.cod_tel = t.cod_tel "
+                                + "JOIN endereco_psiquiatra e ON p.cod_endereco = e.cod_endereco "
+                                + "WHERE p.email = ?";
+                        try (Connection conn = ConexaoBD.obtemConexao(); PreparedStatement ps = conn.prepareStatement(sql)) {
+                            ps.setString(1, email);
+                            ResultSet rs = ps.executeQuery();
+                            if (rs.next()) {
+                                String nome = rs.getString("nome");
+                                String tipoConsulta = rs.getString("tipo_consulta");
+                                String senha = rs.getString("senha");
+                                String comercial = rs.getString("comercial");
+                                String rua = rs.getString("rua");
+                                String bairro = rs.getString("bairro");
+                                String cidade = rs.getString("cidade");
+                                String estado = rs.getString("estado");
+                                String cep = rs.getString("cep");
+                                // Atribuir os valores às JTextFields correspondentes
+                                txtNome.setText(nome);
+                                txtCpf.setText(tipoConsulta); // Assuming this field is used for the tipoConsulta value
+                                txtEmail.setText(email);
+                                txtSenha.setText(senha);
+                                txtBairro.setText(bairro);
+                                txtCelular.setText(comercial);
+                                txtRua.setText(rua);
+                                txtCelular1.setText(comercial);
+                                txtCidade.setText(cidade);
+                                txtEstado.setText(estado);
+                                txtCep.setText(cep);
+                            } else {
+                                System.out.println("Dados não encontrados.");
+                            }
+                        }
+                    }
+                }
             }
         } catch (Exception ex) {
             Logger.getLogger(DashboardMeuPerfil.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+
     private void btnSairMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSairMouseClicked
+        ViewLogin returnToLogin = new ViewLogin();
+        returnToLogin.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_btnSairMouseClicked
 
     private void btnExcluirMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnExcluirMouseClicked
-        ExcluirPaciente GoToExcluirPacienteFrame = new ExcluirPaciente();
-        GoToExcluirPacienteFrame.setVisible(true);
+        ExcluirUsuario GoToExcluirFrame = new ExcluirUsuario();
+        GoToExcluirFrame.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_btnExcluirMouseClicked
+
+    private void btnDadosPessoaisMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnDadosPessoaisMouseClicked
+        String email = ViewLogin.emailLogin;
+        try {
+            PacienteDAO pacientedao = new PacienteDAO();
+            PsicologoDAO psicologodao = new PsicologoDAO();
+            PsiquiatraDAO psiquiatradao = new PsiquiatraDAO();
+
+            Paciente paciente = new Paciente(email);
+            Psicologo psicologo = new Psicologo(email);
+            Psiquiatra psiquiatra = new Psiquiatra(email);
+            if (pacientedao.obterPacienteDash(paciente)) {
+                UpdateDadosPaciente GoUpdateDadosPessoais = new UpdateDadosPaciente();
+                GoUpdateDadosPessoais.setVisible(true);
+                this.setVisible(false);
+            } else if (psicologodao.obterPsicologoDash(psicologo)) {
+                UpdateDadosPsicologo GoUpdateDadosPessoais = new UpdateDadosPsicologo();
+                GoUpdateDadosPessoais.setVisible(true);
+                this.setVisible(false);
+            } else if (psiquiatradao.obterPsiquiatraDash(psiquiatra)) {
+                UpdateDadosPsiquiatra GoUpdateDadosPessoais = new UpdateDadosPsiquiatra();
+                GoUpdateDadosPessoais.setVisible(true);
+                this.setVisible(false);
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Desculpe, foi possível abrir o formulario para alterar os dados. \n Tente novamente mais tarde.");
+        }
+    }//GEN-LAST:event_btnDadosPessoaisMouseClicked
+
+    private void btnContatoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnContatoMouseClicked
+        String email = ViewLogin.emailLogin;
+        try {
+            PacienteDAO pacientedao = new PacienteDAO();
+            PsicologoDAO psicologodao = new PsicologoDAO();
+            PsiquiatraDAO psiquiatradao = new PsiquiatraDAO();
+
+            Paciente paciente = new Paciente(email);
+            Psicologo psicologo = new Psicologo(email);
+            Psiquiatra psiquiatra = new Psiquiatra(email);
+            if (pacientedao.obterPacienteDash(paciente)) {
+                UpdateTelefonePaciente GoUpdateTelefonePaciente = new UpdateTelefonePaciente();
+                GoUpdateTelefonePaciente.setVisible(true);
+                this.setVisible(false);
+            } else if (psicologodao.obterPsicologoDash(psicologo)) {
+                UpdateTelefonePsicologo GoUpdateTelefonePsicologo = new UpdateTelefonePsicologo();
+                GoUpdateTelefonePsicologo.setVisible(true);
+                this.setVisible(false);
+            } else if (psiquiatradao.obterPsiquiatraDash(psiquiatra)) {
+                UpdateTelefonePsiquiatra GoUpdateTelefonePsiquiatra = new UpdateTelefonePsiquiatra();
+                GoUpdateTelefonePsiquiatra.setVisible(true);
+                this.setVisible(false);
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Desculpe, foi possível abrir o formulario para alterar os dados. \n Tente novamente mais tarde.");
+        }
+    }//GEN-LAST:event_btnContatoMouseClicked
+
+    private void btnEnderecoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEnderecoMouseClicked
+        String email = ViewLogin.emailLogin;
+        try {
+            PacienteDAO pacientedao = new PacienteDAO();
+            PsicologoDAO psicologodao = new PsicologoDAO();
+            PsiquiatraDAO psiquiatradao = new PsiquiatraDAO();
+
+            Paciente paciente = new Paciente(email);
+            Psicologo psicologo = new Psicologo(email);
+            Psiquiatra psiquiatra = new Psiquiatra(email);
+            if (pacientedao.obterPacienteDash(paciente)) {
+                UpdateEnderecoPaciente GoUpdateEnderecoPaciente = new UpdateEnderecoPaciente();
+                GoUpdateEnderecoPaciente.setVisible(true);
+                this.setVisible(false);
+            } else if (psicologodao.obterPsicologoDash(psicologo)) {
+                UpdateEnderecoPsicologo GoUpdateEnderecoPsicologo = new UpdateEnderecoPsicologo();
+                GoUpdateEnderecoPsicologo.setVisible(true);
+                this.setVisible(false);
+            } else if (psiquiatradao.obterPsiquiatraDash(psiquiatra)) {
+                UpdateEnderecoPsiquiatra GoUpdateEnderecoPsiquiatra = new UpdateEnderecoPsiquiatra();
+                GoUpdateEnderecoPsiquiatra.setVisible(true);
+                this.setVisible(false);
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Desculpe, foi possível abrir o formulario para alterar os dados. \n Tente novamente mais tarde.");
+        }
+    }//GEN-LAST:event_btnEnderecoMouseClicked
 
     /**
      * @param args the command line arguments

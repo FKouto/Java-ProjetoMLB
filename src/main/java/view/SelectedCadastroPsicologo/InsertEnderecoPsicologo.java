@@ -15,8 +15,6 @@ public class InsertEnderecoPsicologo extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
         // Define a imagem de fundo SVG
         Background.setSvgImage("images/InsertAddressProfissionalBackground.svg", 1000, 640);
-        // Imagem botão de retorno
-        btnReturn.setSvgImage("images/returnIcon.svg", 44, 35);
         //FocusGained Placeholder
         txtRua.setFocusable(true);
         txtBairro.setFocusable(true);
@@ -35,7 +33,6 @@ public class InsertEnderecoPsicologo extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        btnReturn = new images.SVGImage();
         txtRua = new javax.swing.JTextField();
         txtBairro = new javax.swing.JTextField();
         txtCidade = new javax.swing.JTextField();
@@ -51,13 +48,6 @@ public class InsertEnderecoPsicologo extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        btnReturn.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnReturnMouseClicked(evt);
-            }
-        });
-        jPanel1.add(btnReturn, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 30, 44, 35));
 
         txtRua.setBackground(new java.awt.Color(247, 247, 247));
         txtRua.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
@@ -157,12 +147,6 @@ public class InsertEnderecoPsicologo extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnReturnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnReturnMouseClicked
-        InsertTelefonePsicologo returnToTelefone = new InsertTelefonePsicologo();
-        returnToTelefone.setVisible(true);
-        this.dispose();
-    }//GEN-LAST:event_btnReturnMouseClicked
-
     private void btnInserirEnderecoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInserirEnderecoActionPerformed
         // Obtem os dados
         String rua = txtRua.getText();
@@ -222,13 +206,13 @@ public class InsertEnderecoPsicologo extends javax.swing.JFrame {
     }//GEN-LAST:event_txtRuaFocusLost
 
     private void txtBairroFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtBairroFocusLost
-        if (txtBairro.getText().equals("Bairro")) {
+        if (txtBairro.getText().equals("")) {
             txtBairro.setText("Bairro");
         }
     }//GEN-LAST:event_txtBairroFocusLost
 
     private void txtCidadeFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtCidadeFocusLost
-        if (txtCidade.getText().equals("Cidade")) {
+        if (txtCidade.getText().equals("")) {
             txtCidade.setText("Cidade");
         }
     }//GEN-LAST:event_txtCidadeFocusLost
@@ -314,7 +298,6 @@ public class InsertEnderecoPsicologo extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private images.SVGImage Background;
     private javax.swing.JButton btnInserirEndereco;
-    private images.SVGImage btnReturn;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JTextField txtBairro;
     private javax.swing.JTextField txtCep;

@@ -11,6 +11,10 @@ public abstract class Pessoa {
     public Pessoa() {
     }
     
+    public Pessoa(int idPessoa){
+        this.idPessoa = idPessoa;
+    }
+    
     public Pessoa(String email){
         this.email = email;
     }

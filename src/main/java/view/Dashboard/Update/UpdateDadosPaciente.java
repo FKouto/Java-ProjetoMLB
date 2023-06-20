@@ -1,8 +1,16 @@
 package view.Dashboard.Update;
 
+import database.ConexaoBD;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import javax.swing.*;
+import model.bean.Paciente;
+import model.dao.PacienteDAO;
+import view.Dashboard.DashboardMeuPerfil;
+import view.ViewLogin;
 
-public class UpdateDadosPaciente extends javax.swing.JFrame {
+public final class UpdateDadosPaciente extends javax.swing.JFrame {
 
     public UpdateDadosPaciente() {
         initComponents();
@@ -11,11 +19,13 @@ public class UpdateDadosPaciente extends javax.swing.JFrame {
         setIconImage(new ImageIcon(getClass().getResource("/images/icon.png")).getImage());
         // Define a posição da janela como centralizada em relação à tela.
         this.setLocationRelativeTo(null);
+        try {
+            showCpf();
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(null, "Não foi possível buscar os dados do banco.");
+        }
         // Define a imagem de fundo SVG
-        Background.setSvgImage("images/InsertPersonalDataBackground.svg", 1000, 640);
-        txtNome.setFocusable(true);
-        txtEmail.setFocusable(true);
-        txtCpf.setFocusable(true);
+        Background.setSvgImage("images/Dashboard/Update/updatePaciente.svg", 1000, 640);
     }
 
     /**
@@ -46,36 +56,20 @@ public class UpdateDadosPaciente extends javax.swing.JFrame {
 
         txtNome.setBackground(new java.awt.Color(247, 247, 247));
         txtNome.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
-        txtNome.setText("Digite seu nome");
         txtNome.setBorder(null);
-        txtNome.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                txtNomeFocusGained(evt);
-            }
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                txtNomeFocusLost(evt);
-            }
-        });
         jPanel1.add(txtNome, new org.netbeans.lib.awtextra.AbsoluteConstraints(385, 195, 230, 30));
 
         txtEmail.setBackground(new java.awt.Color(247, 247, 247));
         txtEmail.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
-        txtEmail.setText("Digite seu e-mail");
         txtEmail.setBorder(null);
-        txtEmail.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                txtEmailFocusGained(evt);
-            }
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                txtEmailFocusLost(evt);
-            }
-        });
         jPanel1.add(txtEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(385, 240, 230, 30));
 
+        txtCpf.setEditable(false);
         txtCpf.setBackground(new java.awt.Color(247, 247, 247));
         txtCpf.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         txtCpf.setText("Digite seu CPF");
         txtCpf.setBorder(null);
+        txtCpf.setEnabled(false);
         txtCpf.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 txtCpfFocusGained(evt);
@@ -89,11 +83,6 @@ public class UpdateDadosPaciente extends javax.swing.JFrame {
         senhaPasswordField1.setBackground(new java.awt.Color(247, 247, 247));
         senhaPasswordField1.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         senhaPasswordField1.setBorder(null);
-        senhaPasswordField1.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                senhaPasswordField1FocusGained(evt);
-            }
-        });
         jPanel1.add(senhaPasswordField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(385, 330, 230, 30));
 
         senhaPasswordField2.setBackground(new java.awt.Color(247, 247, 247));
@@ -104,7 +93,7 @@ public class UpdateDadosPaciente extends javax.swing.JFrame {
         btnAtualizarDados.setBackground(new java.awt.Color(227, 1, 64));
         btnAtualizarDados.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
         btnAtualizarDados.setForeground(new java.awt.Color(255, 255, 255));
-        btnAtualizarDados.setText("Próximo");
+        btnAtualizarDados.setText("Atualizar");
         btnAtualizarDados.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAtualizarDadosActionPerformed(evt);
@@ -128,20 +117,29 @@ public class UpdateDadosPaciente extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAtualizarDadosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAtualizarDadosActionPerformed
-
+        String email = ViewLogin.emailLogin;
+        String nome = txtNome.getText();
+        String senha1 = new String(senhaPasswordField1.getPassword());
+        String senha2 = new String(senhaPasswordField2.getPassword());
+        // Verifica se as senhas são iguais
+        if (senha1.equals(senha2)) {
+            try {
+                // Criando um objeto Paciente com os dados inseridos
+                Paciente paciente = new Paciente(0, nome, email, senha1);
+                PacienteDAO pacientedao = new PacienteDAO();
+                // Inserindo o paciente no banco
+                pacientedao.updatePaciente(paciente);
+                System.out.println("Paciente atualizado com sucesso");
+                DashboardMeuPerfil returnToMeuPerfil = new DashboardMeuPerfil();
+                returnToMeuPerfil.setVisible(true);
+                this.dispose();
+            } catch (Exception e) {
+                System.out.println("Não foi possível atualizar paciente " + e.getMessage());
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "Suas senhas não coincidem. Tente novamente.");
+        }
     }//GEN-LAST:event_btnAtualizarDadosActionPerformed
-    //FocusGained (Funciona para limpar o campo quando é selecionado)
-    private void txtNomeFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtNomeFocusGained
-        if (txtNome.getText().equals("Digite seu nome")) {
-            txtNome.setText("");
-        }
-    }//GEN-LAST:event_txtNomeFocusGained
-
-    private void txtEmailFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtEmailFocusGained
-        if (txtEmail.getText().equals("Digite seu e-mail")) {
-            txtEmail.setText("");
-        }
-    }//GEN-LAST:event_txtEmailFocusGained
 
     private void txtCpfFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtCpfFocusGained
         if (txtCpf.getText().equals("Digite seu CPF")) {
@@ -149,27 +147,36 @@ public class UpdateDadosPaciente extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_txtCpfFocusGained
 
-    private void senhaPasswordField1FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_senhaPasswordField1FocusGained
-        // TODO add your handling code here:
-    }//GEN-LAST:event_senhaPasswordField1FocusGained
-    //FocusLost (Restaura o texto padrão se o campo não for mais selecionado e não estiver preenchido)
-    private void txtNomeFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtNomeFocusLost
-        if (txtNome.getText().equals("")) {
-            txtNome.setText("Digite seu nome");
-        }
-    }//GEN-LAST:event_txtNomeFocusLost
-
-    private void txtEmailFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtEmailFocusLost
-        if (txtEmail.getText().equals("")) {
-            txtEmail.setText("Digite seu e-mail");
-        }
-    }//GEN-LAST:event_txtEmailFocusLost
-
     private void txtCpfFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtCpfFocusLost
         if (txtCpf.getText().equals("")) {
             txtCpf.setText("Digite seu CPF");
         }
     }//GEN-LAST:event_txtCpfFocusLost
+    public void showCpf() throws Exception {
+        String email = ViewLogin.emailLogin;
+        try {
+            Paciente paciente = new Paciente(email);
+            PacienteDAO pacientedao = new PacienteDAO();
+            if (pacientedao.obterPacienteDash(paciente)) {
+                String sql = "SELECT cpf "
+                        + "FROM paciente "
+                        + "WHERE email = ?";
+                try (Connection conn = ConexaoBD.obtemConexao(); PreparedStatement ps = conn.prepareStatement(sql)) {
+                    ps.setString(1, email);
+                    ResultSet rs = ps.executeQuery();
+                    if (rs.next()) {
+                        String cpf = rs.getString("cpf");
+                        // Atribuir os valores às JTextFields correspondentes
+                        txtCpf.setText(cpf);
+                    } else {
+                        System.out.println("Dados não encontrados.");
+                    }
+                }
+            }
+        } catch (Exception ex) {
+            //Logger.getLogger(DashboardMeuPerfil.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
 
     /**
      * @param args the command line arguments

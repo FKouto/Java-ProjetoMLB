@@ -7,6 +7,7 @@ import java.sql.ResultSet;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import view.ViewLogin;
 
 public class DashboardPrincipal extends javax.swing.JFrame {
 
@@ -259,6 +260,8 @@ public class DashboardPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_btnMeuPerfilMouseClicked
 
     private void btnSairMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSairMouseClicked
+        ViewLogin returnToLogin = new ViewLogin();
+        returnToLogin.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_btnSairMouseClicked
     // CONSTRUTOR TABELA PSIQUIATRA

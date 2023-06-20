@@ -4,11 +4,12 @@ import database.ConexaoBD;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import model.bean.Pessoa;
 
 public class LoginDAO {
 
-    public boolean existe(Pessoa pessoa) throws Exception {
+    public boolean existe(Pessoa pessoa) throws SQLException {
         Connection conn = null;
         PreparedStatement cons = null;
 
@@ -16,7 +17,7 @@ public class LoginDAO {
             // Obtem conexão com o banco de dados
             conn = ConexaoBD.obtemConexao();
 
-            // Verifica se a pessoa é um paciente
+            //Preparando o SQL para o inserir Paciente
             String pacienteLogin = "SELECT * FROM paciente WHERE email = ? AND senha = ?";
             cons = conn.prepareStatement(pacienteLogin);
             cons.setString(1, pessoa.getEmail());
@@ -49,7 +50,8 @@ public class LoginDAO {
                 return true;
             }
 
-        } catch (Exception e) {
+        } catch (SQLException e) {
+            //Preparando o SQL para o inserir Paciente
             System.out.println("Erro ao consultar." + e.getMessage());
         } finally {
             // Fecha os recursos abertos
@@ -60,7 +62,7 @@ public class LoginDAO {
                 conn.close();
             }
         }
-
+        //Preparando o SQL para o inserir Paciente
         return false;
     }
 }

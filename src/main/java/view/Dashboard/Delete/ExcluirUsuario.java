@@ -1,11 +1,19 @@
 package view.Dashboard.Delete;
 
 import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
+import model.bean.Paciente;
+import model.bean.Psicologo;
+import model.bean.Psiquiatra;
+import model.dao.PacienteDAO;
+import model.dao.PsicologoDAO;
+import model.dao.PsiquiatraDAO;
 import view.Dashboard.DashboardMeuPerfil;
+import view.ViewLogin;
 
-public class ExcluirPaciente extends javax.swing.JFrame {
+public class ExcluirUsuario extends javax.swing.JFrame {
 
-    public ExcluirPaciente() {
+    public ExcluirUsuario() {
         initComponents();
         /*Icon Janela*/
         // Define o ícone da janela como a imagem localizada em "/images/icon.png".
@@ -27,7 +35,7 @@ public class ExcluirPaciente extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         btnCancelar = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        btnConfirmar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Excluir Conta");
@@ -60,12 +68,17 @@ public class ExcluirPaciente extends javax.swing.JFrame {
         });
         jPanel1.add(btnCancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(209, 145, 120, 39));
 
-        jButton2.setBackground(new java.awt.Color(227, 1, 64));
-        jButton2.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
-        jButton2.setForeground(new java.awt.Color(255, 255, 255));
-        jButton2.setText("Sim, excluir");
-        jButton2.setBorder(null);
-        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(86, 145, 120, 39));
+        btnConfirmar.setBackground(new java.awt.Color(227, 1, 64));
+        btnConfirmar.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        btnConfirmar.setForeground(new java.awt.Color(255, 255, 255));
+        btnConfirmar.setText("Sim, excluir");
+        btnConfirmar.setBorder(null);
+        btnConfirmar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnConfirmarMouseClicked(evt);
+            }
+        });
+        jPanel1.add(btnConfirmar, new org.netbeans.lib.awtextra.AbsoluteConstraints(86, 145, 120, 39));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -87,6 +100,32 @@ public class ExcluirPaciente extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_btnCancelarMouseClicked
 
+    private void btnConfirmarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnConfirmarMouseClicked
+        String email = ViewLogin.emailLogin;
+        try {
+            PacienteDAO pacientedao = new PacienteDAO();
+            PsicologoDAO psicologodao = new PsicologoDAO();
+            PsiquiatraDAO psiquiatradao = new PsiquiatraDAO();
+
+            Paciente paciente = new Paciente(email);
+            Psicologo psicologo = new Psicologo(email);
+            Psiquiatra psiquiatra = new Psiquiatra(email);
+
+            if (pacientedao.deletePaciente(email, paciente)) {
+                this.dispose();
+            } else if (psicologodao.deletePsicologo(email, psicologo)) {
+                this.dispose();
+            } else if (psiquiatradao.deletePsiquiatra(email, psiquiatra)) {
+                this.dispose();
+            } else {
+                this.dispose();
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Desculpe, não foi possível excluir o registro. Tente novamente mais tarde.");
+        }
+
+    }//GEN-LAST:event_btnConfirmarMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -104,27 +143,28 @@ public class ExcluirPaciente extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(ExcluirPaciente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ExcluirUsuario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(ExcluirPaciente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ExcluirUsuario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(ExcluirPaciente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ExcluirUsuario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(ExcluirPaciente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ExcluirUsuario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new ExcluirPaciente().setVisible(true);
+                new ExcluirUsuario().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCancelar;
-    private javax.swing.JButton jButton2;
+    private javax.swing.JButton btnConfirmar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
