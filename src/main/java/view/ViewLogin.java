@@ -5,7 +5,7 @@ import model.bean.Funcionario;
 import model.bean.Login;
 import model.dao.FuncionarioDAO;
 import model.dao.LoginDAO;
-import view.Dashboard.Admin.AdminDashboard;
+import view.Dashboard.Admin.DashboardAdmin;
 import view.Dashboard.DashboardPrincipal;
 
 public class ViewLogin extends javax.swing.JFrame {
@@ -174,7 +174,7 @@ public class ViewLogin extends javax.swing.JFrame {
                 GoToDash.setVisible(true);
                 this.dispose();
             } else if(funcionariodao.existe(funcionario)){
-                AdminDashboard GoToAdminDash = new AdminDashboard();
+                DashboardAdmin GoToAdminDash = new DashboardAdmin();
                 GoToAdminDash.setVisible(true);
                 this.dispose();
             } 

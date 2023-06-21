@@ -110,6 +110,7 @@ public class SelectedDelPaciente extends javax.swing.JFrame {
             PacienteDAO pacientedao = new PacienteDAO();
             pacientedao.funcDeletePaciente(idDelete, paciente);
             JOptionPane.showMessageDialog(null, "Registro excluído com sucesso.");
+            this.dispose();
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Erro ao excluir registro. \n Tente novamente.");
             System.out.println("Erro ao excluir paciente: " + e.getMessage());

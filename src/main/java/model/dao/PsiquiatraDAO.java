@@ -50,12 +50,6 @@ public class PsiquiatraDAO {
             // Executa a inserção
             create.executeUpdate();
 
-            // Obtém a chave gerada
-            ResultSet generatedKeys = create.getGeneratedKeys();
-            generatedKeys.next();
-            int idTel = generatedKeys.getInt(1);
-            telefone.setCodTel(idTel);
-
             System.out.println("Telefone inserido com sucesso!");
         } catch (SQLException e) {
             System.out.println("Erro ao inserir telefone do paciente: " + e.getMessage());
@@ -89,12 +83,6 @@ public class PsiquiatraDAO {
 
             // Executa a inserção
             create.executeUpdate();
-
-            // Obtém a chave gerada
-            ResultSet generatedKeys = create.getGeneratedKeys();
-            generatedKeys.next();
-            int idEndereco = generatedKeys.getInt(1);
-            endereco.setCodEndereco(idEndereco);
 
             System.out.println("Endereço inserido com sucesso!");
         } catch (SQLException e) {
@@ -154,16 +142,9 @@ public class PsiquiatraDAO {
             //Executa a inserção
             create.executeUpdate();
 
-            // Obtém a chave gerada
-            ResultSet generatedKeys = create.getGeneratedKeys();
-            if (generatedKeys.next()) {
-                int idPessoa = generatedKeys.getInt(1);
-                psiquiatra.setIdPessoa(idPessoa);
-            }
-
             System.out.println("Psiquiatra inserido com sucesso!");
         } catch (SQLException e) {
-            System.out.println("Erro ao inserir psícologo: " + e.getMessage());
+            System.out.println("Erro ao inserir psiquiatra: " + e.getMessage());
         } finally {
             // Fecha os recursos
             if (create != null) {
@@ -275,24 +256,28 @@ public class PsiquiatraDAO {
             conn = ConexaoBD.obtemConexao();
 
             // Preparando SQL para o Update
-            String sql = "UPDATE endereco_psiquiatra "
-                    + "SET rua = ?, "
-                    + "    bairro = ?, "
-                    + "    cidade = ?, "
-                    + "    estado = ?, "
-                    + "    cep = ? "
-                    + "WHERE cod_endereco = (SELECT cod_endereco FROM psiquiatra WHERE email = ?)";
-
+            String sql = "UPDATE endereco_paciente "
+                    + "SET rua = IF(? <> '', ?, rua),"
+                    + "    bairro = IF(? <> '', ?, bairro),"
+                    + "    cidade = IF(? <> '', ?, cidade),"
+                    + "    estado = IF(? <> '', ?, estado),"
+                    + "    cep = IF(? <> 0, ?, cep)"
+                    + "WHERE cod_endereco = (SELECT cod_endereco FROM paciente WHERE email = ?)";
             // Preparando o Statement
             update = conn.prepareStatement(sql);
 
             // Definindo os valores a serem recebidos
             update.setString(1, endereco.getRua());
-            update.setString(2, endereco.getBairro());
-            update.setString(3, endereco.getCidade());
-            update.setString(4, endereco.getEstado());
-            update.setInt(5, endereco.getCep());
-            update.setString(6, email);
+            update.setString(2, endereco.getRua());
+            update.setString(3, endereco.getBairro());
+            update.setString(4, endereco.getBairro());
+            update.setString(5, endereco.getCidade());
+            update.setString(6, endereco.getCidade());
+            update.setString(7, endereco.getEstado());
+            update.setString(8, endereco.getEstado());
+            update.setInt(9, endereco.getCep());
+            update.setInt(10, endereco.getCep());
+            update.setString(11, email);
 
             // Executa o Update
             update.executeUpdate();
@@ -353,6 +338,7 @@ public class PsiquiatraDAO {
         }
         return false;
     }
+
     // DELETE PSICOLOGO pelo funcionario
     public boolean funcDeletePaciente(int idPessoa, Psiquiatra psiquiatra) throws SQLException {
         Connection conn = null;

@@ -50,12 +50,6 @@ public class PacienteDAO {
             // Executa a inserção
             create.executeUpdate();
 
-            // Obtém a chave gerada para telefone
-            ResultSet generatedKeys = create.getGeneratedKeys();
-            generatedKeys.next();
-            int idTel = generatedKeys.getInt(1);
-            telefone.setCodTel(idTel);
-
             System.out.println("Telefone inserido com sucesso!");
         } catch (SQLException e) {
             System.out.println("Erro ao inserir telefone do paciente: " + e.getMessage());
@@ -89,12 +83,6 @@ public class PacienteDAO {
 
             // Executa a inserção
             create.executeUpdate();
-
-            // Obtém a chave gerada para Endereco
-            ResultSet generatedKeys = create.getGeneratedKeys();
-            generatedKeys.next();
-            int idEndereco = generatedKeys.getInt(1);
-            endereco.setCodEndereco(idEndereco);
 
             System.out.println("Endereço inserido com sucesso!");
         } catch (SQLException e) {
@@ -152,13 +140,6 @@ public class PacienteDAO {
             // Executa a inserção
             create.executeUpdate();
 
-            // Obtém a chave gerada e atribui a ID
-            ResultSet generatedKeys = create.getGeneratedKeys();
-            if (generatedKeys.next()) {
-                int idPessoa = generatedKeys.getInt(1);
-                paciente.setIdPessoa(idPessoa);
-            }
-
             System.out.println("Paciente inserido com sucesso!");
         } catch (SQLException e) {
             System.out.println("Erro ao inserir paciente: " + e.getMessage());
@@ -187,7 +168,8 @@ public class PacienteDAO {
             String sql = "UPDATE paciente "
                     + "SET nome = IF(? <> '', ?, nome),"
                     + "    cpf = IF(? <> 0, ?, cpf), "
-                    + "    senha = IF(? <> '', ?, senha)"
+                    + "    senha = IF(? <> '', ?, senha),"
+                    + "    email = IF(? <> '', ?, email),"
                     + "WHERE email = ?";
 
             // Preparando o Statement
@@ -268,11 +250,11 @@ public class PacienteDAO {
 
             // Preparando SQL para o Update
             String sql = "UPDATE endereco_paciente "
-                    + "SET rua = ?, "
-                    + "    bairro = ?, "
-                    + "    cidade = ?, "
-                    + "    estado = ?, "
-                    + "    cep = ? "
+                    + "SET rua = IF(? <> '', ?, rua),"
+                    + "    bairro = IF(? <> '', ?, bairro),"
+                    + "    cidade = IF(? <> '', ?, cidade),"
+                    + "    estado = IF(? <> '', ?, estado),"
+                    + "    cep = IF(? <> 0, ?, cep)"
                     + "WHERE cod_endereco = (SELECT cod_endereco FROM paciente WHERE email = ?)";
 
             // Preparando o Statement
@@ -280,11 +262,16 @@ public class PacienteDAO {
 
             // Definindo os valores a serem recebidos
             update.setString(1, endereco.getRua());
-            update.setString(2, endereco.getBairro());
-            update.setString(3, endereco.getCidade());
-            update.setString(4, endereco.getEstado());
-            update.setInt(5, endereco.getCep());
-            update.setString(6, email);
+            update.setString(2, endereco.getRua());
+            update.setString(3, endereco.getBairro());
+            update.setString(4, endereco.getBairro());
+            update.setString(5, endereco.getCidade());
+            update.setString(6, endereco.getCidade());
+            update.setString(7, endereco.getEstado());
+            update.setString(8, endereco.getEstado());
+            update.setInt(9, endereco.getCep());
+            update.setInt(10, endereco.getCep());
+            update.setString(11, email);
 
             // Executa o Update
             update.executeUpdate();
@@ -345,6 +332,7 @@ public class PacienteDAO {
         }
         return false;
     }
+
     // DELETE PACIENTE pelo funcionario
     public boolean funcDeletePaciente(int idPessoa, Paciente paciente) throws SQLException {
         Connection conn = null;

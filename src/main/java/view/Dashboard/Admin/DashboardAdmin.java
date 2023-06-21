@@ -9,12 +9,12 @@ import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import view.ViewLogin;
 
-public final class AdminDashboard extends javax.swing.JFrame {
+public final class DashboardAdmin extends javax.swing.JFrame {
 
     /**
      * Creates new form AdminDashboard
      */
-    public AdminDashboard() {
+    public DashboardAdmin() {
         initComponents();
         /*Icon Janela*/
         // Define o ícone da janela como a imagem localizada em "/images/icon.png".
@@ -25,6 +25,7 @@ public final class AdminDashboard extends javax.swing.JFrame {
         iconAdmin.setSvgImage("images/Dashboard/iconAdminStatic.svg", 89, 24);
         btnExcluir.setSvgImage("images/Dashboard/iconTrash.svg", 36, 39);
         btnSair.setSvgImage("images/Dashboard/btnSairAdmin.svg", 74, 39);
+        iconUpdate.setSvgImage("images/Dashboard/iconUpdate.svg",38,37);
         // Solicitando a tableta
         try {
             consultarPaciente();
@@ -45,6 +46,7 @@ public final class AdminDashboard extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
+        iconUpdate = new images.SVGImage();
         iconAdmin = new images.SVGImage();
         btnExcluir = new images.SVGImage();
         btnSair = new images.SVGImage();
@@ -59,6 +61,14 @@ public final class AdminDashboard extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        iconUpdate.setText("sVGImage1");
+        iconUpdate.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                iconUpdateMouseClicked(evt);
+            }
+        });
+        jPanel1.add(iconUpdate, new org.netbeans.lib.awtextra.AbsoluteConstraints(1103, 17, 38, 37));
 
         iconAdmin.setText("sVGImage1");
         jPanel1.add(iconAdmin, new org.netbeans.lib.awtextra.AbsoluteConstraints(23, 24, 89, 24));
@@ -243,6 +253,16 @@ public final class AdminDashboard extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_btnSairMouseClicked
 
+    private void iconUpdateMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_iconUpdateMouseClicked
+        try {
+            consultarPaciente();
+            consultarPsicologo();
+            consultarPsiquiatra();
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(null, "Não foi possível buscar os dados do banco.");
+        }
+    }//GEN-LAST:event_iconUpdateMouseClicked
+
     // CONSTRUTOR TABELA PACIENTE
     public void consultarPaciente() throws Exception {
         DefaultTableModel model = (DefaultTableModel) tablePaciente.getModel();
@@ -322,20 +342,21 @@ public final class AdminDashboard extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(AdminDashboard.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(DashboardAdmin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(AdminDashboard.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(DashboardAdmin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(AdminDashboard.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(DashboardAdmin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(AdminDashboard.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(DashboardAdmin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new AdminDashboard().setVisible(true);
+                new DashboardAdmin().setVisible(true);
             }
         });
     }
@@ -347,6 +368,7 @@ public final class AdminDashboard extends javax.swing.JFrame {
     private images.SVGImage btnExcluir;
     private images.SVGImage btnSair;
     private images.SVGImage iconAdmin;
+    private images.SVGImage iconUpdate;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JTable tablePaciente;

@@ -18,18 +18,4 @@ public class ConexaoBD {
             return null;
         }
     }
-    /*
-    private static String url = "root:rZJKrmNWjdsiFl15TsEk@containers-us-west-98.railway.app:6393/railway";
-    private static String usuario = "root";
-    private static String senha = "rZJKrmNWjdsiFl15TsEk";
-
-    public static java.sql.Connection obtemConexao() {
-        try {
-            java.sql.Connection c = DriverManager.getConnection("jdbc:mysql://" + url + "?useTimezone=true&serverTimezone=UTC", usuario, senha);
-            return c;
-        } catch (SQLException e) {
-             System.out.println("Erro na conexão com banco de dados. Tente novamente.");
-            return null;
-        }
-    }*/
 }

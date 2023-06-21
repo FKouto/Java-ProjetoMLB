@@ -19,7 +19,6 @@ C:\Users\couto\OneDrive\Documentos\GitHub\PLMB - Local\src\main\java\view\GoToLo
 C:\Users\couto\OneDrive\Documentos\GitHub\PLMB - Local\src\main\java\view\Dashboard\Update\UpdateDadosPsiquiatra.java
 C:\Users\couto\OneDrive\Documentos\GitHub\PLMB - Local\src\main\java\images\SVGImage.java
 C:\Users\couto\OneDrive\Documentos\GitHub\PLMB - Local\src\main\java\view\Dashboard\Admin\SelectTypeDel.java
-C:\Users\couto\OneDrive\Documentos\GitHub\PLMB - Local\src\main\java\view\Dashboard\Admin\AdminDashboard.java
 C:\Users\couto\OneDrive\Documentos\GitHub\PLMB - Local\src\main\java\view\Dashboard\Update\UpdateDadosPsicologo.java
 C:\Users\couto\OneDrive\Documentos\GitHub\PLMB - Local\src\main\java\view\Dashboard\Update\UpdateEnderecoPsicologo.java
 C:\Users\couto\OneDrive\Documentos\GitHub\PLMB - Local\src\main\java\view\SelectedCadastroPaciente\InsertTelefonePaciente.java
@@ -40,6 +39,7 @@ C:\Users\couto\OneDrive\Documentos\GitHub\PLMB - Local\src\main\java\view\Dashbo
 C:\Users\couto\OneDrive\Documentos\GitHub\PLMB - Local\src\main\java\view\ViewLogin.java
 C:\Users\couto\OneDrive\Documentos\GitHub\PLMB - Local\src\main\java\view\Dashboard\DashboardPrincipal.java
 C:\Users\couto\OneDrive\Documentos\GitHub\PLMB - Local\src\main\java\view\Dashboard\Update\UpdateEnderecoPsiquiatra.java
+C:\Users\couto\OneDrive\Documentos\GitHub\PLMB - Local\src\main\java\view\Dashboard\Admin\DashboardAdmin.java
 C:\Users\couto\OneDrive\Documentos\GitHub\PLMB - Local\src\main\java\view\SelectedCadastroPaciente\InsertEnderecoPaciente.java
 C:\Users\couto\OneDrive\Documentos\GitHub\PLMB - Local\src\main\java\model\bean\Funcionario.java
 C:\Users\couto\OneDrive\Documentos\GitHub\PLMB - Local\src\main\java\view\SelectedCadastroPsiquiatra\InsertDadosPsiquiatra.java
