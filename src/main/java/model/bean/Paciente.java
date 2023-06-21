@@ -3,7 +3,7 @@ package model.bean;
 public class Paciente extends Pessoa {
     private int cpf; // CPF do paciente
     private Telefone telefone; // Objeto Telefone que armazena o número de telefone do paciente
-    private Endereco endereco; // Objeto Endereco que representa o endereço do paciente
+    private Endereco endereco; //    Objeto Endereco que representa o endereço do paciente
 
     // CONSTRUTOR
     public Paciente(int cpf, Telefone telefone, Endereco endereco, int idPessoa, String nome, String email, String senha) {

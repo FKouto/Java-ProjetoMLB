@@ -245,6 +245,125 @@ public final class DashboardMeuPerfil extends javax.swing.JFrame {
         try {
             Paciente paciente = new Paciente(email);
             PacienteDAO pacientedao = new PacienteDAO();
+            Psicologo psicologo = new Psicologo(email);
+            PsicologoDAO psicologodao = new PsicologoDAO();
+            Psiquiatra psiquiatra = new Psiquiatra(email);
+            PsiquiatraDAO psiquiatradao = new PsiquiatraDAO();
+            if (pacientedao.obterPacienteDash(paciente)) {
+                String sql = "SELECT p.nome, p.cpf, p.email, p.senha, t.celular, e.rua, e.bairro, e.cidade, e.estado, e.cep "
+                        + "FROM paciente p "
+                        + "JOIN telefone_paciente t ON p.cod_tel = t.cod_tel "
+                        + "JOIN endereco_paciente e ON p.cod_endereco = e.cod_endereco "
+                        + "WHERE p.email = ?";
+                try (Connection conn = ConexaoBD.obtemConexao(); PreparedStatement ps = conn.prepareStatement(sql)) {
+                    ps.setString(1, email);
+                    ResultSet rs = ps.executeQuery();
+                    if (rs.next()) {
+                        String nome = rs.getString("nome");
+                        String cpf = rs.getString("cpf");
+                        String senha = rs.getString("senha");
+                        String celular = rs.getString("celular");
+                        String rua = rs.getString("rua");
+                        String bairro = rs.getString("bairro");
+                        String cidade = rs.getString("cidade");
+                        String estado = rs.getString("estado");
+                        String cep = rs.getString("cep");
+                        // Atribuir os valores às JTextFields correspondentes
+                        txtNome.setText(nome);
+                        txtCpf.setText(cpf);
+                        txtEmail.setText(email);
+                        txtSenha.setText(senha);
+                        txtBairro.setText(bairro);
+                        txtCelular.setText(celular);
+                        txtRua.setText(rua);
+                        txtCelular1.setText(celular);
+                        txtCidade.setText(cidade);
+                        txtEstado.setText(estado);
+                        txtCep.setText(cep);
+                    } else {
+                        System.out.println("Dados não encontrados.");
+                    }
+                }
+            } else if (psicologodao.obterPsicologoDash(psicologo)) {
+                String sql = "SELECT p.nome, p.tipo_consulta, p.email, p.senha, t.comercial, e.rua, e.bairro, e.cidade, e.estado, e.cep "
+                        + "FROM psicologo p "
+                        + "JOIN telefone_psicologo t ON p.cod_tel = t.cod_tel "
+                        + "JOIN endereco_psicologo e ON p.cod_endereco = e.cod_endereco "
+                        + "WHERE p.email = ?";
+                try (Connection conn = ConexaoBD.obtemConexao(); PreparedStatement ps = conn.prepareStatement(sql)) {
+                    ps.setString(1, email);
+                    ResultSet rs = ps.executeQuery();
+                    if (rs.next()) {
+                        String nome = rs.getString("nome");
+                        String tipoConsulta = rs.getString("tipo_consulta");
+                        String senha = rs.getString("senha");
+                        String comercial = rs.getString("comercial");
+                        String rua = rs.getString("rua");
+                        String bairro = rs.getString("bairro");
+                        String cidade = rs.getString("cidade");
+                        String estado = rs.getString("estado");
+                        String cep = rs.getString("cep");
+                        // Atribuir os valores às JTextFields correspondentes
+                        txtNome.setText(nome);
+                        txtCpf.setText(tipoConsulta); // Assuming this field is used for the tipoConsulta value
+                        txtEmail.setText(email);
+                        txtSenha.setText(senha);
+                        txtBairro.setText(bairro);
+                        txtCelular.setText(comercial);
+                        txtRua.setText(rua);
+                        txtCelular1.setText(comercial);
+                        txtCidade.setText(cidade);
+                        txtEstado.setText(estado);
+                        txtCep.setText(cep);
+                    } else {
+                        System.out.println("Dados não encontrados.");
+                    }
+                }
+            } else if (psiquiatradao.obterPsiquiatraDash(psiquiatra)) {
+                String sql = "SELECT p.nome, p.tipo_consulta, p.email, p.senha, t.comercial, e.rua, e.bairro, e.cidade, e.estado, e.cep "
+                        + "FROM psiquiatra p "
+                        + "JOIN telefone_psiquiatra t ON p.cod_tel = t.cod_tel "
+                        + "JOIN endereco_psiquiatra e ON p.cod_endereco = e.cod_endereco "
+                        + "WHERE p.email = ?";
+                try (Connection conn = ConexaoBD.obtemConexao(); PreparedStatement ps = conn.prepareStatement(sql)) {
+                    ps.setString(1, email);
+                    ResultSet rs = ps.executeQuery();
+                    if (rs.next()) {
+                        String nome = rs.getString("nome");
+                        String tipoConsulta = rs.getString("tipo_consulta");
+                        String senha = rs.getString("senha");
+                        String comercial = rs.getString("comercial");
+                        String rua = rs.getString("rua");
+                        String bairro = rs.getString("bairro");
+                        String cidade = rs.getString("cidade");
+                        String estado = rs.getString("estado");
+                        String cep = rs.getString("cep");
+                        // Atribuir os valores às JTextFields correspondentes
+                        txtNome.setText(nome);
+                        txtCpf.setText(tipoConsulta); // Assuming this field is used for the tipoConsulta value
+                        txtEmail.setText(email);
+                        txtSenha.setText(senha);
+                        txtBairro.setText(bairro);
+                        txtCelular.setText(comercial);
+                        txtRua.setText(rua);
+                        txtCelular1.setText(comercial);
+                        txtCidade.setText(cidade);
+                        txtEstado.setText(estado);
+                        txtCep.setText(cep);
+                    } else {
+                        System.out.println("Dados não encontrados.");
+                    }
+                }
+            } else {
+            }
+        } catch (Exception ex) {
+            Logger.getLogger(DashboardMeuPerfil.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        /*
+        String email = ViewLogin.emailLogin;
+        try {
+            Paciente paciente = new Paciente(email);
+            PacienteDAO pacientedao = new PacienteDAO();
             if (pacientedao.obterPacienteDash(paciente)) {
                 String sql = "SELECT p.nome, p.cpf, p.email, p.senha, t.celular, e.rua, e.bairro, e.cidade, e.estado, e.cep "
                         + "FROM paciente p "
@@ -363,7 +482,7 @@ public final class DashboardMeuPerfil extends javax.swing.JFrame {
             }
         } catch (Exception ex) {
             Logger.getLogger(DashboardMeuPerfil.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        }*/
     }
 
     private void btnSairMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSairMouseClicked
@@ -400,6 +519,7 @@ public final class DashboardMeuPerfil extends javax.swing.JFrame {
                 UpdateDadosPsiquiatra GoUpdateDadosPessoais = new UpdateDadosPsiquiatra();
                 GoUpdateDadosPessoais.setVisible(true);
                 this.setVisible(false);
+            } else {
             }
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Desculpe, foi possível abrir o formulario para alterar os dados. \n Tente novamente mais tarde.");

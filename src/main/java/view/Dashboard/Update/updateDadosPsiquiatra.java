@@ -125,7 +125,7 @@ public class UpdateDadosPsiquiatra extends javax.swing.JFrame {
                 PsiquiatraDAO psiquiatradao = new PsiquiatraDAO();
                 // Inserindo o psicologo no banco de dados
                 psiquiatradao.updatePsiquiatra(psiquiatra);
-                System.out.println("Psiquiatra atualizado com sucesso");
+                System.out.println("Psiquiatra atualizado com sucesso.");
                 DashboardMeuPerfil returnToMeuPerfil = new DashboardMeuPerfil();
                 returnToMeuPerfil.setVisible(true);
                 this.dispose();

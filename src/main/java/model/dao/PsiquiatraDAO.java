@@ -22,7 +22,7 @@ public class PsiquiatraDAO {
 
     // Obter Psicologo
     public boolean obterPsiquiatraDash(Psiquiatra psiquiatra) throws Exception {
-        String sql = "SELECT * FROM psicologo WHERE email = ?";
+        String sql = "SELECT * FROM psiquiatra WHERE email = ?";
         try (Connection conn = ConexaoBD.obtemConexao(); PreparedStatement ps = conn.prepareStatement(sql)) {
             ps.setString(1, psiquiatra.getEmail());
             try (ResultSet rs = ps.executeQuery()) {
