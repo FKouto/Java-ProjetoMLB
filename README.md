@@ -17,7 +17,7 @@ Use o git para clonar este projeto para sua máquina.
 git clone https://github.com/KoutoDev/ProjetoMLB.git
 ```
 
-## Dependências
+## Dependências Adicionais
 #### FlatLaf Extras
 ```
 <dependency>
