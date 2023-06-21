@@ -4,7 +4,7 @@ O projeto **Mente Livre Brasil** (MLB) é uma iniciativa que **busca facilitar o
 ## Desenvolvimento do Projeto
 O projeto **Mente Livre Brasil** é um sistema desenvolvida exclusivamente em linguagem de programação **Java** e suas principais classes, utilizando os padrões DAO (Data Access Object) e Bean, sendo totalmente Desktop. O sistema conta com a realização de todas as operações do CRUD(Create, Read, Update, Delete), e também com adição de dependências para o suporte de imagens do tipo SVG (Scalable Vector Graphics). Todas as telas foram desenvolvidas utilizando o JFrame Form utilizando o ```Javax.swing```
 #### Banco de Dados
-* MySQL [Download Script]()
+* MySQL [Download Script](https://github.com/KoutoDev/ProjetoMLB/blob/main/SQLScript.sql)
 #### IDE
 * NetBeans
 
