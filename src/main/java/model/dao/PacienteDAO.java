@@ -168,8 +168,7 @@ public class PacienteDAO {
             String sql = "UPDATE paciente "
                     + "SET nome = IF(? <> '', ?, nome),"
                     + "    cpf = IF(? <> 0, ?, cpf), "
-                    + "    senha = IF(? <> '', ?, senha),"
-                    + "    email = IF(? <> '', ?, email),"
+                    + "    senha = IF(? <> '', ?, senha)"
                     + "WHERE email = ?";
 
             // Preparando o Statement
