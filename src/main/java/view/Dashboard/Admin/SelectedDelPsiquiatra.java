@@ -102,6 +102,7 @@ public class SelectedDelPsiquiatra extends javax.swing.JFrame {
             PsiquiatraDAO psiquiatradao = new PsiquiatraDAO();
             psiquiatradao.funcDeletePaciente(idDelete, psiquiatra);
             JOptionPane.showMessageDialog(null, "Registro excluído com sucesso.");
+            this.dispose();
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Erro ao excluir registro. \n Tente novamente.");
             System.out.println("Erro ao excluir paciente: " + e.getMessage());

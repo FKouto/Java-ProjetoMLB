@@ -17,7 +17,7 @@ public class UpdateEnderecoPsicologo extends javax.swing.JFrame {
         // Define a posição da janela como centralizada em relação à tela.
         this.setLocationRelativeTo(null);
         // Define a imagem de fundo SVG
-        Background.setSvgImage("images/Dashboard/Update/updateAddress.svg.svg", 1000, 640);
+        Background.setSvgImage("images/Dashboard/Update/updateAddress.svg", 1000, 640);
     }
 
     /**
