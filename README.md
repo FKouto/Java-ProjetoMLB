@@ -40,6 +40,6 @@ git clone https://github.com/KoutoDev/ProjetoMLB.git
 [Visualizar Prototipo.](https://www.figma.com/file/x9HVgaHmfEdeDz2OmaZ15g/PMLB?type=design&node-id=505%3A3013&mode=design&t=n1QitUTaPMJgsuMZ-1)
 
 ## Mais informações
-Este projeto foi desenvolvido com bases nas aulas ministradas em sala de aula da Universidade São Judas Tadeu, na matéria de Programação & Soluções Computacionais, para a apresentação na Expo Tech São Judas.
+Este projeto foi desenvolvido com bases nas aulas ministradas em sala de aula na Universidade São Judas Tadeu, na matéria de Programação & Soluções Computacionais, para a apresentação na Expo Tech São Judas 2023.
 ## License
 License. This project is licensed under the [MIT License](https://github.com/KoutoDev/ProjetoMLB/blob/main/LICENSE).
