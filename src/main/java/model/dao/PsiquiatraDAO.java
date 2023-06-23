@@ -256,13 +256,13 @@ public class PsiquiatraDAO {
             conn = ConexaoBD.obtemConexao();
 
             // Preparando SQL para o Update
-            String sql = "UPDATE endereco_paciente "
+            String sql = "UPDATE endereco_psiquiatra "
                     + "SET rua = IF(? <> '', ?, rua),"
                     + "    bairro = IF(? <> '', ?, bairro),"
                     + "    cidade = IF(? <> '', ?, cidade),"
                     + "    estado = IF(? <> '', ?, estado),"
                     + "    cep = IF(? <> 0, ?, cep)"
-                    + "WHERE cod_endereco = (SELECT cod_endereco FROM paciente WHERE email = ?)";
+                    + "WHERE cod_endereco = (SELECT cod_endereco FROM psiquiatra WHERE email = ?)";
             // Preparando o Statement
             update = conn.prepareStatement(sql);
 
